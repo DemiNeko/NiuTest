@@ -1,0 +1,8 @@
+dist/
+node_modules/
+.qa/
+*.zip
+source-extracted.json
+source-format.xml
+__pycache__/
+*.pyc
