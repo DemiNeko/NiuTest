@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "my-exam",
+  "title": "Мой экзамен",
+  "description": "Пример структуры. Замени вопросы своими перед импортом.",
+  "language": "ru",
+  "sections": { "basics": "Основы" },
+  "questions": [
+    {
+      "id": "q-1",
+      "section": "basics",
+      "number": 1,
+      "question": "Сколько будет 2 + 2?",
+      "options": ["3", "4", "5"],
+      "correctIndex": 1,
+      "answerStatus": "provided",
+      "explanation": "Два плюс два равно четырём. Индекс правильного варианта — 1, потому что отсчёт начинается с нуля."
+    },
+    {
+      "id": "q-2",
+      "section": "basics",
+      "number": 2,
+      "question": "Пример вопроса, ключ которого ещё нужно уточнить",
+      "options": ["Вариант A", "Вариант B"],
+      "correctIndex": null,
+      "answerStatus": "needs-review",
+      "note": "Нужен официальный ключ или проверка по надёжному источнику. Этот вопрос не оценивается."
+    }
+  ]
+}

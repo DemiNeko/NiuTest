@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "exams": [
+    {
+      "id": "ai-go",
+      "title": "AI & Go",
+      "file": "ai-go.json"
+    }
+  ]
+}

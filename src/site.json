@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "name": "NiuTest",
+  "logo": "./src/images/logo.svg",
+  "tagline": "ПОДГОТОВКА БЕЗ ЛИШНЕГО",
+  "topbarText": "ТВОЁ ПРОСТРАНСТВО ДЛЯ УЧЁБЫ",
+  "showTopbarText": true,
+  "homeTitle": "К чему готовимся?",
+  "homeSubtitle": "Выбери экзамен — и сразу к вопросам. Нажми на ответ, чтобы проверить себя.",
+  "background": "",
+  "backgroundOpacity": 25,
+  "homeEyebrow": "ВЫБРАТЬ. ОТВЕТИТЬ. ЗАПОМНИТЬ."
+}

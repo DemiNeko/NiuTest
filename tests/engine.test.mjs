@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { shuffle, blankProgress, createSession, evaluate, recordAnswer, finishSession, statistics, validateProgress } from '../assets/engine.js';
-const { questions } = JSON.parse(await readFile(new URL('../assets/questions.json', import.meta.url), 'utf8'));
+const { questions } = JSON.parse(await readFile(new URL('../src/exams/ai-go.json', import.meta.url), 'utf8'));
 test('complete source: 100 AI + 89 Go, distinct IDs, only final question has 3 options', () => {
   assert.equal(questions.length, 189);
   assert.equal(new Set(questions.map(q => q.id)).size, 189);

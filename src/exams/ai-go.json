@@ -1,6 +1,13 @@
 {
-  "version": 1,
+  "id": "ai-go",
   "title": "AI & Go",
+  "description": "Искусственный интеллект и программирование на Go. Вопросы на казахском, обучение в твоём темпе.",
+  "language": "kk",
+  "sections": {
+    "ai": "Основы AI",
+    "go": "Go и AI"
+  },
+  "version": 1,
   "sourceName": "Microsoft Word Document.docx",
   "answerKey": "inferred-from-content",
   "questions": [
@@ -2465,5 +2472,6 @@
       "correctIndex": 0,
       "note": "В исходном документе у этого вопроса только три варианта ответа."
     }
-  ]
+  ],
+  "schemaVersion": 1
 }

@@ -49,13 +49,15 @@ def extract(path):
             question['note'] = notes[question['id']]
         if question['id'] in ('go-53', 'go-58'):
             question['sourceUrl'] = 'https://go.dev/ref/spec#' + ('Length_and_capacity' if question['id'] == 'go-53' else 'Go_statements')
-    return dict(version=1, title='AI & Go', sourceName='Microsoft Word Document.docx',
+    return dict(schemaVersion=1, id='ai-go', title='AI & Go', language='kk',
+                description='Искусственный интеллект и программирование на Go. Вопросы на казахском.',
+                sections={'ai': 'Основы AI', 'go': 'Go и AI'}, sourceName='Microsoft Word Document.docx',
                 answerKey='inferred-from-content', questions=questions)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('source')
-    parser.add_argument('--output', default='assets/questions.json')
+    parser.add_argument('--output', default='src/exams/ai-go.json')
     args = parser.parse_args()
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
