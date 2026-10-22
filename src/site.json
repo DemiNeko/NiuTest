@@ -9,5 +9,26 @@
   "homeSubtitle": "",
   "background": "",
   "backgroundOpacity": 50,
-  "homeEyebrow": ""
+  "homeEyebrow": "",
+  "accentColor": "#3863f4",
+  "buttonColor": "#3863f4",
+  "buttonHoverColor": "#2850d5",
+  "buttonTextColor": "#ffffff",
+  "defaultLanguage": "ru",
+  "translations": {
+    "en": {
+      "tagline": "A new site for this",
+      "topbarText": "",
+      "homeEyebrow": "",
+      "homeTitle": "Again",
+      "homeSubtitle": ""
+    },
+    "kk": {
+      "tagline": "Осыған арналған жаңа сайт",
+      "topbarText": "",
+      "homeEyebrow": "",
+      "homeTitle": "Қайтадан",
+      "homeSubtitle": ""
+    }
+  }
 }

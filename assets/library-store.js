@@ -1,3 +1,4 @@
+import { t } from './i18n.js';
 import { blankProgress, validateProgress } from './engine.js';
 import { parseExam, questionSignature } from './exam-format.js';
 export const LIBRARY_KEY = 'niutest-library-v2';
@@ -22,13 +23,13 @@ export function loadExamProgress(raw, exam) {
   return clean;
 }
 export function readCatalog(raw) {
-  if (!raw || raw.version !== 2 || !Array.isArray(raw.exams)) throw new Error('Неверный формат библиотеки.');
+  if (!raw || raw.version !== 2 || !Array.isArray(raw.exams)) throw new Error(t("Неверный формат библиотеки."));
   const exams = raw.exams.map(item => {
     const result = parseExam(item);
     if (!result.exam) throw new Error(result.errors.join('\n'));
     return result.exam;
   });
-  if (new Set(exams.map(e => e.id)).size !== exams.length) throw new Error('В библиотеке повторяются id экзаменов.');
+  if (new Set(exams.map(e => e.id)).size !== exams.length) throw new Error(t("В библиотеке повторяются id экзаменов."));
   return { version: 2, exams };
 }
 export function reconcileProgress(raw, previous, next) {
@@ -43,9 +44,9 @@ export function reconcileProgress(raw, previous, next) {
 }
 export function parseBackup(input, bundled = []) {
   const raw = typeof input === 'string' ? JSON.parse(input.replace(/^\uFEFF/, '')) : input;
-  if (raw?.type !== 'niutest-backup' || raw.version !== 1 || !Array.isArray(raw.exams)) throw new Error('Это не резервная копия NiuTest версии 1.');
+  if (raw?.type !== 'niutest-backup' || raw.version !== 1 || !Array.isArray(raw.exams)) throw new Error(t("Это не резервная копия NiuTest версии 1."));
   const { exams } = readCatalog({ version: 2, exams: raw.exams });
-  if (exams.some(e => bundled.some(b => b.id === e.id))) throw new Error('Копия содержит пользовательский экзамен с id встроенного.');
+  if (exams.some(e => bundled.some(b => b.id === e.id))) throw new Error(t("Копия содержит пользовательский экзамен с id встроенного."));
   const progress = {};
   for (const exam of [...bundled, ...exams]) progress[exam.id] = loadExamProgress(raw.progress?.[exam.id], exam);
   return { exams, progress };
@@ -56,7 +57,7 @@ export function recoverStorage(storage) {
   const journal = storage.getItem(JOURNAL_KEY);
   if (!journal) return;
   const entries = JSON.parse(journal);
-  if (!Array.isArray(entries) || entries.some(x => !Array.isArray(x) || !(x[0] === LIBRARY_KEY || x[0].startsWith('niutest-progress-v2:')) || !(x[1] === null || typeof x[1] === 'string'))) throw new Error('Не удалось восстановить незавершённое сохранение. Экспортируйте данные браузера.');
+  if (!Array.isArray(entries) || entries.some(x => !Array.isArray(x) || !(x[0] === LIBRARY_KEY || x[0].startsWith('niutest-progress-v2:')) || !(x[1] === null || typeof x[1] === 'string'))) throw new Error(t("Не удалось восстановить незавершённое сохранение. Экспортируйте данные браузера."));
   for (const [key, value] of entries) value === null ? storage.removeItem(key) : storage.setItem(key, value);
   storage.removeItem(JOURNAL_KEY);
 }

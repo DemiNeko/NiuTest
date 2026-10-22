@@ -1,10 +1,11 @@
+import { t } from './i18n.js';
 import { parseExam } from './exam-format.js';
 export function catalogFiles(exams) {
   const ids = new Set(), files = [], manifest = { version: 1, exams: [] };
   for (const raw of exams) {
     const { exam, errors } = parseExam(raw);
     if (!exam) throw new Error(errors.join('\n'));
-    if (ids.has(exam.id)) throw new Error(`Повторяющийся id: ${exam.id}`);
+    if (ids.has(exam.id)) throw new Error(`${t("Повторяющийся id:")} ${exam.id}`);
     ids.add(exam.id);
     manifest.exams.push({ id: exam.id, title: exam.title, file: `${exam.id}.json` });
     files.push({ name: `src/exams/${exam.id}.json`, content: JSON.stringify(exam, null, 2) + '\n' });
