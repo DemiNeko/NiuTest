@@ -1,0 +1,3350 @@
+{
+  "schemaVersion": 1,
+  "id": "zhasandy-intellekt-208",
+  "title": "Жасанды интеллект жүйелері",
+  "description": "208 сұрақ · әр сұрақта 5 жауап нұсқасы.",
+  "language": "kk",
+  "sourceName": "Жасанды интеллект жүйелері (1).docx",
+  "answerKey": "reviewed-against-sources-2026-10-28",
+  "sections": {
+    "general": "Жасанды интеллект жүйелері"
+  },
+  "questions": [
+    {
+      "id": "q-001",
+      "section": "general",
+      "number": 1,
+      "question": "Жасанды интеллект (AI) дегеніміз не?",
+      "options": [
+        "Компьютердің адамға тән интеллектуалдық әрекеттерді орындау қабілеті",
+        "Компьютердің тек мәтін теру жүйесі",
+        "Интернетке қосылу технологиясы",
+        "Компьютердің сыртқы құрылғысы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-002",
+      "section": "general",
+      "number": 2,
+      "question": "AI қысқартуы нені білдіреді?",
+      "options": [
+        "Artificial Intelligence",
+        "Automatic Internet",
+        "Advanced Information",
+        "Artificial Internet",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-003",
+      "section": "general",
+      "number": 3,
+      "question": "Жасанды интеллекттің негізгі мақсаты қандай?",
+      "options": [
+        "Интеллектуалдық тапсырмаларды автоматтандыру",
+        "Компьютердің көлемін үлкейту",
+        "Интернет жылдамдығын арттыру",
+        "Электр энергиясын өндіру",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-004",
+      "section": "general",
+      "number": 4,
+      "question": "Machine Learning дегеніміз не?",
+      "options": [
+        "Машиналық оқыту",
+        "Компьютерді жөндеу",
+        "Интернетті басқару",
+        "Файлдарды көшіру",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-005",
+      "section": "general",
+      "number": 5,
+      "question": "Машиналық оқытуда компьютер нені пайдаланады?",
+      "options": [
+        "Деректерді",
+        "Тек пернетақтаны",
+        "Принтерді",
+        "Мониторды",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-006",
+      "section": "general",
+      "number": 6,
+      "question": "Deep Learning дегеніміз не?",
+      "options": [
+        "Терең оқыту технологиясы",
+        "Құжаттарды басып шығару",
+        "Компьютерді өшіру әдісі",
+        "Интернет желісін орнату",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-007",
+      "section": "general",
+      "number": 7,
+      "question": "Нейрондық желі неге ұқсастырылып жасалған?",
+      "options": [
+        "Адам миының жұмыс істеу принципіне",
+        "Принтердің жұмысына",
+        "Қатты диск жұмысына",
+        "Монитор жұмысына",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-008",
+      "section": "general",
+      "number": 8,
+      "question": "AI қандай салаларда қолданылады?",
+      "options": [
+        "Көптеген әртүрлі салаларда",
+        "Тек ойындарда",
+        "Тек мектепте",
+        "Тек медицинада",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-009",
+      "section": "general",
+      "number": 9,
+      "question": "ChatGPT қандай технологияға жатады?",
+      "options": [
+        "Генеративті жасанды интеллект",
+        "Антивирус",
+        "Операциялық жүйе",
+        "Компьютерлік ойын",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://openai.com/index/chatgpt/"
+    },
+    {
+      "id": "q-010",
+      "section": "general",
+      "number": 10,
+      "question": "Генеративті AI не істей алады?",
+      "options": [
+        "Жаңа мәтін, сурет және басқа контент жасай алады",
+        "Тек файлдарды өшіреді",
+        "Тек компьютерді қосады",
+        "Тек интернетті ажыратады",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#generative-ai"
+    },
+    {
+      "id": "q-011",
+      "section": "general",
+      "number": 11,
+      "question": "AI моделін оқыту дегеніміз не?",
+      "options": [
+        "Модельге деректер арқылы заңдылықтарды үйрету",
+        "Компьютерді бояу",
+        "Файлдарды архивтеу",
+        "Мониторды баптау",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-012",
+      "section": "general",
+      "number": 12,
+      "question": "Деректер (Data) дегеніміз не?",
+      "options": [
+        "Өңдеуге немесе талдауға арналған ақпарат",
+        "Компьютердің корпусы",
+        "Электр сымы",
+        "Пернетақта батырмасы",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-013",
+      "section": "general",
+      "number": 13,
+      "question": "Dataset дегеніміз не?",
+      "options": [
+        "Деректер жиынтығы",
+        "Компьютерлік вирус",
+        "Интернет браузері",
+        "Операциялық жүйе",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-014",
+      "section": "general",
+      "number": 14,
+      "question": "Алгоритм дегеніміз не?",
+      "options": [
+        "Есепті шешуге арналған қадамдар жиынтығы",
+        "Компьютердің экраны",
+        "Электр желісі",
+        "Файлдың атауы",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://xlinux.nist.gov/dads/HTML/algorithm.html"
+    },
+    {
+      "id": "q-015",
+      "section": "general",
+      "number": 15,
+      "question": "AI алгоритмдерінің міндеті қандай?",
+      "options": [
+        "Деректерді өңдеп, шешім немесе нәтиже алу",
+        "Компьютерді физикалық жөндеу",
+        "Мониторды тазалау",
+        "Пернетақтаны ауыстыру",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-016",
+      "section": "general",
+      "number": 16,
+      "question": "Компьютерлік көру (Computer Vision) не үшін қолданылады?",
+      "options": [
+        "Сурет пен бейнені талдау үшін",
+        "Музыка тыңдау үшін ғана",
+        "Электр энергиясын өндіру үшін",
+        "Қағаз басып шығару үшін",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/computer-vision"
+    },
+    {
+      "id": "q-017",
+      "section": "general",
+      "number": 17,
+      "question": "Face Recognition дегеніміз не?",
+      "options": [
+        "Бетті тану технологиясы",
+        "Дыбысты күшейту технологиясы",
+        "Файлды қысу технологиясы",
+        "Мәтінді жою технологиясы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/computer-vision"
+    },
+    {
+      "id": "q-018",
+      "section": "general",
+      "number": 18,
+      "question": "Natural Language Processing (NLP) нені зерттейді?",
+      "options": [
+        "Адам тілін компьютер арқылы өңдеуді",
+        "Компьютер құрылысын",
+        "Электр энергиясын",
+        "Интернет кабельдерін",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-019",
+      "section": "general",
+      "number": 19,
+      "question": "NLP қай жерде қолданылады?",
+      "options": [
+        "Мәтін және сөйлеуді өңдеуде",
+        "Тек компьютерді жөндеуде",
+        "Тек монитор жасауда",
+        "Тек ойын консолінде",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-020",
+      "section": "general",
+      "number": 20,
+      "question": "Speech Recognition дегеніміз не?",
+      "options": [
+        "Сөйлеуді тану",
+        "Суретті бояу",
+        "Файлды архивтеу",
+        "Экранды үлкейту",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-021",
+      "section": "general",
+      "number": 21,
+      "question": "AI ассистенті дегеніміз не?",
+      "options": [
+        "Адамға тапсырмаларды орындауға көмектесетін интеллектуалды жүйе",
+        "Компьютердің қуат көзі",
+        "Интернет кабелі",
+        "Принтер түрі",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-022",
+      "section": "general",
+      "number": 22,
+      "question": "Робототехникада AI не үшін қажет?",
+      "options": [
+        "Роботтарға қоршаған ортаны қабылдап, шешім қабылдауға көмектесу үшін",
+        "Роботтың түсін өзгерту үшін ғана",
+        "Роботты ауырлату үшін",
+        "Роботты өшіру үшін",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-023",
+      "section": "general",
+      "number": 23,
+      "question": "AI медицинада қалай қолданылады?",
+      "options": [
+        "Диагностика мен медициналық деректерді талдауға көмектеседі",
+        "Тек аурухана ғимаратын салуға қолданылады",
+        "Тек дәрі қаптамасын жасауға қолданылады",
+        "Тек телефон қоңырауына қолданылады",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#artificial-intelligence"
+    },
+    {
+      "id": "q-024",
+      "section": "general",
+      "number": 24,
+      "question": "AI білім беру саласында не үшін қолданылады?",
+      "options": [
+        "Оқуды жекелендіруге және оқушыларға көмектесуге",
+        "Мектеп ғимаратын бояуға",
+        "Парта жасауға",
+        "Электр желісін орнатуға",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://mgiep.unesco.org/iseeareport"
+    },
+    {
+      "id": "q-025",
+      "section": "general",
+      "number": 25,
+      "question": "AI қаржы саласында не үшін пайдаланылады?",
+      "options": [
+        "Деректерді талдау және алаяқтықты анықтау үшін",
+        "Ақша басып шығару үшін",
+        "Банктің ғимаратын салу үшін",
+        "Банкоматты бояу үшін",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-026",
+      "section": "general",
+      "number": 26,
+      "question": "AI-дың маңызды бөлігі қандай?",
+      "options": [
+        "Деректер",
+        "Монитор түсі",
+        "Компьютер үстелі",
+        "Кабель ұзындығы",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-027",
+      "section": "general",
+      "number": 27,
+      "question": "Supervised Learning дегеніміз не?",
+      "options": [
+        "Белгіленген деректер арқылы оқыту",
+        "Деректерсіз оқыту",
+        "Компьютерді қолмен басқару",
+        "Интернетсіз жұмыс істеу",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-028",
+      "section": "general",
+      "number": 28,
+      "question": "Unsupervised Learning дегеніміз не?",
+      "options": [
+        "Белгіленбеген деректерден заңдылықтарды табу",
+        "Тек дайын жауаптарды көшіру",
+        "Компьютерді өшіру",
+        "Файлдарды басып шығару",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-029",
+      "section": "general",
+      "number": 29,
+      "question": "Reinforcement Learning дегеніміз не?",
+      "options": [
+        "Марапат пен жаза арқылы оқыту",
+        "Файлдарды архивтеу",
+        "Интернетті өшіру",
+        "Мәтінді форматтау",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-030",
+      "section": "general",
+      "number": 30,
+      "question": "AI моделінің prediction дегені не?",
+      "options": [
+        "Модельдің болжамы",
+        "Компьютердің өшуі",
+        "Файлдың атауы",
+        "Экранның жарықтығы",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-031",
+      "section": "general",
+      "number": 31,
+      "question": "Classification дегеніміз не?",
+      "options": [
+        "Объектілерді белгілі бір санаттарға бөлу",
+        "Файлдарды жою",
+        "Компьютерді іске қосу",
+        "Интернетке қосылу",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-032",
+      "section": "general",
+      "number": 32,
+      "question": "Regression моделінің мақсаты қандай?",
+      "options": [
+        "Сандық мәнді болжау",
+        "Компьютерді өшіру",
+        "Суретті басып шығару",
+        "Файлды көшіру",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-033",
+      "section": "general",
+      "number": 33,
+      "question": "Training Data дегеніміз не?",
+      "options": [
+        "Модельді оқыту үшін қолданылатын деректер",
+        "Тек ойын файлдары",
+        "Компьютердің драйверлері",
+        "Интернет браузері",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-034",
+      "section": "general",
+      "number": 34,
+      "question": "Test Data не үшін қажет?",
+      "options": [
+        "Оқытылған модельді тексеру үшін",
+        "Компьютерді орнату үшін",
+        "Файлды жою үшін",
+        "Мониторды жөндеу үшін",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-035",
+      "section": "general",
+      "number": 35,
+      "question": "Accuracy дегеніміз не?",
+      "options": [
+        "Модельдің дұрыс болжамдарының үлесі",
+        "Компьютердің салмағы",
+        "Интернет жылдамдығы",
+        "Файлдың көлемі",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-036",
+      "section": "general",
+      "number": 36,
+      "question": "AI моделінің қателігі дегеніміз не?",
+      "options": [
+        "Модель нәтижесінің дұрыс жауаптан ауытқуы",
+        "Компьютердің физикалық бұзылуы",
+        "Интернеттің жылдамдығы",
+        "Монитордың өлшемі",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-037",
+      "section": "general",
+      "number": 37,
+      "question": "Overfitting дегеніміз не?",
+      "options": [
+        "Модельдің оқыту деректеріне шамадан тыс бейімделуі",
+        "Компьютердің қызып кетуі",
+        "Файлдардың жоғалуы",
+        "Интернеттің үзілуі",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-038",
+      "section": "general",
+      "number": 38,
+      "question": "Underfitting дегеніміз не?",
+      "options": [
+        "Модельдің деректердегі заңдылықтарды жеткілікті үйренбеуі",
+        "Компьютердің артық жүктелуі",
+        "Файлдардың көп болуы",
+        "Монитордың істемеуі",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-039",
+      "section": "general",
+      "number": 39,
+      "question": "Neural Network құрамындағы негізгі элементтердің бірі қандай?",
+      "options": [
+        "Нейрон",
+        "Принтер",
+        "Қатты диск",
+        "Пернетақта",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-040",
+      "section": "general",
+      "number": 40,
+      "question": "Нейрондық желідегі weight нені білдіреді?",
+      "options": [
+        "Байланыстың маңыздылығын көрсететін параметр",
+        "Компьютердің физикалық салмағын",
+        "Файл көлемін",
+        "Экран өлшемін",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-041",
+      "section": "general",
+      "number": 41,
+      "question": "Bias дегеніміз не?",
+      "options": [
+        "Модельдің қосымша параметрі",
+        "Компьютердің салмағы",
+        "Интернет желісі",
+        "Монитордың жарықтығы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "explanation": "Здесь bias означает параметр смещения модели, а не предвзятость результатов."
+    },
+    {
+      "id": "q-042",
+      "section": "general",
+      "number": 42,
+      "question": "Activation Function не үшін қолданылады?",
+      "options": [
+        "Нейронның шығуын есептеу үшін",
+        "Компьютерді іске қосу үшін",
+        "Файлды сақтау үшін",
+        "Принтерді қосу үшін",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-043",
+      "section": "general",
+      "number": 43,
+      "question": "AI моделіндегі параметр дегеніміз не?",
+      "options": [
+        "Оқыту барысында өзгеретін модель мәні",
+        "Компьютердің сыртқы қақпағы",
+        "Файл атауы",
+        "Интернет мекенжайы",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-044",
+      "section": "general",
+      "number": 44,
+      "question": "Prompt дегеніміз не?",
+      "options": [
+        "AI моделіне берілетін нұсқау немесе сұраныс",
+        "Компьютердің процессоры",
+        "Файл түрі",
+        "Антивирус бағдарламасы",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-045",
+      "section": "general",
+      "number": 45,
+      "question": "Prompt Engineering дегеніміз не?",
+      "options": [
+        "AI-ға тиімді сұраныс құрастыру әдістері",
+        "Компьютерді жөндеу",
+        "Желіні орнату",
+        "Принтерді бағдарламалау",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-046",
+      "section": "general",
+      "number": 46,
+      "question": "Large Language Model (LLM) дегеніміз не?",
+      "options": [
+        "Үлкен көлемдегі мәтіндік деректерде оқытылған тілдік модель",
+        "Компьютердің қатты дискісі",
+        "Интернет желісі",
+        "Антивирус бағдарламасы",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-047",
+      "section": "general",
+      "number": 47,
+      "question": "Chatbot дегеніміз не?",
+      "options": [
+        "Пайдаланушымен мәтін немесе дауыс арқылы сөйлесетін бағдарлама",
+        "Компьютерлік вирус",
+        "Принтер драйвері",
+        "Файл менеджері",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-048",
+      "section": "general",
+      "number": 48,
+      "question": "Generative AI қандай контент жасай алады?",
+      "options": [
+        "Мәтін, сурет, аудио және басқа да контент",
+        "Тек компьютер корпусын",
+        "Тек электр қуатын",
+        "Тек желілік кабельді",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#generative-ai"
+    },
+    {
+      "id": "q-049",
+      "section": "general",
+      "number": 49,
+      "question": "AI арқылы сурет жасауға не қажет?",
+      "options": [
+        "Сипаттама немесе prompt",
+        "Принтер ғана",
+        "Пернетақта ғана",
+        "Флешка ғана",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#generative-ai",
+      "explanation": "Вопрос относится к генерации изображения по описанию. В других режимах исходным входом может быть изображение."
+    },
+    {
+      "id": "q-050",
+      "section": "general",
+      "number": 50,
+      "question": "AI мәтін генераторының қызметі қандай?",
+      "options": [
+        "Берілген сұраныс негізінде мәтін құру",
+        "Компьютерді физикалық жөндеу",
+        "Интернет кабелін жасау",
+        "Мониторды тазалау",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#generative-ai"
+    },
+    {
+      "id": "q-051",
+      "section": "general",
+      "number": 51,
+      "question": "AI-дың артықшылықтарының бірі қандай?",
+      "options": [
+        "Үлкен көлемдегі ақпаратты жылдам өңдеу",
+        "Электр энергиясын қажет етпеу",
+        "Барлық жағдайда қателеспеу",
+        "Деректерсіз жұмыс істеу",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-052",
+      "section": "general",
+      "number": 52,
+      "question": "AI қолданудың негізгі тәуекелдерінің бірі қандай?",
+      "options": [
+        "Қате немесе бұрмаланған нәтиже беруі мүмкін",
+        "Әрқашан дұрыс жауап беруі",
+        "Ешқандай дерек қажет етпеуі",
+        "Барлық жұмысты адамсыз толық шешуі",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-053",
+      "section": "general",
+      "number": 53,
+      "question": "AI hallucination дегеніміз не?",
+      "options": [
+        "AI-дың шындыққа сәйкес келмейтін ақпаратты сенімді түрде ұсынуы",
+        "Компьютердің ұйықтауы",
+        "Интернеттің өшуі",
+        "Файлдың жоғалуы",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-054",
+      "section": "general",
+      "number": 54,
+      "question": "AI нәтижесін не үшін тексеру керек?",
+      "options": [
+        "Оның қате болуы немесе толық болмауы мүмкін болғандықтан",
+        "AI ешқашан жұмыс істемейтіндіктен",
+        "Компьютерді өшіру үшін",
+        "Интернетті жылдамдату үшін",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-055",
+      "section": "general",
+      "number": 55,
+      "question": "AI этикасы нені қарастырады?",
+      "options": [
+        "AI-ды жауапты және әділ қолдану мәселелерін",
+        "Компьютердің дизайнын",
+        "Монитордың көлемін",
+        "Пернетақта құрылысын",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-056",
+      "section": "general",
+      "number": 56,
+      "question": "AI жүйесінде құпиялылық неге маңызды?",
+      "options": [
+        "Жеке деректерді қорғау үшін",
+        "Компьютерді жылдамдату үшін",
+        "Экранды үлкейту үшін",
+        "Файл көлемін азайту үшін",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-057",
+      "section": "general",
+      "number": 57,
+      "question": "Bias in AI дегеніміз не?",
+      "options": [
+        "Модель нәтижелеріндегі жүйелі біржақтылық",
+        "Компьютердің салмағы",
+        "Интернет жылдамдығы",
+        "Файлдың форматы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-058",
+      "section": "general",
+      "number": 58,
+      "question": "AI жүйелеріндегі fairness нені білдіреді?",
+      "options": [
+        "Әртүрлі топтарға әділ қарауға ұмтылу",
+        "Компьютерді теңестіру",
+        "Файлдарды бірдей атау",
+        "Экранды бөлу",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-059",
+      "section": "general",
+      "number": 59,
+      "question": "AI қауіпсіздігі не үшін қажет?",
+      "options": [
+        "AI жүйелерін зиянды немесе қате пайдаланудан қорғау үшін",
+        "Мониторды тазалау үшін",
+        "Пернетақтаны жөндеу үшін",
+        "Файл көлемін арттыру үшін",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-060",
+      "section": "general",
+      "number": 60,
+      "question": "AI арқылы аударма жасауға бола ма?",
+      "options": [
+        "Иә, тілдерді автоматты түрде аударуға болады",
+        "Жоқ, ешқашан болмайды",
+        "Тек суреттерді аударуға болады",
+        "Тек сандарды аударуға болады",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-061",
+      "section": "general",
+      "number": 61,
+      "question": "AI музыка саласында қалай қолданылады?",
+      "options": [
+        "Музыка жасауға және талдауға көмектеседі",
+        "Тек динамик жасауға қолданылады",
+        "Электр өндіреді",
+        "Интернет кабелін жасайды",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://deepmind.google/models/lyria/"
+    },
+    {
+      "id": "q-062",
+      "section": "general",
+      "number": 62,
+      "question": "AI көлік саласында не үшін қолданылады?",
+      "options": [
+        "Көлік қозғалысын талдау және жүргізуге көмектесу үшін",
+        "Автокөлік бояуын таңдау үшін ғана",
+        "Дөңгелек өндіру үшін ғана",
+        "Жанармай жасау үшін",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.nhtsa.gov/vehicle-safety/automated-vehicle-safety"
+    },
+    {
+      "id": "q-063",
+      "section": "general",
+      "number": 63,
+      "question": "Автономды көлік дегеніміз не?",
+      "options": [
+        "Кейбір жүргізу әрекеттерін адамның тұрақты басқаруынсыз орындай алатын көлік",
+        "Тек қолмен басқарылатын көлік",
+        "Қозғалтқышы жоқ көлік",
+        "Тек ойыншық көлік",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.nhtsa.gov/vehicle-safety/automated-vehicle-safety",
+      "explanation": "Степень самостоятельности зависит от уровня автоматизации и условий работы системы."
+    },
+    {
+      "id": "q-064",
+      "section": "general",
+      "number": 64,
+      "question": "AI ауыл шаруашылығында қалай қолданылады?",
+      "options": [
+        "Егін жағдайын бақылау және деректерді талдау үшін",
+        "Тек трактор түсін өзгерту үшін",
+        "Тек ғимарат салу үшін",
+        "Электр өндіру үшін",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/ai-in-agriculture"
+    },
+    {
+      "id": "q-065",
+      "section": "general",
+      "number": 65,
+      "question": "AI маркетингте не үшін пайдаланылады?",
+      "options": [
+        "Клиенттер мен нарық туралы деректерді талдау үшін",
+        "Компьютерлерді жөндеу үшін",
+        "Кабель өндіру үшін",
+        "Монитор жасау үшін",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-066",
+      "section": "general",
+      "number": 66,
+      "question": "Recommendation System дегеніміз не?",
+      "options": [
+        "Пайдаланушыға сәйкес контент немесе тауар ұсынатын жүйе",
+        "Компьютерді өшіру жүйесі",
+        "Файлдарды архивтеу жүйесі",
+        "Интернет кабелі",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/recommendation/overview"
+    },
+    {
+      "id": "q-067",
+      "section": "general",
+      "number": 67,
+      "question": "YouTube немесе Netflix сияқты платформаларда AI не үшін қолданылуы мүмкін?",
+      "options": [
+        "Пайдаланушыға контент ұсыну үшін",
+        "Экранды физикалық тазалау үшін",
+        "Компьютерді жөндеу үшін",
+        "Электр өндіру үшін",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/recommendation/overview"
+    },
+    {
+      "id": "q-068",
+      "section": "general",
+      "number": 68,
+      "question": "AI киберқауіпсіздікте не істей алады?",
+      "options": [
+        "Күдікті әрекеттерді анықтауға көмектеседі",
+        "Компьютерді бояйды",
+        "Монитор жасайды",
+        "Интернет кабелін шығарады",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-069",
+      "section": "general",
+      "number": 69,
+      "question": "AI арқылы спамды анықтауға бола ма?",
+      "options": [
+        "Иә, AI хабарламаларды талдап, спамды анықтай алады",
+        "Жоқ, ешқашан болмайды",
+        "Тек қағаз хаттарды анықтайды",
+        "Тек телефондарды анықтайды",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-070",
+      "section": "general",
+      "number": 70,
+      "question": "AI электрондық поштамен жұмыс істеуде не істей алады?",
+      "options": [
+        "Хаттарды санаттарға бөлуге және мазмұнын талдауға көмектеседі",
+        "Компьютерді жөндейді",
+        "Принтерді жасайды",
+        "Кабельді ауыстырады",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-071",
+      "section": "general",
+      "number": 71,
+      "question": "AI деректерді визуализациялауда не үшін қажет?",
+      "options": [
+        "Деректердегі заңдылықтарды түсінуге көмектесу үшін",
+        "Компьютерді өшіру үшін",
+        "Интернетті ажырату үшін",
+        "Мониторды жөндеу үшін",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.ibm.com/think/topics/data-visualization"
+    },
+    {
+      "id": "q-072",
+      "section": "general",
+      "number": 72,
+      "question": "Big Data дегеніміз не?",
+      "options": [
+        "Өте үлкен және күрделі деректер көлемі",
+        "Үлкен компьютер мониторы",
+        "Үлкен пернетақта",
+        "Үлкен файл атауы",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/big-data"
+    },
+    {
+      "id": "q-073",
+      "section": "general",
+      "number": 73,
+      "question": "Data Mining дегеніміз не?",
+      "options": [
+        "Деректерден пайдалы заңдылықтар мен ақпараттарды іздеу",
+        "Компьютерді қазу",
+        "Файлдарды жою",
+        "Интернетті өшіру",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/data-mining"
+    },
+    {
+      "id": "q-074",
+      "section": "general",
+      "number": 74,
+      "question": "AI мен Big Data арасында қандай байланыс бар?",
+      "options": [
+        "Үлкен деректер AI модельдерін оқытуға пайдаланылуы мүмкін",
+        "Екеуінің байланысы жоқ",
+        "Big Data тек ойындарға арналған",
+        "AI деректерді пайдалана алмайды",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-075",
+      "section": "general",
+      "number": 75,
+      "question": "Python AI саласында не үшін танымал?",
+      "options": [
+        "AI және деректерді өңдеуге арналған көптеген кітапханалары бар",
+        "Ол тек мәтін жазуға арналған",
+        "Ол тек ойын ойнауға арналған",
+        "Ол тек интернет браузері",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.python.org/about/apps/"
+    },
+    {
+      "id": "q-076",
+      "section": "general",
+      "number": 76,
+      "question": "TensorFlow дегеніміз не?",
+      "options": [
+        "Машиналық оқытуға арналған бағдарламалық кітапхана/платформа",
+        "Антивирус",
+        "Операциялық жүйе",
+        "Мәтіндік редактор",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.tensorflow.org/learn"
+    },
+    {
+      "id": "q-077",
+      "section": "general",
+      "number": 77,
+      "question": "PyTorch дегеніміз не?",
+      "options": [
+        "Машиналық оқытуға арналған кітапхана",
+        "Браузер",
+        "Ойын",
+        "Операциялық жүйе",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pytorch.org/"
+    },
+    {
+      "id": "q-078",
+      "section": "general",
+      "number": 78,
+      "question": "AI моделін іске қосу үшін не қажет болуы мүмкін?",
+      "options": [
+        "Есептеу ресурстары",
+        "Тек қағаз",
+        "Тек қалам",
+        "Тек принтер",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-079",
+      "section": "general",
+      "number": 79,
+      "question": "GPU AI саласында не үшін пайдалы?",
+      "options": [
+        "Көптеген есептеулерді параллель орындауға мүмкіндік береді",
+        "Тек дыбыс шығару үшін",
+        "Тек мәтін теру үшін",
+        "Тек интернетке қосылу үшін",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://blogs.nvidia.com/blog/whats-the-difference-between-a-cpu-and-a-gpu/"
+    },
+    {
+      "id": "q-080",
+      "section": "general",
+      "number": 80,
+      "question": "CPU дегеніміз не?",
+      "options": [
+        "Орталық процессор",
+        "Графикалық файл",
+        "Интернет браузері",
+        "Деректер базасы",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://blogs.nvidia.com/blog/whats-the-difference-between-a-cpu-and-a-gpu/"
+    },
+    {
+      "id": "q-081",
+      "section": "general",
+      "number": 81,
+      "question": "API дегеніміз не?",
+      "options": [
+        "Бағдарламалардың бір-бірімен байланысуына мүмкіндік беретін интерфейс",
+        "Компьютердің экраны",
+        "Пернетақта түрі",
+        "Файл форматы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/api"
+    },
+    {
+      "id": "q-082",
+      "section": "general",
+      "number": 82,
+      "question": "AI API не үшін қолданылады?",
+      "options": [
+        "Қолданбаға AI мүмкіндіктерін қосу үшін",
+        "Компьютерді физикалық жөндеу үшін",
+        "Мониторды тазалау үшін",
+        "Интернет кабелін ауыстыру үшін",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/google.golang.org/genai"
+    },
+    {
+      "id": "q-083",
+      "section": "general",
+      "number": 83,
+      "question": "AI моделінің inference кезеңі дегеніміз не?",
+      "options": [
+        "Оқытылған модельді жаңа деректерге қолдану",
+        "Модельді физикалық жасау",
+        "Компьютерді өшіру",
+        "Файлды архивтеу",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-084",
+      "section": "general",
+      "number": 84,
+      "question": "AI моделін оқыту кезінде loss function не үшін қажет?",
+      "options": [
+        "Модель қателігінің деңгейін бағалау үшін",
+        "Компьютерді өшіру үшін",
+        "Интернетті қосу үшін",
+        "Файлдарды көшіру үшін",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-085",
+      "section": "general",
+      "number": 85,
+      "question": "Gradient Descent дегеніміз не?",
+      "options": [
+        "Модель параметрлерін оңтайландыру әдісі",
+        "Компьютерді тазалау әдісі",
+        "Файлды жою әдісі",
+        "Интернетке қосылу әдісі",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-086",
+      "section": "general",
+      "number": 86,
+      "question": "Epoch дегеніміз не?",
+      "options": [
+        "Оқыту деректерінің толық жиынын модельдің бір рет өңдеуі",
+        "Компьютердің бір рет өшуі",
+        "Бір файлдың атауы",
+        "Интернеттің бір рет қосылуы",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-087",
+      "section": "general",
+      "number": 87,
+      "question": "Batch дегеніміз не?",
+      "options": [
+        "Оқыту кезінде бір уақытта өңделетін деректер бөлігі",
+        "Компьютердің корпусы",
+        "Интернет браузері",
+        "Файл форматы",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-088",
+      "section": "general",
+      "number": 88,
+      "question": "AI моделінің latency дегеніміз не?",
+      "options": [
+        "Сұраныс пен нәтиже арасындағы уақыт кідірісі",
+        "Компьютердің салмағы",
+        "Файлдың көлемі",
+        "Монитордың өлшемі",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-089",
+      "section": "general",
+      "number": 89,
+      "question": "AI автоматтандыруда қандай мүмкіндік береді?",
+      "options": [
+        "Қайталанатын тапсырмаларды автоматты орындауға мүмкіндік береді",
+        "Барлық компьютерді жояды",
+        "Интернетті өшіреді",
+        "Электр энергиясын толық алмастырады",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-090",
+      "section": "general",
+      "number": 90,
+      "question": "AI-дың адамды толық алмастыруы туралы не айтуға болады?",
+      "options": [
+        "AI көптеген тапсырмаларды автоматтандыра алады, бірақ оның мүмкіндіктері мен шектеулері нақты тапсырмаға байланысты",
+        "AI барлық адамды міндетті түрде алмастырады",
+        "AI ешқандай тапсырманы орындай алмайды",
+        "AI тек ойын ойнай алады",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-091",
+      "section": "general",
+      "number": 91,
+      "question": "AI-ды тиімді пайдалану үшін не маңызды?",
+      "options": [
+        "Дұрыс сұраныс беру және алынған нәтижені тексеру",
+        "Кез келген жауапқа бірден сену",
+        "Деректерді тексермеу",
+        "Барлық шешімді AI-ға беру",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-092",
+      "section": "general",
+      "number": 92,
+      "question": "AI көмегімен мәтінді қысқартуға бола ма?",
+      "options": [
+        "Иә, мәтінді қысқаша мазмұндауға болады",
+        "Жоқ, ешқашан болмайды",
+        "Тек суретті қысқартуға болады",
+        "Тек аудионы қысқартуға болады",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-093",
+      "section": "general",
+      "number": 93,
+      "question": "AI көмегімен код жазуға бола ма?",
+      "options": [
+        "Иә, AI бағдарламалық код жасауға және түсіндіруге көмектесе алады",
+        "Жоқ, AI кодпен жұмыс істей алмайды",
+        "Тек сурет жасай алады",
+        "Тек музыка тыңдай алады",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://openai.com/index/chatgpt/"
+    },
+    {
+      "id": "q-094",
+      "section": "general",
+      "number": 94,
+      "question": "AI көмегімен ақпаратты іздеуде не маңызды?",
+      "options": [
+        "Ақпараттың дұрыстығын сенімді дереккөздер арқылы тексеру",
+        "Бірінші шыққан жауапқа бірден сену",
+        "Дереккөздерді мүлде тексермеу",
+        "Тек әлеуметтік желіден іздеу",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-095",
+      "section": "general",
+      "number": 95,
+      "question": "AI болашағында қандай бағыт маңызды?",
+      "options": [
+        "AI-ды қауіпсіз, жауапты және тиімді дамыту",
+        "AI-ды мүлде қолданбау",
+        "Барлық деректерді жою",
+        "Интернетті тоқтату",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-096",
+      "section": "general",
+      "number": 96,
+      "question": "Responsible AI дегеніміз не?",
+      "options": [
+        "Жасанды интеллектті жауапкершілікпен және қауіпсіз қолдану қағидалары",
+        "Компьютерді жөндеу әдісі",
+        "Интернетті жылдамдату технологиясы",
+        "Файлдарды архивтеу жүйесі",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-097",
+      "section": "general",
+      "number": 97,
+      "question": "Explainable AI дегеніміз не?",
+      "options": [
+        "AI шешімдерінің қалай алынғанын түсіндіруге бағытталған тәсіл",
+        "Компьютерді өшіру жүйесі",
+        "Интернет браузері",
+        "Файлдарды сақтау әдісі",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-098",
+      "section": "general",
+      "number": 98,
+      "question": "Human-in-the-loop дегеніміз не?",
+      "options": [
+        "AI жүйесінің жұмысында адамның бақылауы немесе шешім қабылдауға қатысуы",
+        "Компьютерді қолмен жинау",
+        "Интернет кабелін қосу",
+        "Файлды қолмен көшіру",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-099",
+      "section": "general",
+      "number": 99,
+      "question": "AI сауаттылығы дегеніміз не?",
+      "options": [
+        "AI мүмкіндіктерін, шектеулерін және жауапты қолдану принциптерін түсіну",
+        "Компьютерді жөндей білу ғана",
+        "Тек код жаза білу",
+        "Тек интернет қолдану",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-100",
+      "section": "general",
+      "number": 100,
+      "question": "Жасанды интеллектті қолданудың ең маңызды қағидаларының бірі қандай?",
+      "options": [
+        "AI нәтижесін сыни бағалап, жауапкершілікпен пайдалану",
+        "AI берген кез келген ақпаратқа тексерусіз сену",
+        "Барлық шешімді AI-ға беру",
+        "Дереккөздерді тексермеу",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    },
+    {
+      "id": "q-101",
+      "section": "general",
+      "number": 101,
+      "question": "Go тілінде AI дегеніміз не?",
+      "options": [
+        "Жасанды интеллект технологияларын Go бағдарламалау тілінде жүзеге асыру",
+        "Тек веб-сайт жасау технологиясы",
+        "Компьютерді жөндеу әдісі",
+        "Операциялық жүйе",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/google.golang.org/genai"
+    },
+    {
+      "id": "q-102",
+      "section": "general",
+      "number": 102,
+      "question": "Go тілін кім жасаған?",
+      "options": [
+        "Google компаниясының инженерлері",
+        "Microsoft компаниясы",
+        "Apple компаниясы",
+        "IBM компаниясы",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/faq"
+    },
+    {
+      "id": "q-103",
+      "section": "general",
+      "number": 103,
+      "question": "Go тілінің негізгі файл кеңейтімі қандай?",
+      "options": [
+        ".go",
+        ".java",
+        ".py",
+        ".cpp",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/tutorial/compile-install"
+    },
+    {
+      "id": "q-104",
+      "section": "general",
+      "number": 104,
+      "question": "Go тілінде бағдарламаның орындалуын қай функция бастайды?",
+      "options": [
+        "main()",
+        "start()",
+        "run()",
+        "begin()",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Program_execution",
+      "explanation": "main() — точка входа основного кода; перед ней выполняется инициализация пакетов."
+    },
+    {
+      "id": "q-105",
+      "section": "general",
+      "number": 105,
+      "question": "Go тілінде негізгі пакет қалай аталады?",
+      "options": [
+        "main",
+        "start",
+        "program",
+        "app",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Program_execution"
+    },
+    {
+      "id": "q-106",
+      "section": "general",
+      "number": 106,
+      "question": "Go тілінде экранға ақпарат шығару үшін не қолданылады?",
+      "options": [
+        "fmt.Println()",
+        "printText()",
+        "console.write()",
+        "System.out()",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/fmt"
+    },
+    {
+      "id": "q-107",
+      "section": "general",
+      "number": 107,
+      "question": "AI дегеніміз не?",
+      "options": [
+        "Жасанды интеллект",
+        "Автоматты интернет",
+        "Ақпараттық интерфейс",
+        "Аналогтық интеллект",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-108",
+      "section": "general",
+      "number": 108,
+      "question": "Go тілінде AI жасау үшін не қажет?",
+      "options": [
+        "Алгоритмдер, деректер және бағдарламалық құралдар",
+        "Тек монитор",
+        "Тек пернетақта",
+        "Тек интернет кабелі",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://pkg.go.dev/google.golang.org/genai"
+    },
+    {
+      "id": "q-109",
+      "section": "general",
+      "number": 109,
+      "question": "Machine Learning дегеніміз не?",
+      "options": [
+        "Машиналық оқыту",
+        "Компьютерді жөндеу",
+        "Файлдарды көшіру",
+        "Интернетті басқару",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-110",
+      "section": "general",
+      "number": 110,
+      "question": "AI моделін оқыту үшін не қажет?",
+      "options": [
+        "Деректер",
+        "Тек принтер",
+        "Тек монитор",
+        "Тек пернетақта",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-111",
+      "section": "general",
+      "number": 111,
+      "question": "Go тілінде айнымалы жариялау үшін қандай сөз қолданылады?",
+      "options": [
+        "var",
+        "variable",
+        "define",
+        "let",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Variable_declarations"
+    },
+    {
+      "id": "q-112",
+      "section": "general",
+      "number": 112,
+      "question": "Go тілінде қысқаша айнымалы жариялау қалай орындалады?",
+      "options": [
+        "x := 10",
+        "x =: 10",
+        "let x = 10",
+        "int x := 10",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Short_variable_declarations"
+    },
+    {
+      "id": "q-113",
+      "section": "general",
+      "number": 113,
+      "question": "Go тіліндегі бүтін сан типі қандай?",
+      "options": [
+        "int",
+        "integer",
+        "number",
+        "digit",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Numeric_types"
+    },
+    {
+      "id": "q-114",
+      "section": "general",
+      "number": 114,
+      "question": "Go тілінде бөлшек сан үшін қандай тип қолданылады?",
+      "options": [
+        "float64",
+        "decimal",
+        "doubleNumber",
+        "real",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Numeric_types"
+    },
+    {
+      "id": "q-115",
+      "section": "general",
+      "number": 115,
+      "question": "Go тіліндегі логикалық тип қандай?",
+      "options": [
+        "bool",
+        "booleanType",
+        "logic",
+        "bit",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Boolean_types"
+    },
+    {
+      "id": "q-116",
+      "section": "general",
+      "number": 116,
+      "question": "Go тіліндегі мәтіндік тип қандай?",
+      "options": [
+        "string",
+        "text",
+        "str",
+        "charText",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#String_types"
+    },
+    {
+      "id": "q-117",
+      "section": "general",
+      "number": 117,
+      "question": "AI жүйесінде string не үшін қолданылуы мүмкін?",
+      "options": [
+        "Мәтіндік деректерді сақтау үшін",
+        "Тек сурет сақтау үшін",
+        "Тек дыбыс шығару үшін",
+        "Тек компьютерді қосу үшін",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#String_types"
+    },
+    {
+      "id": "q-118",
+      "section": "general",
+      "number": 118,
+      "question": "Go тілінде функция қалай жарияланады?",
+      "options": [
+        "func",
+        "function",
+        "def",
+        "method",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Function_declarations"
+    },
+    {
+      "id": "q-119",
+      "section": "general",
+      "number": 119,
+      "question": "Go функциясының мысалы қайсы?",
+      "options": [
+        "func sum(a int, b int) int",
+        "function sum(a,b)",
+        "def sum(a,b)",
+        "create sum(a,b)",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Function_declarations",
+      "explanation": "Показано объявление функции с параметрами и типом результата. Реализация обычно содержит тело в фигурных скобках."
+    },
+    {
+      "id": "q-120",
+      "section": "general",
+      "number": 120,
+      "question": "AI алгоритмінде функция не үшін қажет?",
+      "options": [
+        "Белгілі бір әрекетті орындау үшін",
+        "Компьютерді өшіру үшін ғана",
+        "Мониторды басқару үшін ғана",
+        "Интернетті қосу үшін ғана",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Function_declarations"
+    },
+    {
+      "id": "q-121",
+      "section": "general",
+      "number": 121,
+      "question": "Go тіліндегі массив дегеніміз не?",
+      "options": [
+        "Бір типті элементтердің бекітілген өлшемді жиыны",
+        "Тек мәтін сақтайтын файл",
+        "Интернет протоколы",
+        "Компьютер құрылғысы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Array_types"
+    },
+    {
+      "id": "q-122",
+      "section": "general",
+      "number": 122,
+      "question": "Go тілінде slice дегеніміз не?",
+      "options": [
+        "Өлшемі өзгеруі мүмкін элементтер жиыны",
+        "Тек тұрақты массив",
+        "Файл форматы",
+        "AI моделі",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Slice_types"
+    },
+    {
+      "id": "q-123",
+      "section": "general",
+      "number": 123,
+      "question": "AI үшін slice неге пайдалы?",
+      "options": [
+        "Деректер жиынтығын сақтауға",
+        "Компьютерді өшіруге",
+        "Мониторды басқаруға",
+        "Интернетті ажыратуға",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Slice_types"
+    },
+    {
+      "id": "q-124",
+      "section": "general",
+      "number": 124,
+      "question": "Go тілінде циклдің негізгі түрлерінің бірі қандай?",
+      "options": [
+        "for",
+        "looping",
+        "repeatLoop",
+        "cycle",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#For_statements"
+    },
+    {
+      "id": "q-125",
+      "section": "general",
+      "number": 125,
+      "question": "AI алгоритмдерінде цикл не үшін қолданылады?",
+      "options": [
+        "Деректерді қайталап өңдеу үшін",
+        "Компьютерді физикалық жөндеу үшін",
+        "Интернет кабелін қосу үшін",
+        "Мониторды өшіру үшін",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#For_statements"
+    },
+    {
+      "id": "q-126",
+      "section": "general",
+      "number": 126,
+      "question": "Go тіліндегі шартты оператор қандай?",
+      "options": [
+        "if",
+        "check",
+        "condition",
+        "when",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#If_statements"
+    },
+    {
+      "id": "q-127",
+      "section": "general",
+      "number": 127,
+      "question": "AI алгоритмінде if операторы не үшін қажет?",
+      "options": [
+        "Шартқа байланысты шешім қабылдау үшін",
+        "Файлды міндетті түрде жою үшін",
+        "Компьютерді қайта іске қосу үшін",
+        "Интернетті өшіру үшін",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#If_statements"
+    },
+    {
+      "id": "q-128",
+      "section": "general",
+      "number": 128,
+      "question": "Go тілінде бірнеше шартты тексеру үшін не қолданылады?",
+      "options": [
+        "if, else if, else",
+        "check, otherwise",
+        "when, then",
+        "case, default ғана",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#If_statements"
+    },
+    {
+      "id": "q-129",
+      "section": "general",
+      "number": 129,
+      "question": "Go тіліндегі switch не үшін қолданылады?",
+      "options": [
+        "Бірнеше жағдайдың бірін таңдау үшін",
+        "Компьютерді өшіру үшін",
+        "Файлды қысу үшін",
+        "Интернетке қосылу үшін",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Switch_statements"
+    },
+    {
+      "id": "q-130",
+      "section": "general",
+      "number": 130,
+      "question": "AI жүйесінде classification дегеніміз не?",
+      "options": [
+        "Деректерді белгілі санаттарға бөлу",
+        "Файлдарды жою",
+        "Кодты компиляциялау",
+        "Компьютерді іске қосу",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-131",
+      "section": "general",
+      "number": 131,
+      "question": "Regression дегеніміз не?",
+      "options": [
+        "Сандық мәнді болжау әдісі",
+        "Мәтінді жою әдісі",
+        "Файлды көшіру әдісі",
+        "Компьютерді өшіру әдісі",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-132",
+      "section": "general",
+      "number": 132,
+      "question": "Supervised Learning дегеніміз не?",
+      "options": [
+        "Белгіленген деректермен оқыту",
+        "Деректерсіз оқыту",
+        "Тек қолмен бағдарламалау",
+        "Файлдарды автоматты жою",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-133",
+      "section": "general",
+      "number": 133,
+      "question": "Unsupervised Learning дегеніміз не?",
+      "options": [
+        "Белгіленбеген деректерден заңдылықтарды табу",
+        "Тек дайын жауаптарды көшіру",
+        "Компьютерді өшіру",
+        "Тек мәтін теру",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-134",
+      "section": "general",
+      "number": 134,
+      "question": "Reinforcement Learning дегеніміз не?",
+      "options": [
+        "Марапат арқылы оқыту әдісі",
+        "Файлды қысу әдісі",
+        "Интернетті басқару әдісі",
+        "Кодты өшіру әдісі",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-135",
+      "section": "general",
+      "number": 135,
+      "question": "AI моделіндегі training дегеніміз не?",
+      "options": [
+        "Модельді деректер арқылы оқыту",
+        "Модельді өшіру",
+        "Файлды сақтау",
+        "Компьютерді қайта қосу",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-136",
+      "section": "general",
+      "number": 136,
+      "question": "Test Data не үшін қолданылады?",
+      "options": [
+        "Оқытылған модельді тексеру үшін",
+        "Кодты жою үшін",
+        "Компьютерді өшіру үшін",
+        "Интернетті қосу үшін",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-137",
+      "section": "general",
+      "number": 137,
+      "question": "Dataset дегеніміз не?",
+      "options": [
+        "Деректер жиынтығы",
+        "Бағдарламалау тілі",
+        "Операциялық жүйе",
+        "Компьютер құрылғысы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-138",
+      "section": "general",
+      "number": 138,
+      "question": "Go тілінде деректерді сақтау үшін қандай құрылым қолдануға болады?",
+      "options": [
+        "Array немесе Slice",
+        "Monitor",
+        "Keyboard",
+        "Printer",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Array_types"
+    },
+    {
+      "id": "q-139",
+      "section": "general",
+      "number": 139,
+      "question": "Go тілінде map не үшін қолданылады?",
+      "options": [
+        "Кілт және мән жұптарын сақтау үшін",
+        "Сурет салу үшін",
+        "Дыбыс шығару үшін",
+        "Компьютерді өшіру үшін",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Map_types"
+    },
+    {
+      "id": "q-140",
+      "section": "general",
+      "number": 140,
+      "question": "AI жүйесінде map не үшін пайдалы?",
+      "options": [
+        "Деректерді кілт арқылы жылдам іздеу үшін",
+        "Мониторды басқару үшін",
+        "Интернетті өшіру үшін",
+        "Компьютерді тазалау үшін",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Map_types"
+    },
+    {
+      "id": "q-141",
+      "section": "general",
+      "number": 141,
+      "question": "Go тіліндегі struct дегеніміз не?",
+      "options": [
+        "Бірнеше өрісті бір құрылымға біріктіретін тип",
+        "Цикл түрі",
+        "Шарт операторы",
+        "Файл форматы",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Struct_types"
+    },
+    {
+      "id": "q-142",
+      "section": "general",
+      "number": 142,
+      "question": "AI моделінің параметрлерін сақтауға не қолдануға болады?",
+      "options": [
+        "struct",
+        "if",
+        "for",
+        "switch",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Struct_types"
+    },
+    {
+      "id": "q-143",
+      "section": "general",
+      "number": 143,
+      "question": "Go тіліндегі pointer дегеніміз не?",
+      "options": [
+        "Жадтағы мәннің адресін сақтайтын айнымалы",
+        "Мәтіндік файл",
+        "AI алгоритмі",
+        "Интернет протоколы",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Pointer_types"
+    },
+    {
+      "id": "q-144",
+      "section": "general",
+      "number": 144,
+      "question": "Go тілінде адрес алу операторы қандай?",
+      "options": [
+        "&",
+        "@",
+        "#",
+        "$",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Address_operators"
+    },
+    {
+      "id": "q-145",
+      "section": "general",
+      "number": 145,
+      "question": "Go тілінде pointer арқылы мәнге қатынау операторы қандай?",
+      "options": [
+        "*",
+        "&",
+        "#",
+        "%",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Address_operators"
+    },
+    {
+      "id": "q-146",
+      "section": "general",
+      "number": 146,
+      "question": "AI моделінің нәтижесін не деп атайды?",
+      "options": [
+        "Prediction",
+        "Keyboard",
+        "Compiler",
+        "Package",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-147",
+      "section": "general",
+      "number": 147,
+      "question": "Prediction дегеніміз не?",
+      "options": [
+        "Модельдің болжамы",
+        "Деректер базасы",
+        "Бағдарламалау тілі",
+        "Компьютер құрылғысы",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-148",
+      "section": "general",
+      "number": 148,
+      "question": "AI моделінің accuracy көрсеткіші нені білдіреді?",
+      "options": [
+        "Дұрыс болжамдардың үлесін",
+        "Компьютердің жылдамдығын",
+        "Файл көлемін",
+        "Интернет жылдамдығын",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-149",
+      "section": "general",
+      "number": 149,
+      "question": "AI моделінің error дегеніміз не?",
+      "options": [
+        "Болжамның қателігі",
+        "Компьютердің салмағы",
+        "Монитор көлемі",
+        "Файл атауы",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-150",
+      "section": "general",
+      "number": 150,
+      "question": "Overfitting дегеніміз не?",
+      "options": [
+        "Модельдің оқыту деректеріне шамадан тыс бейімделуі",
+        "Компьютердің өшуі",
+        "Файлдың жойылуы",
+        "Интернеттің ажырауы",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-151",
+      "section": "general",
+      "number": 151,
+      "question": "Go тілінде пакет қосу үшін не қолданылады?",
+      "options": [
+        "import",
+        "include",
+        "packageAdd",
+        "use",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Import_declarations"
+    },
+    {
+      "id": "q-152",
+      "section": "general",
+      "number": 152,
+      "question": "fmt пакеті не үшін қолданылады?",
+      "options": [
+        "Форматталған енгізу және шығару үшін",
+        "AI моделін міндетті түрде оқыту үшін",
+        "Интернетті басқару үшін",
+        "Графика жасау үшін ғана",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/fmt"
+    },
+    {
+      "id": "q-153",
+      "section": "general",
+      "number": 153,
+      "question": "Go тіліндегі len() функциясы не қайтарады?",
+      "options": [
+        "Элементтер немесе таңбалар санын",
+        "Ең үлкен мәнді",
+        "Ең кіші мәнді",
+        "Орташа мәнді",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://go.dev/ref/spec#Length_and_capacity",
+      "explanation": "Из предложенных вариантов ожидается первый. Для строки len() возвращает число байтов; число символов Unicode может отличаться."
+    },
+    {
+      "id": "q-154",
+      "section": "general",
+      "number": 154,
+      "question": "AI деректерінің көлемін анықтау үшін не қолдануға болады?",
+      "options": [
+        "len()",
+        "sum()",
+        "max()",
+        "print()",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Length_and_capacity"
+    },
+    {
+      "id": "q-155",
+      "section": "general",
+      "number": 155,
+      "question": "Go тілінде қате өңдеу үшін не қолданылады?",
+      "options": [
+        "error",
+        "exceptionOnly",
+        "catch",
+        "errorHandlerOnly",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/effective_go#errors"
+    },
+    {
+      "id": "q-156",
+      "section": "general",
+      "number": 156,
+      "question": "Go тілінде қате мәнін тексерудің кең тараған тәсілі қандай?",
+      "options": [
+        "if err != nil",
+        "catch error",
+        "try error",
+        "checkError() міндетті түрде",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/effective_go#errors"
+    },
+    {
+      "id": "q-157",
+      "section": "general",
+      "number": 157,
+      "question": "AI бағдарламасында қателерді өңдеу не үшін қажет?",
+      "options": [
+        "Бағдарламаның сенімді жұмыс істеуі үшін",
+        "Мониторды үлкейту үшін",
+        "Компьютерді бояу үшін",
+        "Интернетті жылдамдату үшін",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/effective_go#errors"
+    },
+    {
+      "id": "q-158",
+      "section": "general",
+      "number": 158,
+      "question": "Go тіліндегі goroutine дегеніміз не?",
+      "options": [
+        "Функцияны параллель орындаудың жеңіл тәсілі",
+        "Деректер базасы",
+        "AI моделі",
+        "Файл форматы",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://go.dev/doc/effective_go#goroutines",
+      "explanation": "Из предложенных вариантов ожидается первый. Goroutine выполняется конкурентно; одновременное выполнение на разных ядрах не гарантируется."
+    },
+    {
+      "id": "q-159",
+      "section": "general",
+      "number": 159,
+      "question": "Goroutine қалай іске қосылады?",
+      "options": [
+        "go function()",
+        "run function()",
+        "thread function()",
+        "start function()",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/effective_go#goroutines"
+    },
+    {
+      "id": "q-160",
+      "section": "general",
+      "number": 160,
+      "question": "AI жүйесінде goroutine не үшін пайдалы болуы мүмкін?",
+      "options": [
+        "Бірнеше тапсырманы қатар орындау үшін",
+        "Тек файлды жою үшін",
+        "Компьютерді өшіру үшін",
+        "Мониторды басқару үшін",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/effective_go#goroutines"
+    },
+    {
+      "id": "q-161",
+      "section": "general",
+      "number": 161,
+      "question": "Go тіліндегі channel не үшін қолданылады?",
+      "options": [
+        "Goroutine арасында деректер алмасу үшін",
+        "Интернет кабелі ретінде",
+        "Файл форматы ретінде",
+        "AI моделі ретінде",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/ref/spec#Channel_types"
+    },
+    {
+      "id": "q-162",
+      "section": "general",
+      "number": 162,
+      "question": "Go тіліндегі concurrency дегеніміз не?",
+      "options": [
+        "Бірнеше есептің орындалуын ұйымдастыру мүмкіндігі",
+        "Тек файлдарды сақтау",
+        "Компьютерді өшіру",
+        "Мәтінді форматтау",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/effective_go#goroutines"
+    },
+    {
+      "id": "q-163",
+      "section": "general",
+      "number": 163,
+      "question": "AI API дегеніміз не?",
+      "options": [
+        "Бағдарламаға AI қызметтерін қосуға мүмкіндік беретін интерфейс",
+        "Компьютердің процессоры",
+        "Файл кеңейтімі",
+        "Интернет кабелі",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/google.golang.org/genai"
+    },
+    {
+      "id": "q-164",
+      "section": "general",
+      "number": 164,
+      "question": "Go арқылы API-мен жұмыс істеуге бола ма?",
+      "options": [
+        "Иә, HTTP сұраныстары арқылы жұмыс істеуге болады",
+        "Жоқ, Go API қолдамайды",
+        "Тек Python арқылы болады",
+        "Тек Java арқылы болады",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/net/http"
+    },
+    {
+      "id": "q-165",
+      "section": "general",
+      "number": 165,
+      "question": "HTTP GET сұранысы не үшін қолданылады?",
+      "options": [
+        "Деректерді алу үшін",
+        "Деректерді міндетті түрде жою үшін",
+        "Компьютерді өшіру үшін",
+        "Кодты компиляциялау үшін",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/GET"
+    },
+    {
+      "id": "q-166",
+      "section": "general",
+      "number": 166,
+      "question": "HTTP POST сұранысы не үшін жиі қолданылады?",
+      "options": [
+        "Деректерді серверге жіберу үшін",
+        "Компьютерді өшіру үшін",
+        "Файлды автоматты жою үшін",
+        "Интернетті ажырату үшін",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST"
+    },
+    {
+      "id": "q-167",
+      "section": "general",
+      "number": 167,
+      "question": "JSON дегеніміз не?",
+      "options": [
+        "Деректерді құрылымдық түрде сақтауға және тасымалдауға арналған формат",
+        "Бағдарламалау тілі",
+        "Операциялық жүйе",
+        "Компьютер құрылғысы",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc8259"
+    },
+    {
+      "id": "q-168",
+      "section": "general",
+      "number": 168,
+      "question": "Go тілінде JSON-пен жұмыс істеуге қандай пакет қолданылады?",
+      "options": [
+        "encoding/json",
+        "json/go",
+        "data/jsononly",
+        "format/json",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/encoding/json"
+    },
+    {
+      "id": "q-169",
+      "section": "general",
+      "number": 169,
+      "question": "JSON AI API-лерінде не үшін жиі қолданылады?",
+      "options": [
+        "Сұраныс пен жауап деректерін тасымалдау үшін",
+        "Компьютерді өшіру үшін",
+        "Мониторды басқару үшін",
+        "Кодты компиляциялау үшін",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/google.golang.org/genai"
+    },
+    {
+      "id": "q-170",
+      "section": "general",
+      "number": 170,
+      "question": "AI chatbot дегеніміз не?",
+      "options": [
+        "Пайдаланушымен сөйлесетін AI жүйесі",
+        "Антивирус",
+        "Компилятор",
+        "Файл менеджері",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-171",
+      "section": "general",
+      "number": 171,
+      "question": "Go арқылы chatbot жасауға бола ма?",
+      "options": [
+        "Иә, API және қажетті кітапханалар арқылы жасауға болады",
+        "Жоқ, Go мұндай бағдарламаларды қолдамайды",
+        "Тек C++ арқылы жасауға болады",
+        "Тек HTML арқылы жасауға болады",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://pkg.go.dev/google.golang.org/genai"
+    },
+    {
+      "id": "q-172",
+      "section": "general",
+      "number": 172,
+      "question": "Natural Language Processing дегеніміз не?",
+      "options": [
+        "Табиғи тілдерді компьютер арқылы өңдеу",
+        "Компьютерді жөндеу",
+        "Сурет салу",
+        "Файлдарды архивтеу",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-173",
+      "section": "general",
+      "number": 173,
+      "question": "NLP Go бағдарламасында не үшін қолданылуы мүмкін?",
+      "options": [
+        "Мәтінді талдау және өңдеу үшін",
+        "Мониторды басқару үшін",
+        "Принтерді жөндеу үшін",
+        "Компьютерді өшіру үшін",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-174",
+      "section": "general",
+      "number": 174,
+      "question": "Computer Vision дегеніміз не?",
+      "options": [
+        "Сурет пен бейнені компьютер арқылы талдау",
+        "Мәтінді форматтау",
+        "Дыбысты күшейту",
+        "Интернетті басқару",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/computer-vision"
+    },
+    {
+      "id": "q-175",
+      "section": "general",
+      "number": 175,
+      "question": "AI-дағы нейрондық желі дегеніміз не?",
+      "options": [
+        "Нейрондарға ұқсас байланысқан есептеу элементтерінен тұратын модель",
+        "Интернет желісі",
+        "Компьютерлік кабель",
+        "Файл жүйесі",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-176",
+      "section": "general",
+      "number": 176,
+      "question": "Neural Network оқыту үшін не қажет?",
+      "options": [
+        "Деректер және оқыту алгоритмі",
+        "Тек монитор",
+        "Тек пернетақта",
+        "Тек принтер",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-177",
+      "section": "general",
+      "number": 177,
+      "question": "Deep Learning дегеніміз не?",
+      "options": [
+        "Көп қабатты нейрондық желілерге негізделген машиналық оқыту бағыты",
+        "Файлдарды терең архивтеу",
+        "Интернетті басқару",
+        "Компьютерді тазалау",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-178",
+      "section": "general",
+      "number": 178,
+      "question": "AI моделіндегі feature дегеніміз не?",
+      "options": [
+        "Модельге берілетін сипаттама немесе белгі",
+        "Компьютердің экраны",
+        "Файлдың атауы",
+        "Интернет мекенжайы",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-179",
+      "section": "general",
+      "number": 179,
+      "question": "Label дегеніміз не?",
+      "options": [
+        "Оқыту деректеріндегі дұрыс нәтиже немесе санат",
+        "Компьютердің маркасы",
+        "Файлдың көлемі",
+        "Монитордың түрі",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-180",
+      "section": "general",
+      "number": 180,
+      "question": "Feature және Label қай жерде маңызды?",
+      "options": [
+        "Supervised Learning кезінде",
+        "Компьютерді өшіру кезінде",
+        "Файлды көшіру кезінде",
+        "Интернетті ажырату кезінде",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-181",
+      "section": "general",
+      "number": 181,
+      "question": "Go тілінде модульдерді басқару үшін не қолданылады?",
+      "options": [
+        "Go Modules",
+        "Go Files",
+        "Go Manager Only",
+        "Package Manager Only",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/modules/gomod-ref"
+    },
+    {
+      "id": "q-182",
+      "section": "general",
+      "number": 182,
+      "question": "Go модулінің негізгі файлы қалай аталады?",
+      "options": [
+        "go.mod",
+        "module.go",
+        "package.mod",
+        "main.mod",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/modules/gomod-ref"
+    },
+    {
+      "id": "q-183",
+      "section": "general",
+      "number": 183,
+      "question": "Go бағдарламасын компиляциялау үшін қандай команда қолданылады?",
+      "options": [
+        "go build",
+        "go compileOnly",
+        "build-go-now",
+        "compile go program",
+        "Тек компьютердің дыбыс параметрлерін баптау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/tutorial/compile-install"
+    },
+    {
+      "id": "q-184",
+      "section": "general",
+      "number": 184,
+      "question": "Go бағдарламасын іске қосу үшін қандай команда қолдануға болады?",
+      "options": [
+        "go run",
+        "go start",
+        "run-go",
+        "execute-go",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/tutorial/compile-install"
+    },
+    {
+      "id": "q-185",
+      "section": "general",
+      "number": 185,
+      "question": "AI бағдарламасын Go тілінде тестілеу не үшін қажет?",
+      "options": [
+        "Бағдарламаның дұрыс жұмысын тексеру үшін",
+        "Компьютерді бояу үшін",
+        "Интернетті өшіру үшін",
+        "Файл көлемін үлкейту үшін",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/tutorial/add-a-test"
+    },
+    {
+      "id": "q-186",
+      "section": "general",
+      "number": 186,
+      "question": "Unit Test дегеніміз не?",
+      "options": [
+        "Бағдарламаның жеке бөлігін тексеру",
+        "Компьютерді жөндеу",
+        "Интернетті тексеру",
+        "Мониторды тексеру ғана",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/tutorial/add-a-test"
+    },
+    {
+      "id": "q-187",
+      "section": "general",
+      "number": 187,
+      "question": "Go тілінде тест файлдарының кеңейтімі қандай?",
+      "options": [
+        "_test.go",
+        "_testing.go",
+        ".testonly",
+        ".check",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/tutorial/add-a-test",
+      "explanation": "_test.go — окончание имени тестового файла; расширение файла остаётся .go."
+    },
+    {
+      "id": "q-188",
+      "section": "general",
+      "number": 188,
+      "question": "Go тілінде тест жүргізу үшін қандай команда қолданылады?",
+      "options": [
+        "go test",
+        "go check",
+        "go verify",
+        "go testing",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://go.dev/doc/tutorial/add-a-test"
+    },
+    {
+      "id": "q-189",
+      "section": "general",
+      "number": 189,
+      "question": "Жасанды интеллект (ЖИ) дегеніміз не?",
+      "options": [
+        "Адамның интеллектуалдық қабілеттерін компьютерлік жүйелер арқылы модельдеу технологиясы",
+        "Компьютердің аппараттық құрылғыларын жөндеу әдісі",
+        "Интернет жылдамдығын арттыру жүйесі",
+        "Ақпаратты тек сақтау технологиясы",
+        "Компьютерлік вирустарды жасау бағдарламасы"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-190",
+      "section": "general",
+      "number": 190,
+      "question": "Жасанды интеллекттің негізгі мақсаты қандай?",
+      "options": [
+        "Адамның ойлау, үйрену және шешім қабылдау қабілеттерін модельдеу",
+        "Компьютердің электр қуатын арттыру",
+        "Тек мәтіндік құжаттарды өңдеу",
+        "Интернет желісін физикалық кеңейту",
+        "Компьютердің сыртқы құрылғыларын ауыстыру"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-191",
+      "section": "general",
+      "number": 191,
+      "question": "Машиналық оқыту (Machine Learning) дегеніміз не?",
+      "options": [
+        "Компьютерлік жүйелердің деректер негізінде заңдылықтарды үйрену әдісі",
+        "Компьютерді қолмен басқару технологиясы",
+        "Компьютердің операциялық жүйесін орнату",
+        "Ақпаратты қағазға басып шығару",
+        "Желілік кабельдерді қосу әдісі"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-192",
+      "section": "general",
+      "number": 192,
+      "question": "Терең оқыту (Deep Learning) қандай технологияға негізделген?",
+      "options": [
+        "Көпқабатты жасанды нейрондық желілерге",
+        "Тек реляциялық деректер қорына",
+        "Механикалық басқару құрылғыларына",
+        "Қарапайым мәтіндік редакторларға",
+        "Компьютерлік желі кабельдеріне"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-193",
+      "section": "general",
+      "number": 193,
+      "question": "Жасанды нейрондық желінің негізгі элементі қандай?",
+      "options": [
+        "Жасанды нейрон",
+        "Қатты диск",
+        "Монитор",
+        "Принтер",
+        "Маршрутизатор"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-194",
+      "section": "general",
+      "number": 194,
+      "question": "Табиғи тілді өңдеу (NLP) технологиясының міндеті қандай?",
+      "options": [
+        "Адам тіліндегі мәтін мен сөйлеуді компьютер арқылы өңдеу және түсіну",
+        "Компьютердің температурасын бақылау",
+        "Электр энергиясын өндіру",
+        "Компьютердің жедел жадын ауыстыру",
+        "Желілік құрылғыларды физикалық орнату"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-195",
+      "section": "general",
+      "number": 195,
+      "question": "Компьютерлік көру (Computer Vision) дегеніміз не?",
+      "options": [
+        "Кескіндер мен бейнелердегі ақпаратты автоматты түрде талдау технологиясы",
+        "Компьютердің дыбыс деңгейін реттеу",
+        "Мәтіндік файлдарды архивтеу",
+        "Желілік протоколдарды орнату",
+        "Компьютердің қуат көзін басқару"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/computer-vision"
+    },
+    {
+      "id": "q-196",
+      "section": "general",
+      "number": 196,
+      "question": "Бақыланатын оқыту (Supervised Learning) қандай деректерді пайдаланады?",
+      "options": [
+        "Дұрыс жауаптары немесе белгілері көрсетілген деректерді",
+        "Тек белгіленбеген деректерді",
+        "Тек кездейсоқ сандарды",
+        "Тек операциялық жүйе файлдарын",
+        "Тек компьютердің техникалық сипаттамаларын"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-197",
+      "section": "general",
+      "number": 197,
+      "question": "Бақыланбайтын оқыту (Unsupervised Learning) әдісінің ерекшелігі қандай?",
+      "options": [
+        "Белгіленбеген деректерден жасырын заңдылықтар мен құрылымдарды анықтау",
+        "Барлық жауаптарды алдын ала қолмен енгізу",
+        "Тек дайын белгілер бойынша болжау",
+        "Компьютерді интернетке қосу",
+        "Деректерді міндетті түрде жою"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-198",
+      "section": "general",
+      "number": 198,
+      "question": "Күшейтілген оқыту (Reinforcement Learning) қандай принципке негізделген?",
+      "options": [
+        "Агенттің әрекеттері үшін сыйақы немесе айыппұл алу арқылы үйренуіне",
+        "Тек дайын мәтіндерді көшіруге",
+        "Компьютердің жады көлемін ұлғайтуға",
+        "Деректерді тек қолмен сұрыптауға",
+        "Бағдарламаларды интернеттен жүктеуге"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-199",
+      "section": "general",
+      "number": 199,
+      "question": "Жасанды интеллект жүйелерінде деректер жиынтығы (Dataset) не үшін қолданылады?",
+      "options": [
+        "Модельдерді оқыту, тексеру және бағалау үшін",
+        "Монитордың жарықтығын арттыру үшін",
+        "Компьютердің корпусын салқындату үшін",
+        "Пернетақтаны тазалау үшін",
+        "Электр желісін басқару үшін"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-200",
+      "section": "general",
+      "number": 200,
+      "question": "ЖИ моделін оқыту (Training) процесі дегеніміз не?",
+      "options": [
+        "Модель параметрлерін деректер негізінде оңтайландыру процесі",
+        "Компьютерді толық өшіру процесі",
+        "Файлдарды басқа бумаға көшіру",
+        "Операциялық жүйені қайта орнату",
+        "Монитордың ажыратымдылығын өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-201",
+      "section": "general",
+      "number": 201,
+      "question": "Классификация (Classification) алгоритмінің міндеті қандай?",
+      "options": [
+        "Объектілерді алдын ала анықталған санаттарға бөлу",
+        "Тек компьютердің температурасын өлшеу",
+        "Файлдардың көлемін азайту",
+        "Интернет желісін физикалық құрастыру",
+        "Экранның түсін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-202",
+      "section": "general",
+      "number": 202,
+      "question": "Регрессия (Regression) алгоритмі қандай есептерді шешуге қолданылады?",
+      "options": [
+        "Сандық мәндерді болжауға",
+        "Тек мәтіндерді аударуға",
+        "Компьютерді қайта іске қосуға",
+        "Файлдарды архивтеуге",
+        "Желілік кабельдерді тексеруге"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-203",
+      "section": "general",
+      "number": 203,
+      "question": "Overfitting (шамадан тыс бейімделу) дегеніміз не?",
+      "options": [
+        "Модельдің оқыту деректеріне тым бейімделіп, жаңа деректерде нашар нәтиже көрсетуі",
+        "Модельдің барлық деректерді автоматты түрде жоюы",
+        "Компьютердің қатты қызып кетуі",
+        "Интернет жылдамдығының жоғарылауы",
+        "Бағдарламаның автоматты жаңартылуы"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-204",
+      "section": "general",
+      "number": 204,
+      "question": "Жасанды интеллектте Python бағдарламалау тілі не үшін кеңінен қолданылады?",
+      "options": [
+        "Машиналық оқыту және деректерді талдау алгоритмдерін әзірлеу үшін",
+        "Тек компьютердің аппараттық бөліктерін ауыстыру үшін",
+        "Электр желісін физикалық басқару үшін",
+        "Тек монитордың жарықтығын реттеу үшін",
+        "Компьютердің корпусын құрастыру үшін"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.python.org/about/apps/"
+    },
+    {
+      "id": "q-205",
+      "section": "general",
+      "number": 205,
+      "question": "TensorFlow кітапханасының негізгі қызметі қандай?",
+      "options": [
+        "Машиналық оқыту және нейрондық желі модельдерін құру мен оқыту",
+        "Мәтіндік құжаттарды тек басып шығару",
+        "Компьютерлік вирустарды анықтау ғана",
+        "Желілік кабельдерді жобалау",
+        "Компьютердің BIOS жүйесін жаңарту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.tensorflow.org/learn"
+    },
+    {
+      "id": "q-206",
+      "section": "general",
+      "number": 206,
+      "question": "Генеративті жасанды интеллект (Generative AI) дегеніміз не?",
+      "options": [
+        "Үйренген заңдылықтар негізінде мәтін, сурет және басқа да жаңа мазмұн жасайтын технология",
+        "Тек дайын файлдарды жоятын бағдарлама",
+        "Компьютердің процессорын ауыстыру әдісі",
+        "Тек интернет желісін баптау жүйесі",
+        "Монитордың техникалық сипаттамаларын анықтау"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#generative-ai"
+    },
+    {
+      "id": "q-207",
+      "section": "general",
+      "number": 207,
+      "question": "Үлкен тілдік модель (Large Language Model, LLM) дегеніміз не?",
+      "options": [
+        "Үлкен көлемдегі мәтіндік деректер негізінде үйретілген тілдік тапсырмаларды орындайтын модель",
+        "Компьютердің сыртқы жады құрылғысы",
+        "Интернет байланысын тарататын маршрутизатор",
+        "Графикалық бейнелерді көрсететін монитор",
+        "Электр энергиясын өлшейтін құрал"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-208",
+      "section": "general",
+      "number": 208,
+      "question": "Жасанды интеллект жүйелерінің этикалық қағидаларына не жатады?",
+      "options": [
+        "Әділдік, ашықтық, қауіпсіздік және дербес деректерді қорғау",
+        "Пайдаланушылардың деректерін рұқсатсыз тарату",
+        "Алгоритмдердің нәтижелерін әдейі бұрмалау",
+        "Ақпараттық қауіпсіздік талаптарын елемеу",
+        "Жүйелерді бақылаусыз және жауапкершіліксіз пайдалану"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+    }
+  ]
+}

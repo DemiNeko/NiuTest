@@ -2,6 +2,11 @@
   "version": 1,
   "exams": [
     {
+      "id": "zhasandy-intellekt-208",
+      "title": "Жасанды интеллект жүйелері",
+      "file": "zhasandy-intellekt-208.json"
+    },
+    {
       "id": "ai-go",
       "title": "AI & Go",
       "file": "ai-go.json"
