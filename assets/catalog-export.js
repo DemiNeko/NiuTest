@@ -7,7 +7,7 @@ export function catalogFiles(exams) {
     if (!exam) throw new Error(errors.join('\n'));
     if (ids.has(exam.id)) throw new Error(`${t("Повторяющийся id:")} ${exam.id}`);
     ids.add(exam.id);
-    manifest.exams.push({ id: exam.id, title: exam.title, file: `${exam.id}.json` });
+    manifest.exams.push({ id: exam.id, title: exam.title, file: `${exam.id}.json`, ...(raw.hidden === true ? { hidden: true } : {}) });
     files.push({ name: `src/exams/${exam.id}.json`, content: JSON.stringify(exam, null, 2) + '\n' });
   }
   files.unshift({ name: 'src/exams/index.json', content: JSON.stringify(manifest, null, 2) + '\n' });

@@ -13,6 +13,7 @@ export async function validateCatalog() {
     const result = parseExam({ ...meta, ...raw, id: meta.id });
     if (!result.exam) throw new Error(`${meta.id}: ${result.errors.join('\n')}`);
     if (ids.has(meta.id)) throw new Error(`Повторяющийся id экзамена: ${meta.id}`);
+    if (meta.hidden === true) result.exam.hidden = true;
     ids.add(meta.id); exams.push(result.exam);
   }
   return { manifest, exams };

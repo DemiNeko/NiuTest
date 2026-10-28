@@ -9,7 +9,8 @@
     {
       "id": "ai-go",
       "title": "AI & Go",
-      "file": "ai-go.json"
+      "file": "ai-go.json",
+      "hidden": true
     }
   ]
 }
