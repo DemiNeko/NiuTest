@@ -2,6 +2,11 @@
   "version": 1,
   "exams": [
     {
+      "id": "ai-today-2026-10-28",
+      "title": "Вопросы на сегодня — 28.10.2026",
+      "file": "ai-today-2026-10-28.json"
+    },
+    {
       "id": "zhasandy-intellekt-208",
       "title": "Жасанды интеллект жүйелері",
       "file": "zhasandy-intellekt-208.json"

@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 1,
+  "id": "ai-today-2026-10-28",
+  "title": "Вопросы на сегодня — 28.10.2026",
+  "description": "Жасанды интеллект жүйелері · 30 вопросов на сегодня. В вопросах 1–15 восстановлены правильные варианты ответа.",
+  "language": "kk",
+  "sourceName": "ai-today-2026-10-28-corrected.docx",
+  "sections": {
+    "general": "Жасанды интеллект жүйелері"
+  },
+  "questions": [
+    {
+      "id": "q-001",
+      "section": "general",
+      "number": 1,
+      "question": "Жасанды интеллект (AI) дегеніміз не?",
+      "options": [
+        "Интернетке қосылу технологиясы",
+        "Тек операциялық жүйенің интерфейсін өзгерту",
+        "Компьютердің адамға тән интеллектуалдық әрекеттерді орындау қабілеті",
+        "Компьютердің сыртқы құрылғысы",
+        "Компьютердің тек мәтін теру жүйесі"
+      ],
+      "correctIndex": 2,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-002",
+      "section": "general",
+      "number": 2,
+      "question": "AI қысқартуы нені білдіреді?",
+      "options": [
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу",
+        "Advanced Information",
+        "Artificial Intelligence",
+        "Artificial Internet",
+        "Automatic Internet"
+      ],
+      "correctIndex": 2,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-003",
+      "section": "general",
+      "number": 3,
+      "question": "Жасанды интеллекттің негізгі мақсаты қандай?",
+      "options": [
+        "Интеллектуалдық тапсырмаларды автоматтандыру",
+        "Компьютердің көлемін үлкейту",
+        "Электр энергиясын өндіру",
+        "Компьютердің желілік параметрлерін ғана өзгерту",
+        "Интернет жылдамдығын арттыру"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-004",
+      "section": "general",
+      "number": 4,
+      "question": "Machine Learning дегеніміз не?",
+      "options": [
+        "Файлдарды көшіру",
+        "Интернетті басқару",
+        "Компьютерді жөндеу",
+        "Машиналық оқыту",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-005",
+      "section": "general",
+      "number": 5,
+      "question": "Машиналық оқытуда компьютер нені пайдаланады?",
+      "options": [
+        "Мониторды",
+        "Принтерді",
+        "Деректерді",
+        "Тек пернетақтаны",
+        "Тек экранның ажыратымдылығын реттеу"
+      ],
+      "correctIndex": 2,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-006",
+      "section": "general",
+      "number": 6,
+      "question": "Deep Learning дегеніміз не?",
+      "options": [
+        "Бағдарламаның терезе өлшемін өзгерту",
+        "Терең оқыту технологиясы",
+        "Компьютерді өшіру әдісі",
+        "Интернет желісін орнату",
+        "Құжаттарды басып шығару"
+      ],
+      "correctIndex": 1,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-007",
+      "section": "general",
+      "number": 7,
+      "question": "Нейрондық желі неге ұқсастырылып жасалған?",
+      "options": [
+        "Монитор жұмысына",
+        "Тек компьютердің дыбыс параметрлерін баптау",
+        "Принтердің жұмысына",
+        "Қатты диск жұмысына",
+        "Адам миының жұмыс істеу принципіне"
+      ],
+      "correctIndex": 4,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-008",
+      "section": "general",
+      "number": 8,
+      "question": "AI қандай салаларда қолданылады?",
+      "options": [
+        "Тек мектепте",
+        "Тек ойындарда",
+        "Тек медицинада",
+        "Көптеген әртүрлі салаларда",
+        "Компьютердің сыртқы құрылғыларын ғана басқару"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-009",
+      "section": "general",
+      "number": 9,
+      "question": "ChatGPT қандай технологияға жатады?",
+      "options": [
+        "Антивирус",
+        "Генеративті жасанды интеллект",
+        "Операциялық жүйе",
+        "Тек операциялық жүйенің интерфейсін өзгерту",
+        "Компьютерлік ойын"
+      ],
+      "correctIndex": 1,
+      "answerStatus": "verified",
+      "sourceUrl": "https://openai.com/index/chatgpt/",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-010",
+      "section": "general",
+      "number": 10,
+      "question": "Генеративті AI не істей алады?",
+      "options": [
+        "Тек компьютерді қосады",
+        "Тек файлдарды өшіреді",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу",
+        "Тек интернетті ажыратады",
+        "Жаңа мәтін, сурет және басқа контент жасай алады"
+      ],
+      "correctIndex": 4,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#generative-ai",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-011",
+      "section": "general",
+      "number": 11,
+      "question": "AI моделін оқыту дегеніміз не?",
+      "options": [
+        "Файлдарды архивтеу",
+        "Мониторды баптау",
+        "Компьютердің желілік параметрлерін ғана өзгерту",
+        "Модельге деректер арқылы заңдылықтарды үйрету",
+        "Компьютерді бояу"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-012",
+      "section": "general",
+      "number": 12,
+      "question": "Деректер (Data) дегеніміз не?",
+      "options": [
+        "Өңдеуге немесе талдауға арналған ақпарат",
+        "Компьютердің корпусы",
+        "Тек файл атауларын автоматты түрде өзгерту",
+        "Пернетақта батырмасы",
+        "Электр сымы"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-013",
+      "section": "general",
+      "number": 13,
+      "question": "Dataset дегеніміз не?",
+      "options": [
+        "Интернет браузері",
+        "Операциялық жүйе",
+        "Компьютерлік вирус",
+        "Тек экранның ажыратымдылығын реттеу",
+        "Деректер жиынтығы"
+      ],
+      "correctIndex": 4,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-014",
+      "section": "general",
+      "number": 14,
+      "question": "Алгоритм дегеніміз не?",
+      "options": [
+        "Электр желісі",
+        "Есепті шешуге арналған қадамдар жиынтығы",
+        "Бағдарламаның терезе өлшемін өзгерту",
+        "Компьютердің экраны",
+        "Файлдың атауы"
+      ],
+      "correctIndex": 1,
+      "answerStatus": "verified",
+      "sourceUrl": "https://xlinux.nist.gov/dads/HTML/algorithm.html",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-015",
+      "section": "general",
+      "number": 15,
+      "question": "AI алгоритмдерінің міндеті қандай?",
+      "options": [
+        "Деректерді өңдеп, шешім немесе нәтиже алу",
+        "Пернетақтаны ауыстыру",
+        "Тек компьютердің дыбыс параметрлерін баптау",
+        "Мониторды тазалау",
+        "Компьютерді физикалық жөндеу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "note": "Правильный вариант восстановлен: в присланном тесте он отсутствовал. В исправленном Word-документе этот вариант выделен жёлтым и помечен «Восстановлено»."
+    },
+    {
+      "id": "q-016",
+      "section": "general",
+      "number": 16,
+      "question": "Компьютерлік көру (Computer Vision) не үшін қолданылады?",
+      "options": [
+        "Компьютердің сыртқы құрылғыларын ғана басқару",
+        "Сурет пен бейнені талдау үшін",
+        "Музыка тыңдау үшін ғана",
+        "Электр энергиясын өндіру үшін",
+        "Қағаз басып шығару үшін"
+      ],
+      "correctIndex": 1,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/computer-vision"
+    },
+    {
+      "id": "q-017",
+      "section": "general",
+      "number": 17,
+      "question": "Face Recognition дегеніміз не?",
+      "options": [
+        "Дыбысты күшейту технологиясы",
+        "Мәтінді жою технологиясы",
+        "Файлды қысу технологиясы",
+        "Бетті тану технологиясы",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/computer-vision"
+    },
+    {
+      "id": "q-018",
+      "section": "general",
+      "number": 18,
+      "question": "Natural Language Processing (NLP) нені зерттейді?",
+      "options": [
+        "Электр энергиясын",
+        "Интернет кабельдерін",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу",
+        "Адам тілін компьютер арқылы өңдеуді",
+        "Компьютер құрылысын"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-019",
+      "section": "general",
+      "number": 19,
+      "question": "NLP қай жерде қолданылады?",
+      "options": [
+        "Тек монитор жасауда",
+        "Тек ойын консолінде",
+        "Мәтін және сөйлеуді өңдеуде",
+        "Тек компьютерді жөндеуде",
+        "Компьютердің желілік параметрлерін ғана өзгерту"
+      ],
+      "correctIndex": 2,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-020",
+      "section": "general",
+      "number": 20,
+      "question": "Speech Recognition дегеніміз не?",
+      "options": [
+        "Файлды архивтеу",
+        "Сөйлеуді тану",
+        "Экранды үлкейту",
+        "Суретті бояу",
+        "Тек файл атауларын автоматты түрде өзгерту"
+      ],
+      "correctIndex": 1,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/natural-language-processing"
+    },
+    {
+      "id": "q-021",
+      "section": "general",
+      "number": 21,
+      "question": "AI ассистенті дегеніміз не?",
+      "options": [
+        "Тек экранның ажыратымдылығын реттеу",
+        "Компьютердің қуат көзі",
+        "Интернет кабелі",
+        "Адамға тапсырмаларды орындауға көмектесетін интеллектуалды жүйе",
+        "Принтер түрі"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-022",
+      "section": "general",
+      "number": 22,
+      "question": "Робототехникада AI не үшін қажет?",
+      "options": [
+        "Роботтарға қоршаған ортаны қабылдап, шешім қабылдауға көмектесу үшін",
+        "Роботты өшіру үшін",
+        "Роботтың түсін өзгерту үшін ғана",
+        "Роботты ауырлату үшін",
+        "Бағдарламаның терезе өлшемін өзгерту"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "inferred",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-023",
+      "section": "general",
+      "number": 23,
+      "question": "AI медицинада қалай қолданылады?",
+      "options": [
+        "Тек аурухана ғимаратын салуға қолданылады",
+        "Диагностика мен медициналық деректерді талдауға көмектеседі",
+        "Тек компьютердің дыбыс параметрлерін баптау",
+        "Тек дәрі қаптамасын жасауға қолданылады",
+        "Тек телефон қоңырауына қолданылады"
+      ],
+      "correctIndex": 1,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary#artificial-intelligence"
+    },
+    {
+      "id": "q-024",
+      "section": "general",
+      "number": 24,
+      "question": "AI білім беру саласында не үшін қолданылады?",
+      "options": [
+        "Оқуды жекелендіруге және оқушыларға көмектесуге",
+        "Компьютердің сыртқы құрылғыларын ғана басқару",
+        "Мектеп ғимаратын бояуға",
+        "Парта жасауға",
+        "Электр желісін орнатуға"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://mgiep.unesco.org/iseeareport"
+    },
+    {
+      "id": "q-025",
+      "section": "general",
+      "number": 25,
+      "question": "AI қаржы саласында не үшін пайдаланылады?",
+      "options": [
+        "Ақша басып шығару үшін",
+        "Банктің ғимаратын салу үшін",
+        "Банкоматты бояу үшін",
+        "Деректерді талдау және алаяқтықты анықтау үшін",
+        "Тек операциялық жүйенің интерфейсін өзгерту"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-026",
+      "section": "general",
+      "number": 26,
+      "question": "AI-дың маңызды бөлігі қандай?",
+      "options": [
+        "Деректер",
+        "Кабель ұзындығы",
+        "Компьютер үстелі",
+        "Монитор түсі",
+        "Деректерді талдамай, тек құрылғыны қайта іске қосу"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://www.ibm.com/think/topics/artificial-intelligence"
+    },
+    {
+      "id": "q-027",
+      "section": "general",
+      "number": 27,
+      "question": "Supervised Learning дегеніміз не?",
+      "options": [
+        "Деректерсіз оқыту",
+        "Компьютердің желілік параметрлерін ғана өзгерту",
+        "Белгіленген деректер арқылы оқыту",
+        "Интернетсіз жұмыс істеу",
+        "Компьютерді қолмен басқару"
+      ],
+      "correctIndex": 2,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-028",
+      "section": "general",
+      "number": 28,
+      "question": "Unsupervised Learning дегеніміз не?",
+      "options": [
+        "Файлдарды басып шығару",
+        "Тек дайын жауаптарды көшіру",
+        "Тек файл атауларын автоматты түрде өзгерту",
+        "Белгіленбеген деректерден заңдылықтарды табу",
+        "Компьютерді өшіру"
+      ],
+      "correctIndex": 3,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-029",
+      "section": "general",
+      "number": 29,
+      "question": "Reinforcement Learning дегеніміз не?",
+      "options": [
+        "Мәтінді форматтау",
+        "Интернетті өшіру",
+        "Марапат пен жаза арқылы оқыту",
+        "Тек экранның ажыратымдылығын реттеу",
+        "Файлдарды архивтеу"
+      ],
+      "correctIndex": 2,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    },
+    {
+      "id": "q-030",
+      "section": "general",
+      "number": 30,
+      "question": "AI моделінің prediction дегені не?",
+      "options": [
+        "Модельдің болжамы",
+        "Экранның жарықтығы",
+        "Файлдың атауы",
+        "Бағдарламаның терезе өлшемін өзгерту",
+        "Компьютердің өшуі"
+      ],
+      "correctIndex": 0,
+      "answerStatus": "verified",
+      "sourceUrl": "https://developers.google.com/machine-learning/glossary"
+    }
+  ]
+}
