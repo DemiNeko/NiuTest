@@ -166,6 +166,13 @@ export function scheduleInput(input, change) {
   }
   const row = session.plan.exams.find(exam => exam.id === selection);
   if (!row || !input.closest('#schedule-edit-form')) return;
+  if (input.name === 'projectExam') {
+    if (change && row.projectExam !== input.checked) {
+      row.projectExam = input.checked;
+      markDirty();
+    }
+    return;
+  }
   if (input.hasAttribute('data-schedule-check')) {
     if (!change) return;
     const index = Number(input.dataset.scheduleCheck);

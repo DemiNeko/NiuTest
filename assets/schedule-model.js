@@ -64,7 +64,7 @@ export const SUBJECTS = [
 ];
 
 export function createExam(id, title) {
-  return { id, title, date: '', time: '', room: '', checks: CHECK_LABELS.map(() => false) };
+  return { id, title, date: '', time: '', room: '', checks: CHECK_LABELS.map(() => false), projectExam: false };
 }
 
 export function createSchedule() {
@@ -86,7 +86,11 @@ function hasFields(value, fields) {
 
 function readExam(row, isPublic) {
   const fields = ['id', 'title', 'date', 'time', 'room'];
-  if (!hasFields(row, isPublic ? fields : [...fields, 'checks'])) throw new Error('Проверьте поля экзамена.');
+  if (!isPublic) {
+    fields.push('checks');
+    if (row && Object.hasOwn(row, 'projectExam')) fields.push('projectExam');
+  }
+  if (!hasFields(row, fields)) throw new Error('Проверьте поля экзамена.');
   if (typeof row.id !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$/.test(row.id)) throw new Error('Некорректный идентификатор экзамена.');
   if (typeof row.title !== 'string' || !row.title.trim() || row.title.length > 200) throw new Error('Укажите название предмета длиной до 200 символов.');
   if (typeof row.date !== 'string' || !(row.date === '' && !isPublic || /^2026-12-(0[1-9]|[12]\d|3[01])$/.test(row.date))) {
@@ -99,6 +103,8 @@ function readExam(row, isPublic) {
     if (!Array.isArray(row.checks) || row.checks.length !== CHECK_LABELS.length ||
         !Array.from(row.checks).every(check => typeof check === 'boolean')) throw new Error('Проверьте отметки готовности предмета.');
     exam.checks = [...row.checks];
+    if (Object.hasOwn(row, 'projectExam') && typeof row.projectExam !== 'boolean') throw new Error('Проверьте отметку проектного экзамена.');
+    exam.projectExam = row.projectExam ?? false;
   }
   return exam;
 }

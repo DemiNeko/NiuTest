@@ -12,6 +12,7 @@ test('weekly timetable seeds six independent undated exams and retains the 17 te
   for (const row of plan.exams) {
     const hasMaterials = ['ai', 'testing', 'parallel'].includes(row.id);
     assert.deepEqual(row.checks, [false, hasMaterials, false, false]);
+    assert.equal(row.projectExam, false);
   }
   // An admin can revise the initial inventory and persist that decision.
   const testing = plan.exams.find(row => row.id === 'testing');
@@ -23,6 +24,24 @@ test('weekly timetable seeds six independent undated exams and retains the 17 te
   plan.exams[0].checks[0] = true;
   assert.equal(plan.exams[1].checks[0], false);
   assert.equal(createSchedule().exams[0].checks[0], false);
+});
+
+test('older plans preserve readiness and gain a separate private project exam flag', () => {
+  const legacy = { id: 'course', title: 'Предмет', date: '2026-12-07', time: '11:00', room: '120', checks: [true, false, true, false] };
+  const plan = validateSchedule({ ...createSchedule(), visible: true, exams: [legacy] });
+  assert.deepEqual(plan.exams[0], { ...legacy, projectExam: false });
+  const publicBefore = publicSchedule(plan);
+  for (const projectExam of [true, false]) {
+    plan.exams[0].projectExam = projectExam;
+    assert.deepEqual(validateSchedule(plan).exams[0], { ...legacy, projectExam });
+    assert.deepEqual(publicSchedule(plan), publicBefore);
+  }
+  const output = publicBefore.exams[0];
+  assert.equal(Object.hasOwn(output, 'projectExam'), false);
+  assert.throws(() => validatePublicSchedule({ ...publicBefore, exams: [{ ...output, projectExam: true }] }));
+  for (const value of [null, 1, 'true']) {
+    assert.throws(() => validateSchedule({ ...plan, exams: [{ ...legacy, projectExam: value }] }));
+  }
 });
 
 test('published output contains dated exams only and drops all dates while hidden', () => {

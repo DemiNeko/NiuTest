@@ -17,7 +17,7 @@ const copy = {
     edit: 'Экзамен', remove: 'Удалить предмет', subject: 'Название предмета',
     date: 'Дата экзамена', time: 'Время', room: 'Аудитория', visibility: 'Показывать на главной',
     checklist: 'Чек-лист готовности', checklistShort: 'Готовность', emptyTitle: 'Новый предмет',
-    checks: CHECK_LABELS, pending: 'Дата не назначена', empty: 'Добавьте первый предмет в расписание.',
+    projectExam: 'Проектный экзамен', checks: CHECK_LABELS, pending: 'Дата не назначена', empty: 'Добавьте первый предмет в расписание.',
     reference: 'Занятия по исходному расписанию', lecture: 'Лекция', seminar: 'Семинар',
     publicTitle: 'Расписание экзаменов', monthOverview: 'Календарь', noDates: 'Даты экзаменов ещё не назначены.',
     roomShort: 'ауд.', previewTitle: 'Вид на главной', reload: 'Загрузить последнюю версию',
@@ -38,7 +38,7 @@ const copy = {
     edit: 'Емтихан', remove: 'Пәнді жою', subject: 'Пән атауы',
     date: 'Емтихан күні', time: 'Уақыты', room: 'Аудитория', visibility: 'Басты бетте көрсету',
     checklist: 'Дайындық тізімі', checklistShort: 'Дайындық', emptyTitle: 'Жаңа пән',
-    checks: ['Күні мен аудиториясы расталды', 'Материалдар қосылды', 'Жауаптар тексерілді', 'Емтихан аяқталды'],
+    projectExam: 'Жобалық емтихан', checks: ['Күні мен аудиториясы расталды', 'Материалдар қосылды', 'Жауаптар тексерілді', 'Емтихан аяқталды'],
     pending: 'Күні белгіленбеген', empty: 'Кестеге алғашқы пәнді қосыңыз.',
     reference: 'Бастапқы кестедегі сабақтар', lecture: 'Дәріс', seminar: 'Семинар',
     publicTitle: 'Емтихан кестесі', monthOverview: 'Күнтізбе', noDates: 'Емтихан күндері әлі белгіленген жоқ.',
@@ -60,7 +60,7 @@ const copy = {
     edit: 'Exam', remove: 'Remove subject', subject: 'Subject name',
     date: 'Exam date', time: 'Time', room: 'Room', visibility: 'Show on the home page',
     checklist: 'Preparation checklist', checklistShort: 'Preparation', emptyTitle: 'New subject',
-    checks: ['Date and room confirmed', 'Materials added', 'Answers checked', 'Exam completed'],
+    projectExam: 'Project-based exam', checks: ['Date and room confirmed', 'Materials added', 'Answers checked', 'Exam completed'],
     pending: 'Date to be set', empty: 'Add the first subject to the schedule.',
     reference: 'Classes in the original timetable', lecture: 'Lecture', seminar: 'Seminar',
     publicTitle: 'Exam schedule', monthOverview: 'Calendar', noDates: 'Exam dates have yet to be set.',
@@ -158,6 +158,7 @@ function editor(exam, busy) {
         <label class="field">${c.room}<input type="text" name="room" value="${esc(exam.room)}" maxlength="160"></label>
       </div>
       <fieldset class="schedule-checks"><legend>${c.checklist}</legend>
+        <label><input type="checkbox" name="projectExam"${exam.projectExam ? ' checked' : ''}><span>${c.projectExam}</span></label>
         ${c.checks.map((label, i) => `<label><input type="checkbox" data-schedule-check="${i}" name="check-${i}"${exam.checks[i] ? ' checked' : ''}>
           <span>${esc(label)}</span></label>`).join('')}
       </fieldset>
