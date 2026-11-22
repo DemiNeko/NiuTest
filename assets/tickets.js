@@ -1,13 +1,15 @@
-import { t, countText } from './i18n.js';
+import { t } from './i18n.js';
 import { esc } from './html.js';
 
 export const ticketCollections = [
   {
     id: 'testing', title: 'Бағдарламалық қамтамасыз етуді тестілеу', count: 15,
+    description: 'Тест-кейстер, сапа көрсеткіштері және өнімді шығару туралы шешімдер.',
     source: 'Емтихан_билеттері_тестПО.docx'
   },
   {
     id: 'parallel', title: 'Параллельді және үлестірілген есептеулер', count: 30,
+    description: 'Кластерлер, GPU және MATLAB кодын қадаммен талдау.',
     source: 'Билеттер_ПҮЕ (1).docx'
   }
 ];
@@ -22,16 +24,6 @@ export function parseTicketRoute(path) {
 
 const ticketLink = (id, number) => `#tickets/${id}/${number}`;
 const padded = number => String(number).padStart(2, '0');
-
-export function ticketCatalog() {
-  return `<section class="ticket-shelf" aria-labelledby="ticket-shelf-heading">
-    <h2 id="ticket-shelf-heading">${t("Экзаменационные билеты")}</h2>
-    <div class="ticket-collections">${ticketCollections.map(c => `
-      <a class="collection-card" data-subject="${c.id}" href="${ticketLink(c.id, 1)}">
-        <div><span class="collection-count">${countText(c.count, 'tickets')}</span>
-          <h3 lang="kk">${esc(c.title)}</h3></div><span class="collection-open" aria-hidden="true">↗</span>
-      </a>`).join('')}</div></section>`;
-}
 
 function questionCard(question, index, mode, recall) {
   return `<article class="ticket-question">

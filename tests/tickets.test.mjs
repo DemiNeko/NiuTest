@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { ticketCollections, parseTicketRoute, ticketCatalog, ticketReader } from '../assets/tickets.js';
+import { ticketCollections, parseTicketRoute, ticketReader } from '../assets/tickets.js';
 
 const subjects = [
   { id: 'testing', count: 15, source: 'Емтихан_билеттері_тестПО.docx' },
@@ -10,9 +10,7 @@ const subjects = [
 
 test('each catalog entry links to its complete, consecutively numbered ticket set and original DOCX', async () => {
   assert.deepEqual(ticketCollections.map(({ id, count, source }) => ({ id, count, source })), subjects);
-  const catalog = ticketCatalog();
   for (const { id, count, source } of subjects) {
-    assert.ok(catalog.includes(`href="#tickets/${id}/1"`));
     const data = new URL(`../src/tickets/${id}.json`, import.meta.url);
     const tickets = JSON.parse(await readFile(data, 'utf8'));
     assert.deepEqual(tickets.map(ticket => ticket.number), Array.from({ length: count }, (_, i) => i + 1));

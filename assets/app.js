@@ -6,7 +6,8 @@ import { defaultConfig, validateSiteConfig, SITE_CONFIG_KEY, themeStyle } from '
 import { t, getLanguage, setLanguage, locale, siteText, countText } from './i18n.js';
 import { catalogFiles, zipFiles } from './catalog-export.js';
 import { esc } from './html.js';
-import { ticketCollections, parseTicketRoute, ticketCatalog, ticketReader } from './tickets.js';
+import { ticketCollections, parseTicketRoute, ticketReader } from './tickets.js';
+import { readTicketProgress, saveTicketVisit } from './ticket-progress.js';
 
 const app = document.querySelector('#app');
 const symbols = { exams: '▦', home: '⌂', practice: 'ϟ', exam: '◷', library: '☷', cards: '▤', mistakes: '↻', bookmarks: '☆', import: '+', about: '?' };
@@ -28,6 +29,18 @@ const ready = () => questions().filter(isGradable);
 const sections = () => current() ? sectionNames(current()) : {};
 const safeRead = key => { try { return localStorage.getItem(key); } catch { storageOK = false; return null; } };
 const ticketBooks = new Map();
+let ticketStorage;
+try { ticketStorage = window.localStorage; } catch { /* The reader also works without storage. */ }
+let lastTicketSubject = safeRead('niutest-active-ticket') || '';
+function rememberTicketSubject(id) {
+  if (lastTicketSubject === id) return;
+  lastTicketSubject = id;
+  try { localStorage.setItem('niutest-active-ticket', id); } catch { /* Keep the selection in memory. */ }
+}
+function ticketResumePath(collection) {
+  const { last } = readTicketProgress(ticketStorage, collection);
+  return `tickets/${collection.id}/${last || 1}`;
+}
 const compactTickets = window.matchMedia('(max-width:760px)');
 compactTickets.addEventListener('change', () => {
   const selector = app.querySelector('.ticket-selector');
@@ -62,6 +75,10 @@ function ticketContent() {
   const { collection } = ticketSelection;
   if (!ticketBooks.has(collection.id)) loadTicketBook(collection);
   const { tickets, failed } = ticketBooks.get(collection.id);
+  if (tickets) {
+    saveTicketVisit(ticketStorage, collection, ticketSelection.number);
+    rememberTicketSubject(collection.id);
+  }
   const indexOpen = app.querySelector(`.ticket-reader[data-subject="${collection.id}"] .ticket-selector`)?.open ?? !compactTickets.matches;
   return ticketReader(ticketSelection, tickets, { mode: ticketMode, recall: ticketRecall, failed, indexOpen });
 }
@@ -85,6 +102,7 @@ function toast(message) {
 function go(next) { if (location.hash === `#${next}`) render(); else location.hash = next; }
 function selectExam(id, destination = 'home') {
   if (!visibleExams().some(e => e.id === id)) return;
+  rememberTicketSubject('');
   activeId = id; progress = getProgress(current()); search = ''; filter = statusFilter = 'all'; page = 1; inlineAnswers.clear();
   setup.section = 'all';
   try { localStorage.setItem('niutest-active-exam', id); } catch { /* Selection itself is optional. */ }
@@ -106,15 +124,42 @@ function note(q) {
 }
 function shell(content) {
   const e = current(), count = statistics(progress, questions()).mistakes;
-  const nav = [['classic', t("Экзамен")], ['library', t("Все вопросы")], ['cards', t("Карточки")], ['mistakes', t("Мои ошибки")], ['bookmarks', t("Избранное")], ['practice', t("Настроить практику")], ['exam', t("Проверка с таймером")], ['home', t("Мой прогресс")]];
-  const selected = ['quiz', 'results'].includes(route) ? progress.session?.classic ? 'classic' : progress.session?.mode || 'practice' : route;
-  return `<button class="menu-backdrop ${menuOpen ? 'visible' : ''}" data-action="close-menu" aria-label="${t("Закрыть меню")}" ${menuOpen ? '' : 'hidden'}></button><aside id="sidebar" class="sidebar ${menuOpen ? 'is-open' : ''}" ${menuOpen ? '' : 'inert'}><div class="sidebar-brand"><a class="brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" width="34" height="34" alt="">` : ''}<span>${esc(siteConfig.name)}</span></a>${btn('close-menu', '×', 'menu-close', `aria-label="${t("Закрыть меню")}"`)}</div><p class="workspace-label">${esc(siteText(siteConfig, 'tagline'))}</p><a href="#exams" class="catalog-link ${route === 'exams' ? 'active' : ''}"><span>▦</span> ${t("Мои экзамены")} <span class="nav-badge">${visibleExams().length + ticketCollections.length}</span></a><details class="sidebar-extra"><summary>${t("Дополнительно")}</summary><div class="nav-caption">${esc(e?.title || t("ВАШЕ ОБУЧЕНИЕ"))}</div><nav aria-label="${t("Основная навигация")}">${nav.map(([id, label]) => `<a class="nav-item ${selected === id ? 'active' : ''}" href="#${id}" ${id === 'classic' ? 'data-action="classic"' : ''} ${selected === id ? 'aria-current="page"' : ''}><span class="nav-icon" aria-hidden="true">${symbols[id] || 'ϟ'}</span><span>${label}</span>${id === 'mistakes' && count ? `<b class="nav-badge">${count}</b>` : ''}</a>`).join('')}</nav><div class="sidebar-bottom"><p id="save-state">${storageOK ? t("● Прогресс сохранён в браузере") : t("○ Есть несохранённые изменения")}</p><a href="#admin">${t("⚙ Оформление сайта")}</a><a href="#about">${t("Как всё работает ↗")}</a></div></details></aside><div class="main-shell"><header class="topbar"><div class="topbar-brand">${btn('toggle-menu', '☰', 'menu-toggle', `aria-label="${t("Открыть меню")}" aria-controls="sidebar" aria-expanded="${menuOpen}"`)}<a class="header-brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" alt="" width="30" height="30">` : ''}<strong>${esc(siteConfig.name)}</strong></a><div class="topbar-caption">${siteConfig.showTopbarText ? `<span class="eyebrow">${esc(siteText(siteConfig, 'topbarText'))}</span>` : ''}<span class="course-name">${esc(ticketSelection?.collection.title || e?.title || siteConfig.name)}</span></div></div><div class="topbar-actions"><label class="sr-only" for="exam-switch">${t("Текущий экзамен")}</label><select id="exam-switch">${visibleExams().map(x => `<option value="${x.id}" ${!ticketSelection && x.id === activeId ? 'selected' : ''}>${esc(x.title)}</option>`).join('')}${ticketCollections.map(c => `<option lang="kk" value="tickets/${c.id}/1" ${ticketSelection?.collection.id === c.id ? 'selected' : ''}>${esc(c.title)}</option>`).join('')}</select><label class="sr-only" for="language-switch">${t("Язык интерфейса")}</label><select id="language-switch" aria-label="${t("Язык интерфейса")}">${[['ru', 'RU'], ['en', 'EN'], ['kk', 'ҚАЗ']].map(([id, label]) => `<option value="${id}" ${getLanguage() === id ? 'selected' : ''}>${label}</option>`).join('')}</select></div></header><main id="main" class="${route === 'exams' ? 'catalog-main' : route === 'tickets' ? 'ticket-main' : ''}" tabindex="-1">${route === 'exams' && siteConfig.background ? `<img class="catalog-background" src="${esc(siteConfig.background)}" alt="" style="opacity:${siteConfig.backgroundOpacity / 100}">` : ''}<div class="page-content">${!catalogOK ? `<div class="notice error">${t("Библиотека браузера повреждена или недоступна. Импорт остановлен, чтобы не перезаписать данные. Скачайте сырые данные в разделе «Добавить экзамен».")}</div>` : ''}${content}</div></main>${route !== 'exams' ? `<footer><strong>${esc(siteConfig.name)}</strong><span>${t("Один вопрос ближе к цели.")}</span><a href="#import">${t("Импорт и резервная копия ↗")}</a></footer>` : ''}</div>`;
+  const collection = ticketSelection?.collection || (route === 'exams' && ticketCollections.find(c => c.id === lastTicketSubject));
+  const courseTitle = collection?.title || e?.title;
+  const bookPath = ticketSelection ? `tickets/${collection.id}/${ticketSelection.number}` : collection && ticketResumePath(collection);
+  const nav = bookPath ? [[bookPath, t("Билеты")]] : [['classic', t("Экзамен")], ['library', t("Все вопросы")], ['cards', t("Карточки")], ['mistakes', t("Мои ошибки")], ['bookmarks', t("Избранное")], ['practice', t("Настроить практику")], ['exam', t("Проверка с таймером")], ['home', t("Мой прогресс")]];
+  const selected = ticketSelection ? bookPath : ['quiz', 'results'].includes(route) ? progress.session?.classic ? 'classic' : progress.session?.mode || 'practice' : route;
+  return `<button class="menu-backdrop ${menuOpen ? 'visible' : ''}" data-action="close-menu" aria-label="${t("Закрыть меню")}" ${menuOpen ? '' : 'hidden'}></button><aside id="sidebar" class="sidebar ${menuOpen ? 'is-open' : ''}" ${menuOpen ? '' : 'inert'}><div class="sidebar-brand"><a class="brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" width="34" height="34" alt="">` : ''}<span>${esc(siteConfig.name)}</span></a>${btn('close-menu', '×', 'menu-close', `aria-label="${t("Закрыть меню")}"`)}</div><p class="workspace-label">${esc(siteText(siteConfig, 'tagline'))}</p><a href="#exams" class="catalog-link ${route === 'exams' ? 'active' : ''}"><span>▦</span> ${t("Мои экзамены")} <span class="nav-badge">${visibleExams().length + ticketCollections.length}</span></a><details class="sidebar-extra"><summary>${t("Дополнительно")}</summary><div class="nav-caption">${esc(courseTitle || t("ВАШЕ ОБУЧЕНИЕ"))}</div><nav aria-label="${t("Основная навигация")}">${nav.map(([id, label]) => `<a class="nav-item ${selected === id ? 'active' : ''}" href="#${id}" ${id === 'classic' ? 'data-action="classic"' : ''} ${selected === id ? 'aria-current="page"' : ''}><span class="nav-icon" aria-hidden="true">${symbols[id] || 'ϟ'}</span><span>${label}</span>${id === 'mistakes' && count ? `<b class="nav-badge">${count}</b>` : ''}</a>`).join('')}</nav><div class="sidebar-bottom"><p id="save-state">${storageOK ? t("● Прогресс сохранён в браузере") : t("○ Есть несохранённые изменения")}</p><a href="#admin">${t("⚙ Оформление сайта")}</a><a href="#about">${t("Как всё работает ↗")}</a></div></details></aside><div class="main-shell"><header class="topbar"><div class="topbar-brand">${btn('toggle-menu', '☰', 'menu-toggle', `aria-label="${t("Открыть меню")}" aria-controls="sidebar" aria-expanded="${menuOpen}"`)}<a class="header-brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" alt="" width="30" height="30">` : ''}<strong>${esc(siteConfig.name)}</strong></a><div class="topbar-caption">${siteConfig.showTopbarText ? `<span class="eyebrow">${esc(siteText(siteConfig, 'topbarText'))}</span>` : ''}<span class="course-name">${esc(courseTitle || siteConfig.name)}</span></div></div><div class="topbar-actions"><label class="sr-only" for="exam-switch">${t("Текущий экзамен")}</label><select id="exam-switch">${visibleExams().map(x => `<option value="${x.id}" ${!collection && x.id === activeId ? 'selected' : ''}>${esc(x.title)}</option>`).join('')}${ticketCollections.map(c => `<option lang="kk" value="${ticketResumePath(c)}" ${collection?.id === c.id ? 'selected' : ''}>${esc(c.title)}</option>`).join('')}</select><label class="sr-only" for="language-switch">${t("Язык интерфейса")}</label><select id="language-switch" aria-label="${t("Язык интерфейса")}">${[['ru', 'RU'], ['en', 'EN'], ['kk', 'ҚАЗ']].map(([id, label]) => `<option value="${id}" ${getLanguage() === id ? 'selected' : ''}>${label}</option>`).join('')}</select></div></header><main id="main" class="${route === 'exams' ? 'catalog-main' : route === 'tickets' ? 'ticket-main' : ''}" tabindex="-1">${route === 'exams' && siteConfig.background ? `<img class="catalog-background" src="${esc(siteConfig.background)}" alt="" style="opacity:${siteConfig.backgroundOpacity / 100}">` : ''}<div class="page-content">${!catalogOK ? `<div class="notice error">${t("Библиотека браузера повреждена или недоступна. Импорт остановлен, чтобы не перезаписать данные. Скачайте сырые данные в разделе «Добавить экзамен».")}</div>` : ''}${content}</div></main>${route !== 'exams' ? `<footer><strong>${esc(siteConfig.name)}</strong><span>${t("Один вопрос ближе к цели.")}</span><a href="#import">${t("Импорт и резервная копия ↗")}</a></footer>` : ''}</div>`;
 }
 function catalogPage() {
-  return `<div class="catalog-hero">${siteConfig.homeEyebrow ? `<p class="eyebrow">${esc(siteText(siteConfig, 'homeEyebrow'))}</p>` : ''}<h1>${esc(siteText(siteConfig, 'homeTitle'))}</h1><p>${esc(siteText(siteConfig, 'homeSubtitle'))}</p></div>${ticketCatalog()}<h2 class="catalog-quiz-heading">${t("Тесты")}</h2><div class="catalog-grid">${visibleExams().map((e, i) => {
-    const p = getProgress(e), stats = statistics(p, e.questions), usable = e.questions.filter(isGradable).length;
-    return `<article class="exam-card"><div class="card-top"><span class="exam-monogram color-${i % 3}">${esc(e.title.slice(0, 2).toUpperCase())}</span><span class="tag">${bundled.some(b => b.id === e.id) ? t("Встроенный") : t("Твой экзамен")}</span></div><h2>${esc(e.title)}</h2><p class="muted">${esc(e.description || t("Все вопросы, тренировка и карточки в одном месте."))}</p><div class="exam-meta">${countText(e.questions.length, 'questions')} · ${countText(Object.keys(sectionNames(e)).length, 'sections')}</div>${usable < e.questions.length ? `<p class="pending-label">${e.questions.length - usable} ${t("требуют проверки ключа")}</p>` : ''}<div class="progress-label"><span>${t("Последний ответ верный")}</span><b>${stats.learned} / ${usable}</b></div>${meter(stats.learned, usable)}<div class="actions">${btn('open-exam', p.session?.classic && !p.session.finishedAt ? t("Продолжить экзамен →") : t("Начать экзамен →"), 'primary', `data-id="${e.id}"`)}</div></article>`;
-  }).join('')}</div>`;
+  const cards = visibleExams().map(e => {
+    const p = getProgress(e), usable = e.questions.filter(isGradable).length;
+    return {
+      title: e.title, language: e.language,
+      tag: bundled.some(b => b.id === e.id) ? t("Встроенный") : t("Твой экзамен"),
+      description: e.description || t("Все вопросы, тренировка и карточки в одном месте."),
+      meta: `${countText(e.questions.length, 'questions')} · ${countText(Object.keys(sectionNames(e)).length, 'sections')}`,
+      notice: usable < e.questions.length ? `${e.questions.length - usable} ${t("требуют проверки ключа")}` : '',
+      label: t("Последний ответ верный"), value: statistics(p, e.questions).learned, total: usable,
+      button: btn('open-exam', p.session?.classic && !p.session.finishedAt ? t("Продолжить экзамен →") : t("Начать экзамен →"), 'primary', `data-id="${esc(e.id)}"`)
+    };
+  });
+  for (const c of ticketCollections) {
+    const { visited, last } = readTicketProgress(ticketStorage, c);
+    cards.push({
+      title: c.title, language: 'kk', tag: t("Билеты"), description: c.description,
+      meta: `${countText(c.count * 3, 'questions')} · ${countText(c.count, 'tickets')}`,
+      label: t("Просмотрено билетов"), value: visited.length, total: c.count,
+      button: link(`tickets/${c.id}/${last || 1}`, last ? t("Продолжить экзамен →") : t("Начать экзамен →"), 'primary')
+    });
+  }
+  return `<div class="catalog-hero">${siteConfig.homeEyebrow ? `<p class="eyebrow">${esc(siteText(siteConfig, 'homeEyebrow'))}</p>` : ''}<h1>${esc(siteText(siteConfig, 'homeTitle'))}</h1><p>${esc(siteText(siteConfig, 'homeSubtitle'))}</p></div>
+    <div class="catalog-grid">${cards.map((card, i) => `<article class="exam-card">
+      <div class="card-top"><span class="exam-monogram color-${i % 3}">${esc(card.title.slice(0, 2).toUpperCase())}</span><span class="tag">${esc(card.tag)}</span></div>
+      <h2 lang="${esc(card.language || getLanguage())}">${esc(card.title)}</h2><p class="muted">${esc(card.description)}</p>
+      <div class="exam-meta">${esc(card.meta)}</div>${card.notice ? `<p class="pending-label">${esc(card.notice)}</p>` : ''}
+      <div class="progress-label"><span>${esc(card.label)}</span><b>${card.value} / ${card.total}</b></div>
+      ${meter(card.value, card.total)}<div class="actions">${card.button}</div></article>`).join('')}</div>`;
 }
 function homePage() {
   const e = current(), list = ready(), stats = statistics(progress, questions()), s = progress.session;
@@ -355,7 +400,7 @@ app.addEventListener('click', async event => {
   if (action === 'toggle-menu' || action === 'close-menu') { setMenu(action === 'toggle-menu' ? !menuOpen : false); return; }
   if (action.startsWith('config-')) return configAction(action);
   if (action === 'classic') { event.preventDefault(); return startClassic(); }
-  if (action === 'open-exam') { activeId = id; progress = getProgress(current()); inlineAnswers.clear(); setup.section = 'all'; try { localStorage.setItem('niutest-active-exam', id); } catch {} return startClassic(); }
+  if (action === 'open-exam') { rememberTicketSubject(''); activeId = id; progress = getProgress(current()); inlineAnswers.clear(); setup.section = 'all'; try { localStorage.setItem('niutest-active-exam', id); } catch {} return startClassic(); }
   if (action === 'learn-all') return start({ mode: 'practice', count: 'all', randomOrder: false });
   if (action === 'bookmark') {
     progress.bookmarks = progress.bookmarks.includes(id) ? progress.bookmarks.filter(x => x !== id) : [...progress.bookmarks, id]; save();
