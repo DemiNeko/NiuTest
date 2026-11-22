@@ -5,9 +5,10 @@ import { prompts } from './prompts.js';
 import { defaultConfig, validateSiteConfig, SITE_CONFIG_KEY, themeStyle } from './site-config.js';
 import { t, getLanguage, setLanguage, locale, siteText, countText } from './i18n.js';
 import { catalogFiles, zipFiles } from './catalog-export.js';
+import { esc } from './html.js';
+import { ticketCollections, parseTicketRoute, ticketCatalog, ticketReader } from './tickets.js';
 
 const app = document.querySelector('#app');
-const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const symbols = { exams: '▦', home: '⌂', practice: 'ϟ', exam: '◷', library: '☷', cards: '▤', mistakes: '↻', bookmarks: '☆', import: '+', about: '?' };
 const btn = (action, label, cls = 'primary', attrs = '') => `<button class="button ${cls}" data-action="${action}" ${attrs}>${label}</button>`;
 const link = (to, label, cls = 'secondary') => `<a class="button ${cls}" href="#${to}">${label}</a>`;
@@ -26,6 +27,44 @@ const byId = id => questions().find(q => q.id === id);
 const ready = () => questions().filter(isGradable);
 const sections = () => current() ? sectionNames(current()) : {};
 const safeRead = key => { try { return localStorage.getItem(key); } catch { storageOK = false; return null; } };
+const ticketBooks = new Map();
+const compactTickets = window.matchMedia('(max-width:760px)');
+compactTickets.addEventListener('change', () => {
+  const selector = app.querySelector('.ticket-selector');
+  if (selector) selector.open = !compactTickets.matches;
+});
+let ticketSelection = null, ticketRecall = false;
+let ticketMode = safeRead('niutest-ticket-mode') === 'long' ? 'long' : 'short';
+
+async function loadTicketBook(collection) {
+  const { id } = collection;
+  ticketBooks.set(id, {});
+  try {
+    const response = await fetch(new URL(`../src/tickets/${id}.json`, import.meta.url));
+    if (!response.ok) throw new Error();
+    const tickets = await response.json();
+    if (!Array.isArray(tickets) || tickets.length !== collection.count) throw new Error();
+    ticketBooks.set(id, { tickets });
+  } catch { ticketBooks.set(id, { failed: true }); }
+  if (ticketSelection?.collection.id === id) refreshTicketReader();
+}
+function ticketPage() {
+  return `<div id="ticket-view">${ticketContent()}</div>`;
+}
+function refreshTicketReader() {
+  const view = document.getElementById('ticket-view');
+  if (!view) return;
+  const hadFocus = view.contains(document.activeElement);
+  view.innerHTML = ticketContent();
+  if (hadFocus) (view.querySelector('[aria-selected="true"]') || document.querySelector('#main')).focus();
+}
+function ticketContent() {
+  const { collection } = ticketSelection;
+  if (!ticketBooks.has(collection.id)) loadTicketBook(collection);
+  const { tickets, failed } = ticketBooks.get(collection.id);
+  const indexOpen = app.querySelector(`.ticket-reader[data-subject="${collection.id}"] .ticket-selector`)?.open ?? !compactTickets.matches;
+  return ticketReader(ticketSelection, tickets, { mode: ticketMode, recall: ticketRecall, failed, indexOpen });
+}
 function getProgress(exam) {
   if (!progressCache.has(exam.id)) {
     try { progressCache.set(exam.id, loadExamProgress(JSON.parse(safeRead(progressKey(exam.id))), exam)); }
@@ -69,10 +108,10 @@ function shell(content) {
   const e = current(), count = statistics(progress, questions()).mistakes;
   const nav = [['classic', t("Экзамен")], ['library', t("Все вопросы")], ['cards', t("Карточки")], ['mistakes', t("Мои ошибки")], ['bookmarks', t("Избранное")], ['practice', t("Настроить практику")], ['exam', t("Проверка с таймером")], ['home', t("Мой прогресс")]];
   const selected = ['quiz', 'results'].includes(route) ? progress.session?.classic ? 'classic' : progress.session?.mode || 'practice' : route;
-  return `<button class="menu-backdrop ${menuOpen ? 'visible' : ''}" data-action="close-menu" aria-label="${t("Закрыть меню")}" ${menuOpen ? '' : 'hidden'}></button><aside id="sidebar" class="sidebar ${menuOpen ? 'is-open' : ''}" ${menuOpen ? '' : 'inert'}><div class="sidebar-brand"><a class="brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" width="34" height="34" alt="">` : ''}<span>${esc(siteConfig.name)}</span></a>${btn('close-menu', '×', 'menu-close', `aria-label="${t("Закрыть меню")}"`)}</div><p class="workspace-label">${esc(siteText(siteConfig, 'tagline'))}</p><a href="#exams" class="catalog-link ${route === 'exams' ? 'active' : ''}"><span>▦</span> ${t("Мои экзамены")} <span class="nav-badge">${visibleExams().length}</span></a><details class="sidebar-extra"><summary>${t("Дополнительно")}</summary><div class="nav-caption">${esc(e?.title || t("ВАШЕ ОБУЧЕНИЕ"))}</div><nav aria-label="${t("Основная навигация")}">${nav.map(([id, label]) => `<a class="nav-item ${selected === id ? 'active' : ''}" href="#${id}" ${id === 'classic' ? 'data-action="classic"' : ''} ${selected === id ? 'aria-current="page"' : ''}><span class="nav-icon" aria-hidden="true">${symbols[id] || 'ϟ'}</span><span>${label}</span>${id === 'mistakes' && count ? `<b class="nav-badge">${count}</b>` : ''}</a>`).join('')}</nav><div class="sidebar-bottom"><p id="save-state">${storageOK ? t("● Прогресс сохранён в браузере") : t("○ Есть несохранённые изменения")}</p><a href="#admin">${t("⚙ Оформление сайта")}</a><a href="#about">${t("Как всё работает ↗")}</a></div></details></aside><div class="main-shell"><header class="topbar"><div class="topbar-brand">${btn('toggle-menu', '☰', 'menu-toggle', `aria-label="${t("Открыть меню")}" aria-controls="sidebar" aria-expanded="${menuOpen}"`)}<a class="header-brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" alt="" width="30" height="30">` : ''}<strong>${esc(siteConfig.name)}</strong></a><div class="topbar-caption">${siteConfig.showTopbarText ? `<span class="eyebrow">${esc(siteText(siteConfig, 'topbarText'))}</span>` : ''}<span class="course-name">${esc(e?.title || siteConfig.name)}</span></div></div><div class="topbar-actions"><label class="sr-only" for="exam-switch">${t("Текущий экзамен")}</label><select id="exam-switch">${visibleExams().map(x => `<option value="${x.id}" ${x.id === activeId ? 'selected' : ''}>${esc(x.title)}</option>`).join('')}</select><label class="sr-only" for="language-switch">${t("Язык интерфейса")}</label><select id="language-switch" aria-label="${t("Язык интерфейса")}">${[['ru', 'RU'], ['en', 'EN'], ['kk', 'ҚАЗ']].map(([id, label]) => `<option value="${id}" ${getLanguage() === id ? 'selected' : ''}>${label}</option>`).join('')}</select></div></header><main id="main" class="${route === 'exams' ? 'catalog-main' : ''}" tabindex="-1">${route === 'exams' && siteConfig.background ? `<img class="catalog-background" src="${esc(siteConfig.background)}" alt="" style="opacity:${siteConfig.backgroundOpacity / 100}">` : ''}<div class="page-content">${!catalogOK ? `<div class="notice error">${t("Библиотека браузера повреждена или недоступна. Импорт остановлен, чтобы не перезаписать данные. Скачайте сырые данные в разделе «Добавить экзамен».")}</div>` : ''}${content}</div></main>${route !== 'exams' ? `<footer><strong>${esc(siteConfig.name)}</strong><span>${t("Один вопрос ближе к цели.")}</span><a href="#import">${t("Импорт и резервная копия ↗")}</a></footer>` : ''}</div>`;
+  return `<button class="menu-backdrop ${menuOpen ? 'visible' : ''}" data-action="close-menu" aria-label="${t("Закрыть меню")}" ${menuOpen ? '' : 'hidden'}></button><aside id="sidebar" class="sidebar ${menuOpen ? 'is-open' : ''}" ${menuOpen ? '' : 'inert'}><div class="sidebar-brand"><a class="brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" width="34" height="34" alt="">` : ''}<span>${esc(siteConfig.name)}</span></a>${btn('close-menu', '×', 'menu-close', `aria-label="${t("Закрыть меню")}"`)}</div><p class="workspace-label">${esc(siteText(siteConfig, 'tagline'))}</p><a href="#exams" class="catalog-link ${route === 'exams' ? 'active' : ''}"><span>▦</span> ${t("Мои экзамены")} <span class="nav-badge">${visibleExams().length + ticketCollections.length}</span></a><details class="sidebar-extra"><summary>${t("Дополнительно")}</summary><div class="nav-caption">${esc(e?.title || t("ВАШЕ ОБУЧЕНИЕ"))}</div><nav aria-label="${t("Основная навигация")}">${nav.map(([id, label]) => `<a class="nav-item ${selected === id ? 'active' : ''}" href="#${id}" ${id === 'classic' ? 'data-action="classic"' : ''} ${selected === id ? 'aria-current="page"' : ''}><span class="nav-icon" aria-hidden="true">${symbols[id] || 'ϟ'}</span><span>${label}</span>${id === 'mistakes' && count ? `<b class="nav-badge">${count}</b>` : ''}</a>`).join('')}</nav><div class="sidebar-bottom"><p id="save-state">${storageOK ? t("● Прогресс сохранён в браузере") : t("○ Есть несохранённые изменения")}</p><a href="#admin">${t("⚙ Оформление сайта")}</a><a href="#about">${t("Как всё работает ↗")}</a></div></details></aside><div class="main-shell"><header class="topbar"><div class="topbar-brand">${btn('toggle-menu', '☰', 'menu-toggle', `aria-label="${t("Открыть меню")}" aria-controls="sidebar" aria-expanded="${menuOpen}"`)}<a class="header-brand" href="#exams">${siteConfig.logo ? `<img src="${esc(siteConfig.logo)}" alt="" width="30" height="30">` : ''}<strong>${esc(siteConfig.name)}</strong></a><div class="topbar-caption">${siteConfig.showTopbarText ? `<span class="eyebrow">${esc(siteText(siteConfig, 'topbarText'))}</span>` : ''}<span class="course-name">${esc(ticketSelection?.collection.title || e?.title || siteConfig.name)}</span></div></div><div class="topbar-actions"><label class="sr-only" for="exam-switch">${t("Текущий экзамен")}</label><select id="exam-switch">${visibleExams().map(x => `<option value="${x.id}" ${!ticketSelection && x.id === activeId ? 'selected' : ''}>${esc(x.title)}</option>`).join('')}${ticketCollections.map(c => `<option lang="kk" value="tickets/${c.id}/1" ${ticketSelection?.collection.id === c.id ? 'selected' : ''}>${esc(c.title)}</option>`).join('')}</select><label class="sr-only" for="language-switch">${t("Язык интерфейса")}</label><select id="language-switch" aria-label="${t("Язык интерфейса")}">${[['ru', 'RU'], ['en', 'EN'], ['kk', 'ҚАЗ']].map(([id, label]) => `<option value="${id}" ${getLanguage() === id ? 'selected' : ''}>${label}</option>`).join('')}</select></div></header><main id="main" class="${route === 'exams' ? 'catalog-main' : route === 'tickets' ? 'ticket-main' : ''}" tabindex="-1">${route === 'exams' && siteConfig.background ? `<img class="catalog-background" src="${esc(siteConfig.background)}" alt="" style="opacity:${siteConfig.backgroundOpacity / 100}">` : ''}<div class="page-content">${!catalogOK ? `<div class="notice error">${t("Библиотека браузера повреждена или недоступна. Импорт остановлен, чтобы не перезаписать данные. Скачайте сырые данные в разделе «Добавить экзамен».")}</div>` : ''}${content}</div></main>${route !== 'exams' ? `<footer><strong>${esc(siteConfig.name)}</strong><span>${t("Один вопрос ближе к цели.")}</span><a href="#import">${t("Импорт и резервная копия ↗")}</a></footer>` : ''}</div>`;
 }
 function catalogPage() {
-  return `<div class="catalog-hero">${siteConfig.homeEyebrow ? `<p class="eyebrow">${esc(siteText(siteConfig, 'homeEyebrow'))}</p>` : ''}<h1>${esc(siteText(siteConfig, 'homeTitle'))}</h1><p>${esc(siteText(siteConfig, 'homeSubtitle'))}</p></div><div class="catalog-grid">${visibleExams().map((e, i) => {
+  return `<div class="catalog-hero">${siteConfig.homeEyebrow ? `<p class="eyebrow">${esc(siteText(siteConfig, 'homeEyebrow'))}</p>` : ''}<h1>${esc(siteText(siteConfig, 'homeTitle'))}</h1><p>${esc(siteText(siteConfig, 'homeSubtitle'))}</p></div>${ticketCatalog()}<h2 class="catalog-quiz-heading">${t("Тесты")}</h2><div class="catalog-grid">${visibleExams().map((e, i) => {
     const p = getProgress(e), stats = statistics(p, e.questions), usable = e.questions.filter(isGradable).length;
     return `<article class="exam-card"><div class="card-top"><span class="exam-monogram color-${i % 3}">${esc(e.title.slice(0, 2).toUpperCase())}</span><span class="tag">${bundled.some(b => b.id === e.id) ? t("Встроенный") : t("Твой экзамен")}</span></div><h2>${esc(e.title)}</h2><p class="muted">${esc(e.description || t("Все вопросы, тренировка и карточки в одном месте."))}</p><div class="exam-meta">${countText(e.questions.length, 'questions')} · ${countText(Object.keys(sectionNames(e)).length, 'sections')}</div>${usable < e.questions.length ? `<p class="pending-label">${e.questions.length - usable} ${t("требуют проверки ключа")}</p>` : ''}<div class="progress-label"><span>${t("Последний ответ верный")}</span><b>${stats.learned} / ${usable}</b></div>${meter(stats.learned, usable)}<div class="actions">${btn('open-exam', p.session?.classic && !p.session.finishedAt ? t("Продолжить экзамен →") : t("Начать экзамен →"), 'primary', `data-id="${e.id}"`)}</div></article>`;
   }).join('')}</div>`;
@@ -267,11 +306,15 @@ async function loadConfigFile(input) {
 }
 function render() {
   route = location.hash.slice(1) || 'exams';
+  ticketSelection = parseTicketRoute(route);
+  if (ticketSelection) route = 'tickets';
+  else if (route === 'tickets') route = 'exams';
   if (route === 'classic') { if (current()) { startClassic(); return; } route = 'exams'; }
-  if (!current() && !['exams', 'import', 'admin'].includes(route)) route = 'exams';
-  const pages = { exams: catalogPage, home: homePage, practice: () => setupPage('practice'), exam: () => setupPage('exam'), quiz: quizPage, results: resultsPage, library: libraryPage, mistakes: libraryPage, bookmarks: libraryPage, cards: cardsPage, import: importPage, admin: adminPage, about: aboutPage };
-  if (!pages[route]) route = 'exams';
+  if (!current() && !['exams', 'import', 'admin', 'tickets'].includes(route)) route = 'exams';
+  const pages = { exams: catalogPage, tickets: ticketPage, home: homePage, practice: () => setupPage('practice'), exam: () => setupPage('exam'), quiz: quizPage, results: resultsPage, library: libraryPage, mistakes: libraryPage, bookmarks: libraryPage, cards: cardsPage, import: importPage, admin: adminPage, about: aboutPage };
+  if (!Object.hasOwn(pages, route)) route = 'exams';
   document.title = `${route === 'exams' ? t("Мои экзамены") : route === 'import' ? t("Добавить экзамен") : current()?.title || t("Подготовка")} — ${siteConfig.name}`;
+  if (ticketSelection) document.title = `${t("Билет")} № ${ticketSelection.number} · ${ticketSelection.collection.title} — ${siteConfig.name}`;
   document.documentElement.lang = getLanguage();
   document.documentElement.style.cssText = themeStyle(siteConfig);
   document.querySelector('meta[name="theme-color"]').content = siteConfig.accentColor || '#3863f4';
@@ -291,6 +334,24 @@ app.addEventListener('click', async event => {
   if (event.target.closest('#sidebar a')) setMenu(false);
   const target = event.target.closest('[data-action]'); if (!target || target.disabled) return;
   const action = target.dataset.action, id = target.dataset.id, s = progress.session;
+  if (action === 'ticket-mode') {
+    ticketMode = target.dataset.mode;
+    try { localStorage.setItem('niutest-ticket-mode', ticketMode); } catch { /* Works in memory. */ }
+    app.querySelectorAll('[data-action="ticket-mode"]').forEach(button => button.setAttribute('aria-pressed', button.dataset.mode === ticketMode));
+    app.querySelectorAll('.answer-detail').forEach(answer => { answer.hidden = ticketMode !== 'long'; });
+    return;
+  }
+  if (action === 'ticket-recall') {
+    ticketRecall = !ticketRecall;
+    target.setAttribute('aria-pressed', ticketRecall);
+    app.querySelectorAll('.ticket-answer').forEach(details => { details.open = !ticketRecall; });
+    return;
+  }
+  if (action === 'ticket-retry') {
+    ticketBooks.delete(ticketSelection.collection.id);
+    refreshTicketReader();
+    return;
+  }
   if (action === 'toggle-menu' || action === 'close-menu') { setMenu(action === 'toggle-menu' ? !menuOpen : false); return; }
   if (action.startsWith('config-')) return configAction(action);
   if (action === 'classic') { event.preventDefault(); return startClassic(); }
@@ -362,7 +423,7 @@ app.addEventListener('change', async event => {
   if (el.id === 'config-upload') return loadConfigFile(el);
   if (el.closest('#site-config-form')) { updateConfigDraft(); return; }
   if (el.id === 'language-switch') { if (route === 'admin') updateConfigDraft(); setLanguage(el.value); try { localStorage.setItem('niutest-language', getLanguage()); } catch {} setMenu(false); render(); document.querySelector('#language-switch')?.focus(); return; }
-  if (el.id === 'exam-switch') return selectExam(el.value, 'exams');
+  if (el.id === 'exam-switch') return parseTicketRoute(el.value) ? go(el.value) : selectExam(el.value, 'exams');
   if (el.id === 'section-filter') { filter = el.value; page = 1; refreshLibrary(); }
   if (el.id === 'status-filter') { statusFilter = el.value; page = 1; refreshLibrary(); }
   if (el.id === 'show-answers') { reveal = el.checked; refreshLibrary(); }
@@ -384,6 +445,15 @@ app.addEventListener('dragover', event => { if (route === 'import' && event.data
 app.addEventListener('dragleave', event => { if (!event.relatedTarget || !app.contains(event.relatedTarget)) document.querySelector('#dropzone')?.classList.remove('dragging'); });
 app.addEventListener('drop', event => { if (route === 'import') { event.preventDefault(); document.querySelector('#dropzone')?.classList.remove('dragging'); readFiles(event.dataTransfer.files); } });
 document.addEventListener('keydown', event => {
+  const tab = event.target.closest('.ticket-tabs [role="tab"]');
+  if (!menuOpen && tab && !event.altKey && !event.metaKey && !event.ctrlKey && !event.shiftKey && ['ArrowLeft', 'ArrowRight', 'Home', 'End', ' '].includes(event.key)) {
+    event.preventDefault();
+    const tabs = Array.from(tab.parentElement.children);
+    const index = tabs.indexOf(tab);
+    const next = { ArrowLeft: (index + tabs.length - 1) % tabs.length, ArrowRight: (index + 1) % tabs.length, Home: 0, End: tabs.length - 1, ' ': index };
+    tabs[next[event.key]].click();
+    return;
+  }
   if (event.key === 'Escape' && menuOpen) { setMenu(false); return; }
   if (menuOpen && event.key === 'Tab') { const nodes = [...document.querySelectorAll('#sidebar a, #sidebar button, #sidebar summary')].filter(el => el.checkVisibility()); const first = nodes[0], last = nodes.at(-1); if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } }
   if (event.repeat || menuOpen || document.querySelector('dialog[open]') || /INPUT|SELECT|TEXTAREA/.test(event.target.tagName) || event.ctrlKey || event.metaKey || event.altKey) return;
@@ -397,7 +467,19 @@ document.addEventListener('keydown', event => {
     if (selector && document.querySelector(selector)) { event.preventDefault(); document.querySelector(selector).click(); }
   }
 });
-window.addEventListener('hashchange', () => { menuOpen = false; document.body.classList.remove('menu-open'); search = ''; filter = statusFilter = 'all'; page = 1; render(); window.scrollTo(0, 0); document.querySelector('#main')?.focus({ preventScroll: true }); });
+window.addEventListener('hashchange', () => {
+  const fromTicketTab = document.activeElement?.closest('.ticket-tabs');
+  menuOpen = false;
+  document.body.classList.remove('menu-open');
+  search = ''; filter = statusFilter = 'all'; page = 1;
+  render();
+  if (fromTicketTab && ticketSelection) {
+    app.querySelector('[role="tab"][aria-selected="true"]')?.focus();
+  } else {
+    window.scrollTo(0, 0);
+    document.querySelector('#main')?.focus({ preventScroll: true });
+  }
+});
 document.addEventListener('visibilitychange', tick);
 // Avoid silent last-writer-wins loss when another tab changes the library or progress.
 window.addEventListener('storage', event => { if (event.key === LIBRARY_KEY || event.key?.startsWith('niutest-progress-v2:')) { toast(t("Данные изменены в другой вкладке. Обновите страницу перед продолжением.")); app.inert = true; const el = document.querySelector('#external-change'); el.hidden = false; } });

@@ -7,7 +7,7 @@ import { validateSiteConfig, themeStyle } from '../assets/site-config.js';
 import { parseExam } from '../assets/exam-format.js';
 
 test('all explicit interface messages have both translations', async () => {
-  for (const file of ['app', 'site-config', 'exam-format', 'library-store', 'catalog-export']) {
+  for (const file of ['app', 'tickets', 'site-config', 'exam-format', 'library-store', 'catalog-export']) {
     const source = await readFile(new URL(`../assets/${file}.js`, import.meta.url), 'utf8');
     for (const [, literal] of source.matchAll(/\bt\(("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')\)/g)) {
       const key = literal[0] === '"' ? JSON.parse(literal) : literal.slice(1,-1);

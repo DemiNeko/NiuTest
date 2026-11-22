@@ -14,9 +14,9 @@ export function t(key) {
 export function siteText(config, key) { return config.translations?.[language]?.[key] ?? config[key] ?? ''; }
 
 const nouns = {
-  ru: { questions: ['вопрос', 'вопроса', 'вопросов'], sections: ['раздел', 'раздела', 'разделов'] },
-  en: { questions: ['question', 'questions', 'questions'], sections: ['section', 'sections', 'sections'] },
-  kk: { questions: ['сұрақ', 'сұрақ', 'сұрақ'], sections: ['бөлім', 'бөлім', 'бөлім'] }
+  ru: { questions: ['вопрос', 'вопроса', 'вопросов'], sections: ['раздел', 'раздела', 'разделов'], tickets: ['билет', 'билета', 'билетов'] },
+  en: { questions: ['question', 'questions', 'questions'], sections: ['section', 'sections', 'sections'], tickets: ['ticket', 'tickets', 'tickets'] },
+  kk: { questions: ['сұрақ', 'сұрақ', 'сұрақ'], sections: ['бөлім', 'бөлім', 'бөлім'], tickets: ['билет', 'билет', 'билет'] }
 };
 export function countText(count, noun) {
   const plural = new Intl.PluralRules(language).select(count);
