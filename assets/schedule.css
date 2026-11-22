@@ -107,6 +107,69 @@
   display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 7px 0; font-size: 14px; cursor: pointer;
 }
 .schedule-checks label + label { border-top: 1px solid var(--line); }
+#schedule-edit-form .schedule-wallpaper-fields {
+  margin-top: 20px; padding: 13px 16px 16px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--schedule-tint);
+}
+.schedule-wallpaper-fields > legend { padding: 0 6px; font-size: 16px; font-weight: 700; }
+.wallpaper-hint { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.wallpaper-source, .wallpaper-rules { display: grid; align-items: end; gap: 10px; }
+.wallpaper-source { grid-template-columns: minmax(0, 1fr) auto; }
+.wallpaper-rules { grid-template-columns: minmax(0, 1.5fr) minmax(110px, .7fr); margin-top: 14px; }
+.wallpaper-source .field, .wallpaper-rules .field { min-width: 0; }
+.wallpaper-rules select { width: 100%; min-width: 0; }
+.wallpaper-file {
+  display: inline-flex; position: relative; min-height: 44px; align-items: center; justify-content: center;
+  padding: 8px 14px; border: 1px solid var(--accent-line); border-radius: 9px; color: var(--blue);
+  background: var(--paper); font-size: 13px; font-weight: 650; cursor: pointer; overflow: hidden;
+}
+.wallpaper-file:hover { background: var(--accent-soft); }
+.wallpaper-file:focus-within { outline: 3px solid var(--blue); outline-offset: 2px; }
+.wallpaper-file input { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+.catalog-main.exam-wallpaper-active {
+  --wall-base: color-mix(in srgb, var(--blue) 55%, #111e36);
+  background: var(--wall-base);
+}
+.catalog-main.exam-wallpaper-active::before, .catalog-main.exam-wallpaper-active > .catalog-background,
+.catalog-main.exam-wallpaper-active .catalog-hero { display: none; }
+.exam-wallpaper-surface, .exam-wallpaper-surface > img, .wallpaper-miniature > img {
+  position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
+}
+.exam-wallpaper-surface {
+  overflow: hidden; z-index: -1;
+  background: radial-gradient(ellipse at 90% 10%, var(--blue), transparent 64%), var(--wall-base);
+}
+.exam-wallpaper-surface > img, .wallpaper-miniature > img { object-fit: cover; object-position: center; }
+.exam-wallpaper-surface::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(105deg, rgb(13 22 40 / 86%) 0%, rgb(13 22 40 / 70%) 48%, rgb(13 22 40 / 20%) 90%);
+}
+.exam-wallpaper-hero { position: relative; padding: clamp(15px, 2.6vw, 36px) 0 clamp(26px, 4.6vw, 60px); color: white; }
+.wallpaper-caption { position: relative; display: flex; align-items: center; gap: clamp(16px, 3vw, 38px); max-width: 850px; }
+.wallpaper-date {
+  flex: none; display: grid; text-align: center; align-content: center; justify-items: center; gap: 4px;
+  padding-right: clamp(16px, 3vw, 38px); border-right: 1px solid rgb(255 255 255 / 55%); line-height: 1;
+}
+.wallpaper-date strong { font-size: clamp(55px, 7.5vw, 98px); font-weight: 700; letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
+.wallpaper-date span { font-size: clamp(13px, 1.8vw, 19px); font-weight: 550; }
+.wallpaper-subject { min-width: 0; text-shadow: 0 1px 5px rgb(9 17 34 / 55%); }
+.wallpaper-subject > p { margin: 0 0 6px; font-size: clamp(13px, 1.4vw, 17px); line-height: 1.4; font-weight: 600; }
+.wallpaper-subject h1 { margin: 0; color: inherit; font-size: clamp(26px, 4vw, 48px); line-height: 1.12; text-wrap: balance; overflow-wrap: anywhere; }
+.wallpaper-miniature {
+  isolation: isolate; overflow: hidden; border-radius: 10px; margin: 12px 0 14px; padding: clamp(12px, 2vw, 22px);
+  background: linear-gradient(110deg, color-mix(in srgb, var(--blue) 40%, #111e36), var(--blue));
+}
+.wallpaper-miniature > img { z-index: -2; }
+.wallpaper-miniature::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(105deg, rgb(13 22 40 / 82%), rgb(13 22 40 / 62%) 66%, rgb(13 22 40 / 25%));
+}
+.wallpaper-miniature .wallpaper-caption { gap: 15px; }
+.wallpaper-miniature .wallpaper-date { padding-right: 15px; }
+.wallpaper-miniature .wallpaper-date strong { font-size: 34px; }
+.wallpaper-miniature .wallpaper-date span, .wallpaper-miniature .wallpaper-subject > p { font-size: 12px; }
+.wallpaper-miniature h3 { margin: 0; font-size: clamp(16px, 2vw, 21px); line-height: 1.25; color: white; }
+.wallpaper-miniature small { display: block; font-size: 12px; margin-top: 6px; }
 .schedule-reference { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
 .schedule-materials { display: inline-block; margin-top: 6px; color: var(--blue); font-size: 13px; font-weight: 600; }
 .schedule-materials:hover { text-decoration: underline; }
@@ -194,6 +257,10 @@
   .schedule-month-grid { margin: 9px auto 0; }
   .schedule-agenda { padding: 16px 20px; }
   .schedule-agenda-day { grid-template-columns: 34px 1fr; gap: 9px; }
+  .wallpaper-source, .wallpaper-rules { grid-template-columns: minmax(0, 1fr); }
+  .wallpaper-file { justify-self: start; }
+  .wallpaper-rules input[type=number] { max-width: 100px; }
+  .exam-wallpaper-surface::after { background: linear-gradient(to bottom, rgb(13 22 40 / 80%), rgb(13 22 40 / 40%) 65%); }
 }
 @media (max-width: 400px) {
   .schedule-screen .button { font-size: 12px; }

@@ -1,13 +1,15 @@
 import { t } from './i18n.js';
-import { createExam, createSchedule, publicSchedule, validateSchedule, validatePublicSchedule } from './schedule-model.js';
+import { createExam, createSchedule, publicSchedule, validateSchedule, validatePublicSchedule, selectExamBackground, scheduleToday } from './schedule-model.js';
 import { readRemote, writeRemote, openPlan, sealPlan, openCredential, sealCredential } from './schedule-storage.js';
-import { renderScheduleLogin, renderSchedulePlanner, renderPublicSchedule, refreshScheduleSummary } from './schedule-view.js';
+import { prepareSchedulePhoto } from './schedule-photo.js';
+import { renderScheduleLogin, renderSchedulePlanner, renderPublicSchedule, refreshScheduleSummary, renderExamBackgroundHeader, refreshExamWallpaperPreview } from './schedule-view.js';
 
 // Never include the device credential in NiuTest's learner-data exports.
 const deviceKey = 'NiuTest.schedule.device.v1';
 let published = null, configured = false, loadFailed = false;
 let session = null, selection = '', dirty = false, preview = false, busy = false;
 let errorText = '', notice = '', conflict = false;
+let checkedMinute = -1, lastPaint = '';
 
 function errorMessage(error) {
   switch (error.code) {
@@ -16,6 +18,9 @@ function errorMessage(error) {
     case 'conflict': return t("Расписание уже изменилось. Скопируйте нужные правки и загрузите последнюю версию.");
     case 'unavailable': return t("GitHub недоступен. Проверьте соединение и попробуйте ещё раз.");
     case 'crypto': return t("Для входа откройте сайт по HTTPS в современном браузере.");
+    case 'photo-type': return t("Выберите изображение JPG, PNG или WebP.");
+    case 'photo-size': return t("Изображение слишком большое. Выберите файл до 12 МБ и 50 мегапикселей.");
+    case 'photo-decode': return t("Не удалось прочитать изображение. Выберите другой файл.");
     default: return t("Не удалось прочитать или сохранить расписание. Проверьте данные и попробуйте ещё раз.");
   }
 }
@@ -40,6 +45,38 @@ export function scheduleBackdrop() {
 function refreshBackdrop() {
   const host = document.getElementById('schedule-backdrop');
   if (host) host.innerHTML = scheduleBackdrop();
+  updateExamBackground(true);
+}
+
+export function updateExamBackground(force = false) {
+  const minute = Math.floor(Date.now() / 60_000);
+  if (!force && minute === checkedMinute) return;
+  checkedMinute = minute;
+  const heading = document.getElementById('exam-background-heading');
+  if (!heading) return;
+  const today = scheduleToday();
+  const winner = selectExamBackground(published?.backgrounds || [], today);
+  const signature = JSON.stringify([today, winner]);
+  if (!force && signature === lastPaint) return;
+  lastPaint = signature;
+  const main = heading.closest('.catalog-main');
+  main.classList.toggle('exam-wallpaper-active', Boolean(winner));
+  main.querySelector('.exam-wallpaper-surface')?.remove();
+  heading.innerHTML = winner ? renderExamBackgroundHeader(winner, today) : '';
+  if (!winner) return;
+
+  const surface = document.createElement('div');
+  surface.className = 'exam-wallpaper-surface';
+  surface.setAttribute('aria-hidden', 'true');
+  if (winner.image) {
+    const img = document.createElement('img');
+    img.alt = '';
+    img.referrerPolicy = 'no-referrer';
+    img.onerror = () => img.remove();
+    img.src = session?.photoPreviews.get(winner.image) || winner.image;
+    surface.append(img);
+  }
+  main.prepend(surface);
 }
 
 export function scheduleScreen() {
@@ -49,7 +86,8 @@ export function scheduleScreen() {
   }
   if (!session) return renderScheduleLogin({ busy, setup: !configured, tokenRequired: !configured, error: errorText });
   return renderSchedulePlanner(session.plan, {
-    selectedId: selection, dirty, preview, busy, error: errorText, notice, conflict, tokenRequired: !session.token
+    selectedId: selection, dirty, preview, busy, error: errorText, notice, conflict,
+    tokenRequired: !session.token, photoPreviews: session.photoPreviews
   });
 }
 
@@ -65,7 +103,7 @@ function refresh(focusSelector) {
 }
 
 function beginSession(plan, sha, password, token) {
-  session = { plan, sha, password, token, pendingToken: '', remember: false };
+  session = { plan, sha, password, token, pendingToken: '', remember: false, photos: new Map(), photoPreviews: new Map() };
   selection = plan.exams[0]?.id || '';
   preview = dirty = conflict = false;
   configured = true;
@@ -148,6 +186,50 @@ function markDirty() {
   if (!errorText) document.querySelector('#schedule-workspace .schedule-message[role="alert"]')?.remove();
 }
 
+function wallpaperFor(exam) {
+  return exam.wallpaper ??= { enabled: false, image: '', priority: 1, timing: 'day' };
+}
+
+function dropUnusedPhotos() {
+  const used = new Set(session.plan.exams.map(exam => exam.wallpaper?.image));
+  for (const path of session.photoPreviews.keys()) {
+    if (!used.has(path)) {
+      session.photos.delete(path);
+      session.photoPreviews.delete(path);
+    }
+  }
+}
+
+async function choosePhoto(exam, file) {
+  if (!file) return;
+  busy = true;
+  errorText = notice = '';
+  refresh();
+  try {
+    const photo = await prepareSchedulePhoto(file);
+    wallpaperFor(exam).image = photo.path;
+    session.photos.set(photo.path, photo);
+    session.photoPreviews.set(photo.path, photo.previewUrl);
+    dropUnusedPhotos();
+    markDirty();
+  } catch (error) { errorText = errorMessage(error); }
+  finally { busy = false; refresh('[name=wallpaperFile]'); }
+}
+
+function updateWallpaper(input, exam, change) {
+  if (input.name === 'wallpaperFile') { if (change) return choosePhoto(exam, input.files[0]); return; }
+  const wallpaper = wallpaperFor(exam);
+  switch (input.name) {
+    case 'wallpaperEnabled': wallpaper.enabled = input.checked; break;
+    case 'wallpaperUrl': wallpaper.image = input.value.trim(); dropUnusedPhotos(); break;
+    case 'wallpaperPriority': wallpaper.priority = input.valueAsNumber; break;
+    case 'wallpaperTiming': wallpaper.timing = input.value; break;
+    default: return;
+  }
+  markDirty();
+  if (change) refreshExamWallpaperPreview(document.getElementById('schedule-workspace'), exam, session.photoPreviews);
+}
+
 export function scheduleInput(input, change) {
   if (busy || !session) return;
   if (input.id === 'schedule-publish-token') { session.pendingToken = input.value.trim(); return; }
@@ -166,6 +248,7 @@ export function scheduleInput(input, change) {
   }
   const row = session.plan.exams.find(exam => exam.id === selection);
   if (!row || !input.closest('#schedule-edit-form')) return;
+  if (input.name.startsWith('wallpaper')) return updateWallpaper(input, row, change);
   if (input.name === 'projectExam') {
     if (change && row.projectExam !== input.checked) {
       row.projectExam = input.checked;
@@ -186,7 +269,11 @@ export function scheduleInput(input, change) {
       row[input.name] = input.value;
       markDirty();
     }
-    if (change) refreshScheduleSummary(document.getElementById('schedule-workspace'), session.plan, selection, preview);
+    if (change) {
+      const root = document.getElementById('schedule-workspace');
+      refreshScheduleSummary(root, session.plan, selection, preview);
+      if (['title', 'date'].includes(input.name)) refreshExamWallpaperPreview(root, row, session.photoPreviews);
+    }
   }
 }
 
@@ -195,7 +282,7 @@ function checkedPlan() {
     try { validateSchedule({ ...session.plan, exams: [exam] }); }
     catch {
       selection = exam.id;
-      errorText = t("Проверьте название, дату, время и аудиторию выбранного экзамена.");
+      errorText = t("Проверьте поля экзамена, ссылку на изображение и приоритет от 1 до 10.");
       refresh();
       document.getElementById('schedule-edit-form')?.reportValidity();
       return null;
@@ -215,7 +302,9 @@ async function saveSchedule() {
   refresh();
   try {
     const record = { version: 1, public: publicSchedule(plan), vault: await sealPlan(plan, session.password) };
-    const result = await writeRemote(token, session.sha, record);
+    dropUnusedPhotos();
+    const result = await writeRemote(token, session.sha, record, [...session.photos.values()]);
+    session.photos.clear();
     session.sha = result.sha;
     session.plan = plan;
     session.token = token;
@@ -252,6 +341,14 @@ export async function scheduleAction(action, target, confirmAction) {
   if (!session) return;
   const plan = session.plan;
   if (action === 'schedule-save') return saveSchedule();
+  if (action === 'schedule-wallpaper-clear') {
+    const exam = plan.exams.find(row => row.id === selection);
+    if (exam?.wallpaper?.image) {
+      exam.wallpaper.image = '';
+      dropUnusedPhotos(); markDirty(); refresh('[name=wallpaperUrl]');
+    }
+    return;
+  }
   if (action === 'schedule-select') {
     selection = target.dataset.id;
     refresh(`[data-action="schedule-select"][data-id="${CSS.escape(selection)}"]`);
@@ -271,6 +368,7 @@ export async function scheduleAction(action, target, confirmAction) {
     if (index < 0) return;
     confirmAction(t("Удалить экзамен?"), plan.exams[index].title, t("Удалить"), () => {
       plan.exams.splice(index, 1);
+      dropUnusedPhotos();
       selection = plan.exams[Math.min(index, plan.exams.length - 1)]?.id || '';
       markDirty(); refresh('[data-action="schedule-add"]');
     });

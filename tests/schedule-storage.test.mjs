@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createSchedule, publicSchedule } from '../assets/schedule-model.js';
-import { openCredential, openPlan, readRemote, sealCredential, sealPlan, writeRemote } from '../assets/schedule-storage.js';
+import { checkedRecord, openCredential, openPlan, readRemote, sealCredential, sealPlan, writeRemote } from '../assets/schedule-storage.js';
+import { photoPath } from '../assets/schedule-photo.js';
 
 const plan = createSchedule();
 const password = 'local test passphrase';
@@ -88,6 +89,8 @@ test('a racing update reports conflict without retry, auth and availability erro
 });
 
 test('unexpected private/public fields and unprotected initial records cannot be written', async t => {
+  const background = { id: 'exam', title: 'Exam', date: '2026-12-04', image: '', priority: 1, timing: 'day' };
+  assert.throws(() => checkedRecord({ ...initial, public: { ...initial.public, backgrounds: [background] } }), {code:'invalid'});
   const fetch = t.mock.method(globalThis, 'fetch', async () => {
     const wrong = { ...initial, public: { ...initial.public, visible: true } };
     return json({ sha, encoding: 'base64', content: encoded(wrong) });
@@ -98,4 +101,79 @@ test('unexpected private/public fields and unprotected initial records cannot be
   await assert.rejects(writeRemote(token, '', locked), { code: 'invalid' });
   await assert.rejects(writeRemote('', sha, locked), { code: 'auth' });
   assert.equal(fetch.mock.callCount(), 1);
+});
+
+const imageBytes = Buffer.from('UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==', 'base64');
+const photo = { path: await photoPath(imageBytes), bytes: imageBytes };
+const head = '1'.repeat(40), baseTree = '2'.repeat(40), imageSha = '3'.repeat(40),
+  treeSha = '4'.repeat(40), nextHead = '5'.repeat(40);
+
+function mockPhotoCommit(t, { staleSchedule = false, concurrentPush = false } = {}) {
+  const events = [];
+  const fetch = t.mock.method(globalThis, 'fetch', async (url, opts) => {
+    assert.equal(opts.headers.Authorization, 'Bearer ' + token);
+    assert.equal(opts.redirect, 'error');
+    const suffix = new URL(url).pathname.replace('/repos/DemiNeko/NiuTest', '');
+    events.push(opts.method + ' ' + suffix);
+    const body = opts.body ? JSON.parse(opts.body) : undefined;
+    if (suffix === '/git/ref/heads/main') return json({object:{sha:head}});
+    if (suffix === '/git/commits/' + head) return json({tree:{sha:baseTree}});
+    if (suffix === '/contents/src/december-schedule.json') {
+      assert.equal(new URL(url).searchParams.get('ref'), head);
+      return json({sha:staleSchedule ? nextSha : sha});
+    }
+    if (suffix === '/git/blobs') {
+      assert.equal(body.encoding, 'base64');
+      if (body.content === imageBytes.toString('base64')) return json({sha:imageSha});
+      assert.deepEqual(JSON.parse(Buffer.from(body.content, 'base64')), locked);
+      return json({sha:nextSha});
+    }
+    if (suffix === '/git/trees') {
+      assert.equal(body.base_tree, baseTree);
+      assert.deepEqual(body.tree, [
+        {path:photo.path.slice(2), mode:'100644', type:'blob', sha:imageSha},
+        {path:'src/december-schedule.json', mode:'100644', type:'blob', sha:nextSha}
+      ]);
+      return json({sha:treeSha});
+    }
+    if (suffix === '/git/commits') {
+      assert.deepEqual(body.parents, [head]);
+      assert.equal(body.tree, treeSha);
+      return json({sha:nextHead});
+    }
+    assert.equal(suffix, '/git/refs/heads/main');
+    assert.equal(opts.method, 'PATCH');
+    assert.deepEqual(body, {sha:nextHead, force:false});
+    return concurrentPush ? new Response(null,{status:422}) : json({object:{sha:nextHead}});
+  });
+  return { events, fetch };
+}
+
+test('photo and schedule appear in the same non-forced main update, with identical files deduplicated', async t => {
+  const { events } = mockPhotoCommit(t);
+  const result = await writeRemote(token, sha, locked, [photo,photo]);
+  assert.deepEqual(result, {sha:nextSha, record:locked});
+  assert.equal(events.filter(step => step === 'POST /git/blobs').length, 2);
+  assert.equal(events.at(-1), 'PATCH /git/refs/heads/main');
+});
+
+test('a stale schedule is rejected before any new blobs or commits are written', async t => {
+  const { events } = mockPhotoCommit(t, {staleSchedule:true});
+  await assert.rejects(writeRemote(token, sha, locked, [photo]), {code:'conflict'});
+  assert.ok(events.every(step => step.startsWith('GET ')));
+});
+
+test('a concurrent push rejects the atomic update without a forced write or partial publication', async t => {
+  const { events } = mockPhotoCommit(t, {concurrentPush:true});
+  await assert.rejects(writeRemote(token, sha, locked, [photo]), {code:'conflict'});
+  assert.equal(events.filter(step => step.startsWith('PATCH')).length, 1);
+});
+
+test('forged image names, paths and payloads make no GitHub requests', async t => {
+  const { fetch } = mockPhotoCommit(t);
+  for (const path of ['./.github/workflows/release.yml', './src/images/schedule/' + 'f'.repeat(64) + '.webp']) {
+    await assert.rejects(writeRemote(token, sha, locked, [{...photo,path}]), {code:'invalid'});
+  }
+  await assert.rejects(writeRemote(token, sha, locked, [{...photo,bytes:new Uint8Array(22)}]), {code:'invalid'});
+  assert.equal(fetch.mock.callCount(), 0);
 });

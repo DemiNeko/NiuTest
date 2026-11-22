@@ -8,7 +8,7 @@ import { catalogFiles, zipFiles } from './catalog-export.js';
 import { esc } from './html.js';
 import { ticketCollections, parseTicketRoute, ticketReader } from './tickets.js';
 import { readTicketProgress, saveTicketVisit } from './ticket-progress.js';
-import { loadScheduleDocument, scheduleBackdrop, scheduleScreen, scheduleLogin, scheduleInput, scheduleAction } from './schedule-controller.js';
+import { loadScheduleDocument, scheduleBackdrop, scheduleScreen, scheduleLogin, scheduleInput, scheduleAction, updateExamBackground } from './schedule-controller.js';
 
 const app = document.querySelector('#app');
 const symbols = { exams: '▦', home: '⌂', practice: 'ϟ', exam: '◷', library: '☷', cards: '▤', mistakes: '↻', bookmarks: '☆', import: '+', about: '?' };
@@ -154,7 +154,7 @@ function catalogPage() {
       button: link(`tickets/${c.id}/${last || 1}`, last ? t("Продолжить экзамен →") : t("Начать экзамен →"), 'primary')
     });
   }
-  return `<div class="catalog-hero">${siteConfig.homeEyebrow ? `<p class="eyebrow">${esc(siteText(siteConfig, 'homeEyebrow'))}</p>` : ''}<h1>${esc(siteText(siteConfig, 'homeTitle'))}</h1><p>${esc(siteText(siteConfig, 'homeSubtitle'))}</p></div>
+  return `<div id="exam-background-heading"></div><div class="catalog-hero">${siteConfig.homeEyebrow ? `<p class="eyebrow">${esc(siteText(siteConfig, 'homeEyebrow'))}</p>` : ''}<h1>${esc(siteText(siteConfig, 'homeTitle'))}</h1><p>${esc(siteText(siteConfig, 'homeSubtitle'))}</p></div>
     <div id="schedule-backdrop">${scheduleBackdrop()}</div><div class="catalog-grid">${cards.map((card, i) => `<article class="exam-card">
       <div class="card-top"><span class="exam-monogram color-${i % 3}">${esc(card.title.slice(0, 2).toUpperCase())}</span><span class="tag">${esc(card.tag)}</span></div>
       <h2 lang="${esc(card.language || getLanguage())}">${esc(card.title)}</h2><p class="muted">${esc(card.description)}</p>
@@ -369,10 +369,13 @@ function render() {
   document.querySelector('.skip-link').textContent = t('Перейти к содержимому');
   document.querySelector('#external-change p').textContent = t('Данные изменились в другой вкладке. Обнови страницу, чтобы продолжить с актуальным прогрессом.');
   document.querySelector('#external-change a').textContent = t('Обновить страницу');
-  app.innerHTML = shell(pages[route]()); tick();
+  app.innerHTML = shell(pages[route]());
+  if (route === 'exams') updateExamBackground(true);
+  tick();
 }
 function finish() { finishSession(progress, questions()); save(); go('results'); }
 function tick() {
+  if (route === 'exams') updateExamBackground();
   const s = progress.session; if (!s || s.finishedAt || s.mode !== 'exam') return;
   const left = Math.max(0, Math.ceil((s.deadline - Date.now()) / 1000)), timer = document.querySelector('#timer');
   if (timer) { timer.textContent = `${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`; timer.classList.toggle('wrong-text', left < 60); }

@@ -1,6 +1,6 @@
 import { esc } from './html.js';
 import { getLanguage, locale } from './i18n.js';
-import { CHECK_LABELS, MONTH, SUBJECTS, publicSchedule } from './schedule-model.js';
+import { CHECK_LABELS, MONTH, SUBJECTS, publicSchedule, scheduleToday, validWallpaperImage } from './schedule-model.js';
 
 const copy = {
   ru: {
@@ -12,15 +12,23 @@ const copy = {
     confirm: 'Повторите пароль', minimum: 'Не менее 12 символов', remember: 'Запомнить токен на этом устройстве',
     optionalToken: 'Добавить доступ к публикации', createToken: 'Создать токен на GitHub',
     permission: 'Выберите репозиторий NiuTest и разрешение Contents → Read and write.',
-    logout: 'Выйти', save: 'Сохранить для всех', preview: 'Предпросмотр', closePreview: 'Закрыть предпросмотр',
+    logout: 'Выйти', save: 'Сохранить для всех', preview: 'Предпросмотр календаря', closePreview: 'Закрыть предпросмотр',
     unsaved: 'Есть несохранённые изменения', subjects: 'Предметы', add: 'Добавить предмет',
     edit: 'Экзамен', remove: 'Удалить предмет', subject: 'Название предмета',
-    date: 'Дата экзамена', time: 'Время', room: 'Аудитория', visibility: 'Показывать на главной',
+    date: 'Дата экзамена', time: 'Время', room: 'Аудитория', visibility: 'Показывать календарь на главной',
+    wallpaper: 'Фон экзамена', enableWallpaper: 'Использовать на главной',
+    wallpaperHint: 'Фон с датой и названием предмета можно включить даже при скрытом календаре.',
+    wallpaperUrl: 'Ссылка на изображение', uploadPhoto: 'Загрузить изображение', removePhoto: 'Убрать изображение',
+    imageHint: 'JPG, PNG или WebP. После сохранения загруженный файл будет доступен в репозитории.',
+    timing: 'Когда показывать', dayOnly: 'В день экзамена', upcoming: 'Заранее и в день экзамена',
+    priority: 'Приоритет от 1 до 10', orderHint: 'Сначала показывается сегодняшний экзамен, затем ближайший из включённых заранее. При совпадении дат выбирается экзамен с большим числом.',
+    wallpaperPreview: 'Предпросмотр фона', needDate: 'Назначьте дату экзамена для показа фона.',
+    today: 'Сегодня экзамен', nextExam: 'Ближайший экзамен',
     checklist: 'Чек-лист готовности', checklistShort: 'Готовность', emptyTitle: 'Новый предмет',
     projectExam: 'Проектный экзамен', checks: CHECK_LABELS, pending: 'Дата не назначена', empty: 'Добавьте первый предмет в расписание.',
     reference: 'Занятия по исходному расписанию', lecture: 'Лекция', seminar: 'Семинар',
     publicTitle: 'Расписание экзаменов', monthOverview: 'Календарь', noDates: 'Даты экзаменов ещё не назначены.',
-    roomShort: 'ауд.', previewTitle: 'Вид на главной', reload: 'Загрузить последнюю версию',
+    roomShort: 'ауд.', previewTitle: 'Вид календаря на главной', reload: 'Загрузить последнюю версию',
     publishHint: 'Календарь обновится после публикации GitHub Pages. Чек-лист доступен администратору.',
     invalidPreview: 'Проверьте названия предметов и даты для предпросмотра.', materials: 'Открыть билеты по предмету'
   },
@@ -33,16 +41,24 @@ const copy = {
     confirm: 'Құпиясөзді қайталаңыз', minimum: 'Кемінде 12 таңба', remember: 'Токенді осы құрылғыда сақтау',
     optionalToken: 'Жариялау рұқсатын қосу', createToken: 'GitHub-та токен жасау',
     permission: 'NiuTest репозиторийін және Contents → Read and write рұқсатын таңдаңыз.',
-    logout: 'Шығу', save: 'Барлығына сақтау', preview: 'Алдын ала көру', closePreview: 'Алдын ала көріністі жабу',
+    logout: 'Шығу', save: 'Барлығына сақтау', preview: 'Күнтізбені алдын ала көру', closePreview: 'Алдын ала көріністі жабу',
     unsaved: 'Сақталмаған өзгерістер бар', subjects: 'Пәндер', add: 'Пән қосу',
     edit: 'Емтихан', remove: 'Пәнді жою', subject: 'Пән атауы',
-    date: 'Емтихан күні', time: 'Уақыты', room: 'Аудитория', visibility: 'Басты бетте көрсету',
+    date: 'Емтихан күні', time: 'Уақыты', room: 'Аудитория', visibility: 'Күнтізбені басты бетте көрсету',
+    wallpaper: 'Емтихан фоны', enableWallpaper: 'Басты бетте пайдалану',
+    wallpaperHint: 'Күнтізбе жасырын болса да, пәннің атауы мен күні жазылған фонды қосуға болады.',
+    wallpaperUrl: 'Суретке сілтеме', uploadPhoto: 'Сурет жүктеу', removePhoto: 'Суретті алып тастау',
+    imageHint: 'JPG, PNG немесе WebP. Сақтағаннан кейін жүктелген файл репозиторийде қолжетімді болады.',
+    timing: 'Көрсету мерзімі', dayOnly: 'Емтихан күні', upcoming: 'Алдын ала және емтихан күні',
+    priority: 'Басымдық (1–10)', orderHint: 'Алдымен бүгінгі емтихан, содан кейін алдын ала көрсетуге таңдалған ең жақын емтихан көрсетіледі. Күндері бірдей болса, басымдық саны жоғары емтихан таңдалады.',
+    wallpaperPreview: 'Фонды алдын ала көру', needDate: 'Фонды көрсету үшін емтихан күнін белгілеңіз.',
+    today: 'Бүгін емтихан', nextExam: 'Ең жақын емтихан',
     checklist: 'Дайындық тізімі', checklistShort: 'Дайындық', emptyTitle: 'Жаңа пән',
     projectExam: 'Жобалық емтихан', checks: ['Күні мен аудиториясы расталды', 'Материалдар қосылды', 'Жауаптар тексерілді', 'Емтихан аяқталды'],
     pending: 'Күні белгіленбеген', empty: 'Кестеге алғашқы пәнді қосыңыз.',
     reference: 'Бастапқы кестедегі сабақтар', lecture: 'Дәріс', seminar: 'Семинар',
     publicTitle: 'Емтихан кестесі', monthOverview: 'Күнтізбе', noDates: 'Емтихан күндері әлі белгіленген жоқ.',
-    roomShort: 'ауд.', previewTitle: 'Басты беттегі көрініс', reload: 'Соңғы нұсқасын жүктеу',
+    roomShort: 'ауд.', previewTitle: 'Басты беттегі күнтізбе', reload: 'Соңғы нұсқасын жүктеу',
     publishHint: 'GitHub Pages жариялаған соң күнтізбе жаңарады. Дайындық тізімін әкімші ғана көре алады.',
     invalidPreview: 'Алдын ала көру үшін пән атаулары мен күндерін тексеріңіз.', materials: 'Пәннің билеттерін ашу'
   },
@@ -55,16 +71,24 @@ const copy = {
     confirm: 'Confirm password', minimum: 'At least 12 characters', remember: 'Remember the token on this device',
     optionalToken: 'Add publishing access', createToken: 'Create a token on GitHub',
     permission: 'Select the NiuTest repository and the Contents → Read and write permission.',
-    logout: 'Sign out', save: 'Save for everyone', preview: 'Preview', closePreview: 'Close preview',
+    logout: 'Sign out', save: 'Save for everyone', preview: 'Preview calendar', closePreview: 'Close preview',
     unsaved: 'Unsaved changes', subjects: 'Subjects', add: 'Add subject',
     edit: 'Exam', remove: 'Remove subject', subject: 'Subject name',
-    date: 'Exam date', time: 'Time', room: 'Room', visibility: 'Show on the home page',
+    date: 'Exam date', time: 'Time', room: 'Room', visibility: 'Show calendar on the home page',
+    wallpaper: 'Exam background', enableWallpaper: 'Use on the home page',
+    wallpaperHint: 'Show the exam date and subject on the home page even when the calendar is hidden.',
+    wallpaperUrl: 'Image URL', uploadPhoto: 'Upload an image', removePhoto: 'Remove image',
+    imageHint: 'JPG, PNG or WebP. Uploaded images will be available in the repository once saved.',
+    timing: 'When to show', dayOnly: 'On the exam day', upcoming: 'In advance and on the exam day',
+    priority: 'Priority from 1 to 10', orderHint: 'Today’s exam appears first, followed by the nearest exam set to show in advance. For exams on the same date, the higher number takes priority.',
+    wallpaperPreview: 'Background preview', needDate: 'Set an exam date to show this background.',
+    today: 'Exam today', nextExam: 'Next exam',
     checklist: 'Preparation checklist', checklistShort: 'Preparation', emptyTitle: 'New subject',
     projectExam: 'Project-based exam', checks: ['Date and room confirmed', 'Materials added', 'Answers checked', 'Exam completed'],
     pending: 'Date to be set', empty: 'Add the first subject to the schedule.',
     reference: 'Classes in the original timetable', lecture: 'Lecture', seminar: 'Seminar',
     publicTitle: 'Exam schedule', monthOverview: 'Calendar', noDates: 'Exam dates have yet to be set.',
-    roomShort: 'room', previewTitle: 'Home page preview', reload: 'Load latest version',
+    roomShort: 'room', previewTitle: 'Calendar on the home page', reload: 'Load latest version',
     publishHint: 'The calendar updates when GitHub Pages publishes. Only the administrator can view the checklist.',
     invalidPreview: 'Check subject names and dates to preview the schedule.', materials: 'Open the study tickets'
   }
@@ -143,7 +167,69 @@ function classReference(id) {
     }).join('')}</ul></details>`;
 }
 
-function editor(exam, busy) {
+function wallpaperHeading(exam, today, imageOverride, preview) {
+  const c = words();
+  const date = /^2026-12-(0[1-9]|[12]\d|3[01])$/.test(exam.date) ? utcDate(exam.date) : null;
+  const localPreview = preview && typeof imageOverride === 'string' &&
+    /^(?:blob:|data:image\/webp;base64,)/.test(imageOverride);
+  const image = localPreview ? imageOverride : validWallpaperImage(exam.image) && exam.image;
+  const titleTag = preview ? 'h3' : 'h1';
+  // The live photo spans the catalog. Only the miniature preview needs its own image.
+  const label = preview ? c.wallpaperPreview : exam.date === today ? c.today : c.nextExam;
+  const month = date && new Intl.DateTimeFormat(locale(), { day: 'numeric', month: 'long', timeZone: 'UTC' })
+    .formatToParts(date).find(part => part.type === 'month').value;
+  return `<header class="exam-wallpaper-hero${preview ? ' wallpaper-miniature' : ''}">
+    ${preview && image ? `<img aria-hidden="true" src="${esc(image)}" referrerpolicy="no-referrer" alt="">` : ''}
+    <div class="wallpaper-caption">
+      ${date ? `<time class="wallpaper-date" datetime="${esc(exam.date)}" aria-label="${esc(format(date, { dateStyle: 'full' }))}">
+        <strong>${date.getUTCDate()}</strong><span>${esc(month)}</span></time>` : ''}
+      <div class="wallpaper-subject"><p>${label}</p><${titleTag}>${esc(exam.title || c.emptyTitle)}</${titleTag}>
+        ${date ? '' : `<small>${c.needDate}</small>`}</div>
+    </div></header>`;
+}
+
+export function renderExamBackgroundHeader(winner, today = scheduleToday()) {
+  return winner ? wallpaperHeading(winner, today, null, false) : '';
+}
+
+function editorWallpaperPreview(exam, photoPreviews) {
+  const image = exam.wallpaper?.image || '';
+  return wallpaperHeading({ title: exam.title, date: exam.date, image }, '', photoPreviews?.get(image), true);
+}
+
+export function refreshExamWallpaperPreview(root, exam, photoPreviews) {
+  const container = root?.querySelector('#schedule-wallpaper-preview');
+  if (!container || !exam) return;
+  container.innerHTML = editorWallpaperPreview(exam, photoPreviews);
+  const remove = root.querySelector('[data-action="schedule-wallpaper-clear"]');
+  if (remove) remove.hidden = !exam.wallpaper?.image;
+}
+
+function wallpaperFields(exam, photoPreviews) {
+  const c = words(), wallpaper = exam.wallpaper;
+  const image = wallpaper?.image || '';
+  const uploaded = image.startsWith('./src/images/schedule/');
+  return `<fieldset class="schedule-wallpaper-fields"><legend>${c.wallpaper}</legend>
+    <label class="schedule-switch"><input type="checkbox" name="wallpaperEnabled" role="switch"${wallpaper?.enabled ? ' checked' : ''}>
+      <span class="schedule-switch-track" aria-hidden="true"></span><span>${c.enableWallpaper}</span></label>
+    <p class="wallpaper-hint">${c.wallpaperHint}</p>
+    <div id="schedule-wallpaper-preview">${editorWallpaperPreview(exam, photoPreviews)}</div>
+    <div class="wallpaper-source">
+      <label class="field">${c.wallpaperUrl}<input type="url" name="wallpaperUrl" placeholder="https://…" spellcheck="false"
+        value="${uploaded ? '' : esc(image)}"></label>
+      <label class="wallpaper-file"><input type="file" name="wallpaperFile" accept="image/jpeg,image/png,image/webp">
+        <span>${c.uploadPhoto}</span></label></div>
+    <p class="wallpaper-hint">${c.imageHint}</p>
+    <button class="schedule-text-button" type="button" data-action="schedule-wallpaper-clear"${image ? '' : ' hidden'}>${c.removePhoto}</button>
+    <div class="wallpaper-rules"><label class="field">${c.timing}<select name="wallpaperTiming">
+      <option value="day"${wallpaper?.timing !== 'upcoming' ? ' selected' : ''}>${c.dayOnly}</option>
+      <option value="upcoming"${wallpaper?.timing === 'upcoming' ? ' selected' : ''}>${c.upcoming}</option>
+    </select></label>
+    <label class="field">${c.priority}<input type="number" name="wallpaperPriority" min="1" max="10" step="1" value="${esc(wallpaper?.priority ?? 1)}"></label></div>
+    <p class="wallpaper-hint">${c.orderHint}</p></fieldset>`;
+}
+
+function editor(exam, busy, photoPreviews) {
   const c = words();
   if (!exam) return `<section class="schedule-surface schedule-empty"><p>${c.empty}</p></section>`;
   return `<section class="schedule-surface schedule-editor">
@@ -162,6 +248,7 @@ function editor(exam, busy) {
         ${c.checks.map((label, i) => `<label><input type="checkbox" data-schedule-check="${i}" name="check-${i}"${exam.checks[i] ? ' checked' : ''}>
           <span>${esc(label)}</span></label>`).join('')}
       </fieldset>
+      ${wallpaperFields(exam, photoPreviews)}
     </fieldset></form>
     ${['testing', 'parallel'].includes(exam.id) ? `<a class="schedule-materials" href="#tickets/${exam.id}/1">${c.materials} →</a>` : ''}
     ${classReference(exam.id)}
@@ -189,14 +276,14 @@ export function refreshScheduleSummary(root, plan, selectedId, preview) {
 }
 
 export function renderSchedulePlanner(plan, {
-  selectedId, busy = false, error = '', notice = '', dirty = false, preview = false, tokenRequired = false, conflict = false
+  selectedId, busy = false, error = '', notice = '', dirty = false, preview = false, tokenRequired = false, conflict = false, photoPreviews
 } = {}) {
   const c = words();
   const exam = plan.exams.find(item => item.id === selectedId) || plan.exams[0];
   return `<section class="schedule-screen schedule-planner" aria-labelledby="schedule-heading" aria-busy="${busy}">
     <header class="schedule-page-heading"><div><p class="schedule-month">${monthText()}</p><h1 id="schedule-heading">${c.title}</h1></div>
       <button type="button" class="button secondary small" data-action="schedule-logout"${disabled(busy)}>${c.logout}</button></header>
-    <div class="schedule-layout">${subjectList(plan.exams, exam?.id, busy)}${editor(exam, busy)}</div>
+    <div class="schedule-layout">${subjectList(plan.exams, exam?.id, busy)}${editor(exam, busy, photoPreviews)}</div>
     <div class="schedule-publication schedule-surface">
       <label class="schedule-switch"><input id="schedule-visible" type="checkbox" role="switch" ${plan.visible ? 'checked' : ''}${disabled(busy)}>
         <span class="schedule-switch-track" aria-hidden="true"></span><span>${c.visibility}</span></label>

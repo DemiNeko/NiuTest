@@ -1,6 +1,9 @@
 import { validateSchedule, validatePublicSchedule } from './schedule-model.js';
+import { photoPath, toBase64 } from './schedule-photo.js';
 
-const contentsUrl = 'https://api.github.com/repos/DemiNeko/NiuTest/contents/src/december-schedule.json';
+const repository = 'https://api.github.com/repos/DemiNeko/NiuTest';
+const recordPath = 'src/december-schedule.json';
+const contentsPath = '/contents/' + recordPath;
 const branch = 'main';
 const encoder = new TextEncoder();
 const decoder = new TextDecoder('utf-8', { fatal: true });
@@ -19,14 +22,6 @@ function error(code, status) {
 function exactFields(obj, fields) {
   return obj && typeof obj === 'object' && !Array.isArray(obj) &&
     Object.keys(obj).length === fields.length && fields.every(field => Object.hasOwn(obj, field));
-}
-
-function toBase64(bytes) {
-  let text = '';
-  for (let start = 0; start < bytes.length; start += 8192) {
-    text += String.fromCharCode(...bytes.subarray(start, start + 8192));
-  }
-  return btoa(text);
 }
 
 function fromBase64(text, maxBytes) {
@@ -116,19 +111,18 @@ export function checkedRecord(record) {
   let projection;
   try { projection = validatePublicSchedule(record.public); } catch { throw error('invalid'); }
   if (record.vault !== null) parseVault(record.vault, maxPlan);
-  else if (projection.visible || projection.exams.length) throw error('invalid');
+  else if (projection.visible || projection.exams.length || projection.backgrounds?.length) throw error('invalid');
   return { version: 1, public: projection, vault: record.vault };
 }
 
-async function request(method, token, body) {
+async function request(method, path, token, data) {
   const headers = { Accept: 'application/vnd.github+json' };
   if (token) headers.Authorization = 'Bearer ' + checkedToken(token);
-  if (body) headers['Content-Type'] = 'application/json';
-  const url = method === 'GET' ? contentsUrl + '?ref=' + branch : contentsUrl;
+  if (data) headers['Content-Type'] = 'application/json';
   let response;
   try {
-    response = await fetch(url, {
-      method, headers, body, cache: 'no-store', credentials: 'omit', redirect: 'error',
+    response = await fetch(repository + path, {
+      method, headers, body: data ? JSON.stringify(data) : undefined, cache: 'no-store', credentials: 'omit', redirect: 'error',
       signal: AbortSignal.timeout(25_000)
     });
   } catch { throw error('unavailable'); }
@@ -136,7 +130,7 @@ async function request(method, token, body) {
     const status = response.status;
     if (status === 403 && response.headers.get('x-ratelimit-remaining') === '0') throw error('unavailable', status);
     if (status === 401 || status === 403) throw error('auth', status);
-    if (method === 'PUT' && (status === 409 || status === 422)) throw error('conflict', status);
+    if ((method === 'PUT' || method === 'PATCH') && (status === 409 || status === 422)) throw error('conflict', status);
     throw error('unavailable', status);
   }
   let text;
@@ -146,7 +140,7 @@ async function request(method, token, body) {
 }
 
 export async function readRemote(token) {
-  const entry = await request('GET', token);
+  const entry = await request('GET', contentsPath + '?ref=' + branch, token);
   if (!entry || typeof entry.sha !== 'string' || !shaPattern.test(entry.sha) || entry.encoding !== 'base64' ||
       typeof entry.content !== 'string' || entry.content.length > maxFile * 2) throw error('invalid');
   const bytes = fromBase64(entry.content.replace(/[\r\n]/g, ''), maxFile);
@@ -155,16 +149,55 @@ export async function readRemote(token) {
   return { sha: entry.sha, record: checkedRecord(record) };
 }
 
-export async function writeRemote(token, sha, record) {
+function checkedSha(value) {
+  if (typeof value !== 'string' || !shaPattern.test(value)) throw error('invalid');
+  return value;
+}
+
+async function commitPhotos(token, previousSha, scheduleBytes, photos) {
+  const files = new Map();
+  for (const photo of photos) {
+    if (!photo || photo.path !== await photoPath(photo.bytes)) throw error('invalid');
+    files.set(photo.path.slice(2), photo.bytes);
+  }
+  files.set(recordPath, scheduleBytes);
+
+  // Read both the parent tree and the old schedule at the same immutable commit.
+  const ref = await request('GET', '/git/ref/heads/' + branch, token);
+  const parent = checkedSha(ref?.object?.sha);
+  const [commit, oldFile] = await Promise.all([
+    request('GET', '/git/commits/' + parent, token),
+    request('GET', contentsPath + '?ref=' + parent, token)
+  ]);
+  if (checkedSha(oldFile?.sha) !== previousSha) throw error('conflict');
+  const baseTree = checkedSha(commit?.tree?.sha);
+  const tree = [];
+  for (const [path, bytes] of files) {
+    const blob = await request('POST', '/git/blobs', token, { encoding: 'base64', content: toBase64(bytes) });
+    tree.push({ path, mode: '100644', type: 'blob', sha: checkedSha(blob?.sha) });
+  }
+  const newTree = await request('POST', '/git/trees', token, { base_tree: baseTree, tree });
+  const next = await request('POST', '/git/commits', token, {
+    parents: [parent], tree: checkedSha(newTree?.sha), message: 'Update December exam schedule and background images'
+  });
+  const nextHead = checkedSha(next?.sha);
+  // A competing push makes this fail rather than overwriting its changes.
+  const updated = await request('PATCH', '/git/refs/heads/' + branch, token, { sha: nextHead, force: false });
+  if (checkedSha(updated?.object?.sha) !== nextHead) throw error('invalid');
+  return tree.find(entry => entry.path === recordPath).sha;
+}
+
+export async function writeRemote(token, sha, record, photos = []) {
   checkedToken(token);
   if (typeof sha !== 'string' || !shaPattern.test(sha)) throw error('invalid');
   const clean = checkedRecord(record);
-  if (!clean.vault) throw error('invalid');
+  if (!clean.vault || !Array.isArray(photos)) throw error('invalid');
   const bytes = encoder.encode(JSON.stringify(clean) + '\n');
   if (bytes.byteLength > maxFile) throw error('invalid');
-  const result = await request('PUT', token, JSON.stringify({
+  if (photos.length) return { sha: await commitPhotos(token, sha, bytes, photos), record: clean };
+  const result = await request('PUT', contentsPath, token, {
     branch, sha, message: 'Update December exam schedule', content: toBase64(bytes)
-  }));
+  });
   if (typeof result?.content?.sha !== 'string' || !shaPattern.test(result.content.sha)) throw error('invalid');
   return { sha: result.content.sha, record: clean };
 }

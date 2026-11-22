@@ -64,7 +64,7 @@ export const SUBJECTS = [
 ];
 
 export function createExam(id, title) {
-  return { id, title, date: '', time: '', room: '', checks: CHECK_LABELS.map(() => false), projectExam: false };
+  return { id, title, date: '', time: '', room: '', checks: CHECK_LABELS.map(() => false), projectExam: false, wallpaper: null };
 }
 
 export function createSchedule() {
@@ -79,45 +79,84 @@ export function createSchedule() {
   };
 }
 
-function hasFields(value, fields) {
+function hasFields(value, fields, optional = []) {
   return value !== null && typeof value === 'object' && !Array.isArray(value) &&
-    Object.keys(value).length === fields.length && fields.every(field => Object.hasOwn(value, field));
+    fields.every(field => Object.hasOwn(value, field)) &&
+    Object.keys(value).every(key => fields.includes(key) || optional.includes(key));
+}
+
+function readSubject(row, allowUndated) {
+  if (typeof row.id !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$/.test(row.id)) throw new Error('Некорректный идентификатор экзамена.');
+  if (typeof row.title !== 'string' || !row.title.trim() || row.title.length > 200) throw new Error('Укажите название предмета длиной до 200 символов.');
+  if (typeof row.date !== 'string' || !(row.date === '' && allowUndated || /^2026-12-(0[1-9]|[12]\d|3[01])$/.test(row.date))) {
+    throw new Error('Выберите дату в декабре 2026 года.');
+  }
+  return { id: row.id, title: row.title.trim(), date: row.date };
+}
+
+export function validWallpaperImage(value) {
+  if (value === '') return true;
+  if (typeof value !== 'string' || value.length > 4096 || /[\s\\\x00-\x1f\x7f]/.test(value)) return false;
+  if (/^\.\/src\/images\/schedule\/[a-f0-9]{64}\.webp$/.test(value)) return true;
+  if (!/^https:\/\/[^/?#@]+(?:[/?#]|$)/i.test(value)) return false;
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && Boolean(url.hostname) && !url.username && !url.password;
+  } catch { return false; }
+}
+
+function readAppearance(wallpaper) {
+  const { image, priority, timing } = wallpaper;
+  if (!validWallpaperImage(image)) throw new Error('Выберите загруженную картинку или укажите ссылку HTTPS.');
+  if (!Number.isInteger(priority) || priority < 1 || priority > 10) throw new Error('Выберите приоритет фона от 1 до 10.');
+  if (timing !== 'day' && timing !== 'upcoming') throw new Error('Выберите период показа фона.');
+  return { image, priority, timing };
 }
 
 function readExam(row, isPublic) {
   const fields = ['id', 'title', 'date', 'time', 'room'];
-  if (!isPublic) {
-    fields.push('checks');
-    if (row && Object.hasOwn(row, 'projectExam')) fields.push('projectExam');
-  }
-  if (!hasFields(row, fields)) throw new Error('Проверьте поля экзамена.');
-  if (typeof row.id !== 'string' || !/^[a-zA-Z0-9][a-zA-Z0-9_-]{0,79}$/.test(row.id)) throw new Error('Некорректный идентификатор экзамена.');
-  if (typeof row.title !== 'string' || !row.title.trim() || row.title.length > 200) throw new Error('Укажите название предмета длиной до 200 символов.');
-  if (typeof row.date !== 'string' || !(row.date === '' && !isPublic || /^2026-12-(0[1-9]|[12]\d|3[01])$/.test(row.date))) {
-    throw new Error('Выберите дату в декабре 2026 года.');
-  }
+  if (!isPublic) fields.push('checks');
+  if (!hasFields(row, fields, isPublic ? [] : ['projectExam', 'wallpaper'])) throw new Error('Проверьте поля экзамена.');
+  const subject = readSubject(row, !isPublic);
   if (typeof row.time !== 'string' || row.time !== '' && !/^([01]\d|2[0-3]):[0-5]\d$/.test(row.time)) throw new Error('Укажите время от 00:00 до 23:59.');
   if (typeof row.room !== 'string' || row.room.length > 160) throw new Error('Укажите место проведения длиной до 160 символов.');
-  const exam = { id: row.id, title: row.title.trim(), date: row.date, time: row.time, room: row.room.trim() };
+  const exam = { ...subject, time: row.time, room: row.room.trim() };
   if (!isPublic) {
     if (!Array.isArray(row.checks) || row.checks.length !== CHECK_LABELS.length ||
         !Array.from(row.checks).every(check => typeof check === 'boolean')) throw new Error('Проверьте отметки готовности предмета.');
     exam.checks = [...row.checks];
     if (Object.hasOwn(row, 'projectExam') && typeof row.projectExam !== 'boolean') throw new Error('Проверьте отметку проектного экзамена.');
     exam.projectExam = row.projectExam ?? false;
+    exam.wallpaper = null;
+    if (Object.hasOwn(row, 'wallpaper') && row.wallpaper !== null) {
+      const wallpaper = row.wallpaper;
+      if (!hasFields(wallpaper, ['image', 'priority', 'timing', 'enabled']) || typeof wallpaper.enabled !== 'boolean') {
+        throw new Error('Проверьте настройки фона экзамена.');
+      }
+      exam.wallpaper = { ...readAppearance(wallpaper), enabled: wallpaper.enabled };
+    }
   }
   return exam;
 }
 
 function readSchedule(raw, isPublic) {
-  if (!hasFields(raw, ['version', 'month', 'visible', 'exams']) ||
+  if (!hasFields(raw, ['version', 'month', 'visible', 'exams'], isPublic ? ['backgrounds'] : []) ||
       raw.version !== 1 || raw.month !== MONTH || typeof raw.visible !== 'boolean' || !Array.isArray(raw.exams)) {
     throw new Error('Нужен файл расписания на декабрь 2026 года.');
   }
   if (isPublic && !raw.visible && raw.exams.length) throw new Error('Скрытое расписание должно быть пустым.');
   const exams = Array.from(raw.exams, row => readExam(row, isPublic));
   if (new Set(exams.map(exam => exam.id)).size !== exams.length) throw new Error('У каждого экзамена должен быть свой идентификатор.');
-  return { version: 1, month: MONTH, visible: raw.visible, exams };
+  const plan = { version: 1, month: MONTH, visible: raw.visible, exams };
+  if (isPublic && Object.hasOwn(raw, 'backgrounds')) {
+    if (!Array.isArray(raw.backgrounds)) throw new Error('Проверьте список фонов.');
+    plan.backgrounds = Array.from(raw.backgrounds, row => {
+      if (!hasFields(row, ['id', 'title', 'date', 'image', 'priority', 'timing'])) throw new Error('Проверьте поля фона экзамена.');
+      return { ...readSubject(row, false), ...readAppearance(row) };
+    });
+    if (new Set(plan.backgrounds.map(item => item.id)).size !== plan.backgrounds.length) throw new Error('У каждого фона должен быть свой идентификатор.');
+  }
+  return plan;
 }
 
 export const validateSchedule = raw => readSchedule(raw, false);
@@ -125,8 +164,30 @@ export const validatePublicSchedule = raw => readSchedule(raw, true);
 
 export function publicSchedule(raw) {
   const { version, month, visible, exams } = validateSchedule(raw);
-  if (!visible) return { version, month, visible, exams: [] };
-  const dated = exams.filter(exam => exam.date).map(({ id, title, date, time, room }) => ({ id, title, date, time, room }));
-  dated.sort((a, b) => a.date.localeCompare(b.date) || (a.time || '24:00').localeCompare(b.time || '24:00') || a.title.localeCompare(b.title, 'kk'));
-  return { version, month, visible, exams: dated };
+  const dated = exams.filter(exam => exam.date);
+  const output = { version, month, visible, exams: [] };
+  if (visible) {
+    output.exams = dated.map(({ id, title, date, time, room }) => ({ id, title, date, time, room }));
+    output.exams.sort((a, b) => a.date.localeCompare(b.date) || (a.time || '24:00').localeCompare(b.time || '24:00') || a.title.localeCompare(b.title, 'kk'));
+  }
+  const backgrounds = dated.filter(exam => exam.wallpaper?.enabled).map(({ id, title, date, wallpaper }) => ({
+    id, title, date, image: wallpaper.image, priority: wallpaper.priority, timing: wallpaper.timing
+  }));
+  if (backgrounds.length) output.backgrounds = backgrounds;
+  return output;
+}
+
+const campusDate = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Qyzylorda', year: 'numeric', month: '2-digit', day: '2-digit'
+});
+
+export function scheduleToday(now = new Date()) {
+  const parts = Object.fromEntries(campusDate.formatToParts(now).map(({ type, value }) => [type, value]));
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+export function selectExamBackground(backgrounds = [], today = scheduleToday()) {
+  const eligible = backgrounds.filter(item => item.date === today || (item.timing === 'upcoming' && item.date > today));
+  eligible.sort((a, b) => a.date.localeCompare(b.date) || b.priority - a.priority || a.id.localeCompare(b.id, 'en'));
+  return eligible[0] ?? null;
 }
